@@ -9,7 +9,7 @@ const { Sequelize, DataTypes } = require('sequelize');
  */
 const createProduct = (sequelize) => {
     // Définition du modèle (table)
-    const Product = sequelize.define('Product', {
+    const Book = sequelize.define('Book', {
         // L'id se crée automatiquement si non spécifié ici
         title: {
             type: DataTypes.STRING(MAX),
@@ -34,7 +34,7 @@ const createProduct = (sequelize) => {
     },{
         //options de création propre à Sequelize
         createdAt: true,
-        tableName: 'Product',
+        tableName: 'Book',
     });
-    return Product
+    return Book
 };
