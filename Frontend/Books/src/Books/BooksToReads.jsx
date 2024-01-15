@@ -4,7 +4,8 @@ import Pal from "./Pal";
 import { nanoid } from 'nanoid';
 
 const BooksRead = [
-    { id: nanoid(), title: 'L\'héritage de l\'esprit-roi', author: 'Claire Krust', completed: false, imageUrl:'../src/images/heritage.png' },
+    { id: nanoid(), title: 'L\'héritage de l\'esprit-roi', author: 'Claire Krust', completed: false, imageUrl:'../src/images/heritage.jpg' },
+    { id: nanoid(), title: 'Say you swear', author: 'Meagan Brandy', completed: false, imageUrl:'../src/images/say.jpg' },
     { id: nanoid(), title: 'Doppelganger', author: 'David Stahler Jr', completed: false, imageUrl:'../src/images/Doppelganger.jpg' },
     { id: nanoid(), title: 'Vive la Reine des citrouilles', author: 'Shea Earnshaw et Arnold Petit', completed: false, imageUrl:'../src/images/ReineDesCitrouilles.png' },
     {id: nanoid(), title: 'L\'étrange noël de Mr Jack - Le roman du film', author: 'Arnold Petit et Megan Sepherd', completed: false, imageUrl:'../src/images/MrJack.png' },
