@@ -1,5 +1,6 @@
 
-const authValidator = require('../validators/auth.validator');
+const loginValidator = require('../validators/login.validator');
+const EmailValidator = require('../validators/email.validator');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const authService = require('../services/auth.service');
@@ -12,7 +13,7 @@ const authController = {
             const authData = req.body;
 
             // Validation les informations récupérées depuis les données utilisateur
-            const validatedData = await authValidator.validate(authData);
+            const validatedData = await loginValidator.validate(authData);
 
             // Destructuring des données vérifées
             const { genre, name, prenom, codePostal, dateNaissance, pays, ville, email, login, password } = validatedData;
@@ -20,18 +21,18 @@ const authController = {
             const hashedPassword = bcrypt.hashSync(password, 10);
 
             // Création de l'objet utilisateur à insérer
-        const userData = {
-            login,
-            name,
-            prenom,
-            email,
-            codePostal,
-            dateNaissance,
-            pays,
-            ville,
-            genre,
-            password,
-        };
+            const userData = {
+                login,
+                name,
+                prenom,
+                email,
+                codePostal,
+                dateNaissance,
+                pays,
+                ville,
+                genre,
+                password: hashedPassword, 
+            };
 
             // Envoi des données validées et hashées à la DB
             const authInserted = await authService.insert(userData);

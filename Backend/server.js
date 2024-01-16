@@ -1,40 +1,60 @@
 // Import des différentes librairies
-// require("dotenv").config();
+require("dotenv").config();
 const express = require("express");
+require('express-async-errors');
+const cors = require('cors');
+const router = require('./routers/router');
+
+// création du serveur WebAPI
 const app = express();
-// const bodyParser = require("body-parser");
-// const dbUtils = require("./utils/db_utils");
+//Utilisation du cors
+app.use(cors({    origin: '*'}));
+app.use(express.json());
 
-// Test de la connexion à la base de données
-// dbUtils.testDbConnection();
+// Routing
+app.use('/api', router)
 
-// Middlewares d'entrées
-
-
-// app.use(express.json());
-// // bodyparser lie les donner que l'ont envoie via un formulaire
-// app.use(bodyParser.urlencoded({ extended: true }));
-// app.use("/assets", express.static("assets")); // Pour servir les fichiers statiques
-
-// // Routage
-// const routerBase = require("./routers/base.router");
-// app.use("", routerBase);
-
-// // Gestion des erreurs 404
-// app.use((req, res) => {
-//     res.status(404).send("Page introuvable");
-// });
-
-// // Gestion des erreurs globales
-// app.use((error, req, res, next) => {
-//     console.error("Erreur URL : ", req.url);
-//     console.error("Erreur : ", error);
-//     res.status(500).send("Erreur interne du serveur");
-// });
-
-const port = process.env.PORT || 8002;
-app.listen(port, () => {
-    console.log(`Serveur Web démarré sur le port : http://localhost:${port}`);
+// Gestion des erreurs 404
+app.use((req, res) => {
+    res.status(404).send("Page introuvable");
 });
 
-module.exports = app;
+// Gestion des erreurs globales
+app.use((error, req, res, next) => {
+    console.error("Erreur URL : ", req.url);
+    console.error("Erreur : ", error);
+    res.status(500).send("Erreur interne du serveur");
+});
+// Utilisation .env
+const { PORT, NODE_ENV } = process.env;
+
+// Initialisation de la db
+const db = require('./Models');
+
+// Check la connection avec la db
+db.sequelize.authenticate()
+    .then(() => console.log('Connection à la DB réussie'))
+    .catch((error) => console.log(`Connection à la DB ratée : ${error}`));
+
+// Migration de la db
+// if (NODE_ENV === 'development') {
+//     db.sequelize.sync({ alter: { drop: false}});
+//     console.log('Tous les modeles on été synchronisé')
+// };
+
+// Synchronisation des modèles avec la base de données
+async function syncDb() {
+    try {
+        await db.sequelize.sync({ }); // ou { force: false }
+        console.log("Tous les modèles ont été synchronisés avec succès.");
+    } catch (error) {
+        console.error("Erreur lors de la synchronisation des modèles:", error);
+    }
+}
+// Synchronisation des modèles avec la base de données
+syncDb(); 
+
+
+app.listen(PORT, () => {
+    console.log(`Serveur Web démarré sur le port : http://localhost:${PORT}`);
+});
