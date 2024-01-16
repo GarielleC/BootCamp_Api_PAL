@@ -45,7 +45,7 @@ db.sequelize.authenticate()
 // Synchronisation des modèles avec la base de données
 async function syncDb() {
     try {
-        await db.sequelize.sync({ }); // ou { force: false }
+        await db.sequelize.sync({ force: false }); // ou { force: false }
         console.log("Tous les modèles ont été synchronisés avec succès.");
     } catch (error) {
         console.error("Erreur lors de la synchronisation des modèles:", error);
