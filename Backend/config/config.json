@@ -3,21 +3,21 @@
     "username": "Books",
     "password": "PALBook123",
     "database": "BooksApi",
-    "host": "127.0.0.1",
+    "host": "localhost",
     "dialect": "mssql"
   },
   "test": {
     "username": "Books",
     "password": "PALBook123",
     "database": "BooksApi",
-    "host": "127.0.0.1",
+    "host": "localhost",
     "dialect": "mssql"
   },
   "production": {
     "username": "Books",
     "password": "PALBook123",
     "database": "BooksApi",
-    "host": "127.0.0.1",
+    "host": "localhost",
     "dialect": "mssql"
   }
 }

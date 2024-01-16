@@ -36,16 +36,11 @@ db.sequelize.authenticate()
     .then(() => console.log('Connection à la DB réussie'))
     .catch((error) => console.log(`Connection à la DB ratée : ${error}`));
 
-// Migration de la db
-// if (NODE_ENV === 'development') {
-//     db.sequelize.sync({ alter: { drop: false}});
-//     console.log('Tous les modeles on été synchronisé')
-// };
 
 // Synchronisation des modèles avec la base de données
 async function syncDb() {
     try {
-        await db.sequelize.sync({ force: false }); // ou { force: false }
+        await db.sequelize.sync({ }); // ou { force: false }
         console.log("Tous les modèles ont été synchronisés avec succès.");
     } catch (error) {
         console.error("Erreur lors de la synchronisation des modèles:", error);
