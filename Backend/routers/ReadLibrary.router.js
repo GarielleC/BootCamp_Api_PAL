@@ -1,5 +1,5 @@
 //Importations
-const ReadLibraryController = require('../Backend/controllers/ReadLibrary.controller.js');
+const ReadLibraryController = require('../controllers/ReadLibrary.controller');
 const ReadLibraryRouter = require('express').Router(); //Permet de créer une nouvelle instance de routeur Express et la stock dans la variable productRouter
 
 //Route pour récupérer tous les livres
@@ -18,7 +18,7 @@ ReadLibraryRouter.route('/get/:bookID')
 
 //Route pour ajouter un livre
 ReadLibraryRouter.route('/add')
-    .post(ReadLibraryController.createBook)
+    .post(ReadLibraryController.addBook)
     .all((req, res) => {
         res.status(405).send('Unavailable');
     });

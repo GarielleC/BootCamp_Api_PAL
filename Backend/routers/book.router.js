@@ -1,5 +1,5 @@
 //Importations
-const bookController = require('../controllers/book.controller');
+const bookController = require('../../Backend/controllers/book.controller');
 const bookRouter = require('express').Router(); //Permet de créer une nouvelle instance de routeur Express et la stock dans la variable productRouter
 
 
