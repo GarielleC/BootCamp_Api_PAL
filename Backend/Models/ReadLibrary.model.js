@@ -1,5 +1,5 @@
 const { Sequelize, DataTypes } = require('sequelize');
-const Product = require('./Book.model');
+const createReadLibrary = require('./Book.model');
 /**
  * Fonction pour créer un model Product (donc table de db)
  * Le JSDoc sert à l'autocomplétion
