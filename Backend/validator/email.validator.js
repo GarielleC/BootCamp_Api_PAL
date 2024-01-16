@@ -1,7 +1,6 @@
 
 const emailValidator = (req, res, next) => {
     const { Email } = req.body;
-    let errors = [];
 
     
     // Regex qui permet de validé l'email

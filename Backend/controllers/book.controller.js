@@ -114,6 +114,13 @@ const bookController = {
         }
     },
 
+    //Ajout d'un livre
+    // Fonction pour ajouter un livre
+    addBook: (req, res) => {
+        // Logique pour ajouter un livre
+        res.status(200).json({ message: 'Livre ajouté avec succès.' });
+    },
+
     // Suppresion du livre
     deleteBook: async (req, res) => {
         try {
@@ -138,6 +145,7 @@ const bookController = {
             res.status(500).json({ error: error.message });
         }
     },
+    
 };
 
 // Exportation

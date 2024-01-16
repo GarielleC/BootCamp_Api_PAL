@@ -9,12 +9,12 @@ const Product = require('./Book.model');
  */
 
 
-module.exports = (sequelize) => {
+const createBooksToBuy = (sequelize) => {
     // Définition du modèle (table)
-    const BookToBuy = require('BookToBuy', {
+    const BookToBuy = sequelize.define('BookToBuy', {
         // L'id se crée automatiquement si non spécifié ici
         title: {
-            type: DataTypes.STRING(MAX),
+            type: DataTypes.STRING,
             allowNull: false,
         },
 
@@ -43,3 +43,6 @@ module.exports = (sequelize) => {
 
     return BookToBuy;
 };
+
+
+module.exports = createBooksToBuy

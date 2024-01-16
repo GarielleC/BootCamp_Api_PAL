@@ -8,12 +8,12 @@ const Product = require('./Book.model');
  */
 
 
-module.exports = (sequelize) => {
+const createReadLibrary = (sequelize) => {
     // Définition du modèle (table)
-    const ReadLibrary = require('ReadLibrary', {
+    const ReadLibrary = sequelize.define('ReadLibrary', {
        // L'id se crée automatiquement si non spécifié ici
        title: {
-        type: DataTypes.STRING(MAX),
+        type: DataTypes.STRING,
         allowNull: false,
     },
 
@@ -33,3 +33,5 @@ module.exports = (sequelize) => {
 
     return ReadLibrary;
 };
+
+module.exports = createReadLibrary; 

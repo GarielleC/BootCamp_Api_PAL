@@ -1,6 +1,6 @@
 
-const loginValidator = require('../validators/login.validator');
-const EmailValidator = require('../validators/email.validator');
+const loginValidator = require('../validator/login.validator');
+const EmailValidator = require('../validator/email.validator');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const authService = require('../services/auth.service');

@@ -22,7 +22,7 @@ db.Sequelize = Sequelize;
 
 // Ajout des models
 db.Auth = require('./auth.model')(sequelize);
-db.Product = require('./Book.model')(sequelize);
-db.Panier = require('./BookToRead.model')(sequelize);
-db.Favoris = require('./BookToBuy.model')(sequelize);
-db.Advices = require('./ReadLibrary.model')(sequelize);
+db.Book = require('./Book.model')(sequelize);
+db.BookToRead = require('./BookToRead.model')(sequelize);
+db.BookToBuy = require('./BookToBuy.model')(sequelize);
+db.ReadLibrary = require('./ReadLibrary.model')(sequelize);

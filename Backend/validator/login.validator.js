@@ -1,32 +1,34 @@
-const { Password } = req.body;
-let errors = [];
+module.exports = function(req, res, next) {
+    const { Password } = req.body; 
 
-if (Password.length < 12) {
-    errors.push("Votre mot de passe doit contenir au moins 12 caractères.");
-}
+    let errors = [];
 
-if (!/[A-Z]/.test(Password)) {
-    errors.push("Votre mot de passe doit contenir au moins une lettre majuscule.");
-}
+    if (!Password || Password.length < 12) {
+        errors.push("Votre mot de passe doit contenir au moins 12 caractères.");
+    }
 
-if (!/[a-z]/.test(Password)) {
-    errors.push("Votre mot de passe doit contenir au moins une lettre minuscule.");
-}
+    if (!/[A-Z]/.test(Password)) {
+        errors.push("Votre mot de passe doit contenir au moins une lettre majuscule.");
+    }
 
-if (!/[0-9]/.test(Password)) {
-    errors.push("Votre mot de passe doit contenir au moins un chiffre.");
-}
+    if (!/[a-z]/.test(Password)) {
+        errors.push("Votre mot de passe doit contenir au moins une lettre minuscule.");
+    }
 
-if (!/[!@#$%^&*]/.test(Password)) {
-    errors.push("Votre mot de passe doit contenir au moins un caractère spécial.");
-}
+    if (!/[0-9]/.test(Password)) {
+        errors.push("Votre mot de passe doit contenir au moins un chiffre.");
+    }
 
-if (errors.length > 0) {
-    return res.status(400).json({
-        message: "Validation du mot de passe échouée.",
-        errors: errors,
-    });
-}
+    if (!/[!@#$%^&*]/.test(Password)) {
+        errors.push("Votre mot de passe doit contenir au moins un caractère spécial.");
+    }
 
-next();
+    if (errors.length > 0) {
+        return res.status(400).json({
+            message: "Validation du mot de passe échouée.",
+            errors: errors,
+        });
+    }
 
+    next();
+};

@@ -9,11 +9,11 @@ const Product = require('./Book.model');
  */
 
 
-module.exports = (sequelize) => {
+const createBooksToRead = (sequelize) => {
     // Définition du modèle (table)
-    const BookToRead = require('BookToRead', {
+    const BookToRead = sequelize.define('BookToRead', {
         title : {
-            type: DataTypes.STRING(MAX),
+            type: DataTypes.STRING,
             allowNull: false,
         },
 
@@ -33,3 +33,5 @@ module.exports = (sequelize) => {
 
     return BookToRead; 
 };
+
+module.exports = createBooksToRead; 

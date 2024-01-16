@@ -1,5 +1,5 @@
 //Importations
-const bookController = require('../Backend/controllers/book.controller.js');
+const bookController = require('../controllers/book.controller');
 const bookRouter = require('express').Router(); //Permet de créer une nouvelle instance de routeur Express et la stock dans la variable productRouter
 
 
@@ -33,8 +33,8 @@ bookRouter.route('/delete/:bookID')
         res.status(405).send('Unavailable');
     });
 
-bookRouter.route('/add/:bookID')
-.add(bookController.addBook)
+bookRouter.route('/add')
+.post(bookController.addBook)
 .all((req, res) => {
     res.status(405).send('Unavailable');
 });
