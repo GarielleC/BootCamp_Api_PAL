@@ -1,28 +1,29 @@
-// Importation l'object Sequelize
-const { Sequelize } = require('sequelize');
+// Importation de l'objet Sequelize
+const { Sequelize } = require("sequelize");
 
-// Initilisation une nouvelle instance de l'object avec SQLite en paramètre
+// Initialisation d'une nouvelle instance de l'objet avec MSSQL en paramètre
 const sequelize = new Sequelize({
-    dialect: 'mssql',
-    database: 'BooksApi',
-    username: 'Books',
+    dialect: "mssql",
+    database: "BooksApi",
+    username: "Books",
     password: process.env.DB_PASSWORD,
-    host: 'localhost',
-    port: 1433 // Le port de base de SQL Server
+    host: "localhost",
+    port: 1433, // Le port de base de SQL Server
 });
 
-// Création de l'object db
+// Création de l'objet db
 const db = {};
-module.exports = db;
 
-//gère l'instance
+// Gère l'instance
 db.sequelize = sequelize;
-//gère d'autres méthodes de sequelize
+// Gère d'autres méthodes de Sequelize
 db.Sequelize = Sequelize;
 
-// Ajout des models
-db.Auth = require('./auth.model')(sequelize);
-db.Book = require('./Book.model')(sequelize);
-db.BookToRead = require('./BookToRead.model')(sequelize);
-db.BookToBuy = require('./BookToBuy.model')(sequelize);
-db.ReadLibrary = require('./ReadLibrary.model')(sequelize);
+// Ajout des modèles
+db.Auth = require("./auth.model")(sequelize);
+db.Book = require("./Book.model")(sequelize);
+db.BookToRead = require("./BookToRead.model")(sequelize);
+db.BookToBuy = require("./BookToBuy.model")(sequelize);
+db.ReadLibrary = require("./ReadLibrary.model")(sequelize);
+
+module.exports = db;

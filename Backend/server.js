@@ -8,12 +8,13 @@ const router = require('./routers/router');
 // création du serveur WebAPI
 const app = express();
 //Utilisation du cors
-app.use(cors({    origin: '*'}));
+app.use(cors());
 app.use(express.json());
 
 // Routing
 app.use('/api', router)
 
+// console.log(app._router.stack);//permet de voir les routes enregistrées
 // Gestion des erreurs 404
 app.use((req, res) => {
     res.status(404).send("Page introuvable");

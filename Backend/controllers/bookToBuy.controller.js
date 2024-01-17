@@ -1,82 +1,72 @@
-const db = require('../Models');
-const { BookToBuy } = require('../Models/BookToBuy.model');
+const { BookToBuy } = require("../Models");
 
 const bookToBuyController = {
-    // Renvoie tous les produits 
-    getAllBook: (req, res) => {
-        // Note : Utilisez db.BookToBuy au lieu de book
-        res.json(db.BookToBuy); 
+    // Renvoie tous les livres à acheter
+    getAllBooks: function (req, res, next) {
+        return async (req, res, next) => {
+        try {
+            const booksToBuy = await BookToBuy.findAll();
+            res.status(200).json(booksToBuy);
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ error: error.message });
+        }
+    }
     },
 
-    // Création d'un nouveau livre
-    createBook: async (req, res) => {
+    // Création d'un nouveau livre à acheter
+    createBook:function (req, res, next) {
+        return async (req, res, next) => {
         try {
-            // Récupération du livre depuis le corps de la requête
             const { title, author, prix, buyLink, imageUrl } = req.body;
-
-            // Création d'un nouveau livre dans la DB 
-            const newBook = await db.BookToBuy.create({
+            const newBook = await BookToBuy.create({
                 title,
                 author,
                 prix,
                 buyLink,
                 imageUrl,
             });
-
-            // Renvoi du nouveau livre en tant que réponse JSON
             res.status(201).json(newBook);
         } catch (error) {
-            // Message d'erreur si la réponse JSON ne fonctionne pas
             console.error(error);
-            res.status(500).json({ error: 'Failed to create book' });
+            res.status(500).json({ error: "Failed to create book" });
         }
+    }
     },
-    
-    addBook: async (req, res) => {
+    // Renvoie les détails d'un livre spécifique à acheter
+    getBook: function (req, res, next) {
+        return async (req, res, next) => {
+        const id = Number(req.params.bookID);
         try {
-            const { title, author, prix, buyLink, imageUrl } = req.body;
-            console.log(title, author, prix, buyLink, imageUrl);
+            const selectedBook = await BookToBuy.findByPk(id);
 
-            // Utilisez db.BookToBuy au lieu de BookToBuy
-            const newBook = await db.BookToBuy.create({
-                title,
-                author,
-                prix,
-                buyLink,
-                imageUrl,
-            });
-
-            res.status(201).json(newBook);
+            if (!selectedBook) {
+                return res.status(404).send("Book not found");
+            }
+            res.json(selectedBook);
         } catch (error) {
             res.status(500).send({ error: error.message });
         }
+    }
     },
 
-    // Renvoie les détails d'un produit spécifique 
-    getBook: (req, res) => {
+    // Suppression d'un livre spécifique à acheter
+    deleteBook:function (req, res, next) {
+        return async (req, res, next) => {
         const id = Number(req.params.bookID);
-        // Utilisez db.BookToBuy au lieu de book
-        const selectedBook = db.BookToBuy.find(book => book.id === id);
+        try {
+            const book = await BookToBuy.findByPk(id);
 
-        if (!selectedBook) {
-            return res.status(404).send('Book not found');
+            if (!book) {
+                return res.status(404).send("Book not found");
+            }
+
+            await book.destroy();
+            res.status(200).json({ message: "Book deleted" });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
         }
-        res.json(selectedBook);
-    },
-
-    // Suppression d'un produit spécifique 
-    deleteBook: (req, res) => {
-        const id = Number(req.params.bookID);
-        // Utilisez db.BookToBuy au lieu de book
-        const index = db.BookToBuy.findIndex(book => book.id === id);
-
-        if (index === -1) {
-            return res.status(404).send('Book not found');
-        }
-
-        // Utilisez db.BookToBuy au lieu de book
-        db.BookToBuy.splice(index, 1);
-        res.status(200).json('Book deleted');
+    }
     },
 };
 
