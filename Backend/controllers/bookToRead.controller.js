@@ -7,10 +7,10 @@ const bookToReadController = {
         try {
             // On récupère tous les livres
             // const books = await Book.find();
-            const booksToRead = await BookToRead.findAll();
+            const booksToRead = await BookToRead.find({ where:{statut:'à lire'}});
 
             // On renvoie les livres en tant que réponse JSON
-            res.status(200).json({ books, booksToRead });
+            res.status(200).json({ booksToRead });
         } catch (error) {
             // Message d'erreur s'il y en a une
             console.error(error);

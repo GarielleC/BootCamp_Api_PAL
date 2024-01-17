@@ -1,11 +1,11 @@
-const { BookToBuy } = require("../Models");
+const { Book } = require("../Models");
 
 const bookToBuyController = {
     // Renvoie tous les livres à acheter
     getAllBook: function (req, res, next) {
         return async (req, res, next) => {
         try {
-            // const booksToBuy = await BookToBuy.find();
+             const booksToBuy = await BookToBuy.find({where:{statut:'a acheter'}});
             res.status(200).json(booksToBuy);
         } catch (error) {
             console.error(error);
@@ -15,24 +15,17 @@ const bookToBuyController = {
     },
 
     // Création d'un nouveau livre à acheter
-    createBook:function (req, res, next) {
-        return async (req, res, next) => {
-        try {
+    createBook: async (req, res,next) =>{
+        
+        try { 
             const { title, author, prix, buyLink, imageUrl } = req.body;
-            const newBook = await BookToBuy.create({
-                title,
-                author,
-                prix,
-                buyLink,
-                statut: 'a acheter',
-                imageUrl,
-            });
+            const newBook = await Book.create({ title, author,statut:"a acheter", prix, buyLink, imageUrl });
+            console.log(newBook);
             res.status(201).json(newBook);
         } catch (error) {
             console.error(error);
             res.status(500).json({ error: "Failed to create book" });
         }
-    }
     },
     // Renvoie les détails d'un livre spécifique à acheter
     getBook: function (req, res, next) {
