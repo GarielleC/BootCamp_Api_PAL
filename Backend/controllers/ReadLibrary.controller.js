@@ -2,7 +2,7 @@ const { ReadLibrary } = require("../Models");
 
 const readLibraryController = {
     // Récupérer tous les livres de la bibliothèque de lecture
-    getAllBooks: function (req, res, next) {
+    getAllBook: function (req, res, next) {
         return async (req, res, next) => {
         try {
             const readBooks = await ReadLibrary.findAll();

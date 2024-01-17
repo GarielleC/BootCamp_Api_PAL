@@ -16,13 +16,6 @@ bookToBuyRouter.route('/get/:bookID')
         res.status(405).send('Unavailable');
     });
 
-// Route pour ajouter un livre
-bookToBuyRouter.route('/add')
-    .post(bookToBuyController.addBook)  
-    .all((req, res) => {
-        res.status(405).send('Unavailable');
-    });
-
 // Route pour supprimer un livre
 bookToBuyRouter.route('/delete/:bookID')
     .delete(bookToBuyController.deleteBook)

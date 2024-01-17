@@ -2,7 +2,7 @@ const { BookToBuy } = require("../Models");
 
 const bookToBuyController = {
     // Renvoie tous les livres à acheter
-    getAllBooks: function (req, res, next) {
+    getAllBook: function (req, res, next) {
         return async (req, res, next) => {
         try {
             const booksToBuy = await BookToBuy.findAll();

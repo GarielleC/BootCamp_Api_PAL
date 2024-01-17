@@ -4,12 +4,16 @@ const express = require("express");
 require('express-async-errors');
 const cors = require('cors');
 const router = require('./routers/router');
+const path = require('path');
 
 // création du serveur WebAPI
 const app = express();
 //Utilisation du cors
 app.use(cors());
 app.use(express.json());
+
+// Middleware pour servir les fichiers statiques sous /assets
+app.use('/images', express.static(path.join(__dirname, 'public/images')));
 
 // Routing
 app.use('/api', router)
@@ -49,6 +53,7 @@ async function syncDb() {
 }
 // Synchronisation des modèles avec la base de données
 syncDb(); 
+
 
 
 app.listen(PORT, () => {

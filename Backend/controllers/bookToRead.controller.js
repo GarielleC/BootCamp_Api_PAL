@@ -2,7 +2,7 @@ const { Book, BookToRead } = require("../Models");
 
 const bookToReadController = {
     // Renvoie tous les livres
-    getAllBooks: function (req, res, next) {
+    getAllBook: function (req, res, next) {
         return async (req, res, next) => {
         try {
             // On récupère tous les livres

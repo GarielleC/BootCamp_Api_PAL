@@ -3,7 +3,7 @@
 const router = require('express').Router();
 
 // Importation des routes spécifiques pour chaque fonctionnalité
-// const authRouter = require('./auth.router');
+const authRouter = require('./auth.router');
 const bookRouter = require('./book.router');
 const bookToReadRouter = require('./bookToRead.router');
 const bookToBuyRouter = require('./bookToBuy.router');
