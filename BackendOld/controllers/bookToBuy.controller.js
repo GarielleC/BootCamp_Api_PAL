@@ -5,7 +5,7 @@ const bookToBuyController = {
     getAllBook: function (req, res, next) {
         return async (req, res, next) => {
         try {
-            // const booksToBuy = await BookToBuy.find();
+            const booksToBuy = await BookToBuy.findAll();
             res.status(200).json(booksToBuy);
         } catch (error) {
             console.error(error);
@@ -24,7 +24,6 @@ const bookToBuyController = {
                 author,
                 prix,
                 buyLink,
-                statut: 'a acheter',
                 imageUrl,
             });
             res.status(201).json(newBook);

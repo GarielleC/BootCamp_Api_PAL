@@ -1,4 +1,4 @@
-const { Book } = require("../Models");
+const { Book, BookToRead } = require("../Models");
 
 const bookToReadController = {
     // Renvoie tous les livres
@@ -6,7 +6,7 @@ const bookToReadController = {
         return async (req, res, next) => {
         try {
             // On récupère tous les livres
-            // const books = await Book.find();
+            const books = await Book.findAll();
             const booksToRead = await BookToRead.findAll();
 
             // On renvoie les livres en tant que réponse JSON
@@ -24,7 +24,7 @@ const bookToReadController = {
         return async (req, res, next) => {
         try {
             const { title, author, imageUrl } = req.body;
-            const newBook = await BookToRead.create({ title, author, imageUrl, statut: 'a lire', });
+            const newBook = await BookToRead.create({ title, author, imageUrl });
             res.status(201).json(newBook);
         } catch (error) {
             res.status(500).send({ error: error.message });

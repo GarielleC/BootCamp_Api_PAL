@@ -22,5 +22,8 @@ db.Sequelize = Sequelize;
 // Ajout des modèles
 db.Auth = require("./auth.model")(sequelize);
 db.Book = require("./Book.model")(sequelize);
+db.BookToRead = require("./BookToRead.model")(sequelize);
+db.BookToBuy = require("./BookToBuy.model")(sequelize);
+db.ReadLibrary = require("./ReadLibrary.model")(sequelize);
 
 module.exports = db;

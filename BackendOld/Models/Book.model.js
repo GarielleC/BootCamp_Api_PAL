@@ -18,14 +18,9 @@ const createBook = (sequelize) => {
                 type: DataTypes.STRING(100),
                 allowNull: false,
             },
-            statut: {
-                type: DataTypes.STRING,
-                allowNull: false,
-            },
-
             prix: {
                 type: DataTypes.INTEGER,
-                allowNull: true,
+                allowNull: false,
             },
             buyLink: {
                 type: DataTypes.STRING,

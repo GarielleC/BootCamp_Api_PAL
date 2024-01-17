@@ -5,7 +5,7 @@ const readLibraryController = {
     getAllBook: function (req, res, next) {
         return async (req, res, next) => {
         try {
-            // const readBooks = await ReadLibrary.find();
+            const readBooks = await ReadLibrary.findAll();
             res.status(200).json(readBooks);
         } catch (error) {
             console.error(error);
@@ -19,7 +19,7 @@ const readLibraryController = {
         return async (req, res, next) => {
         try {
             const { title, author, imageUrl } = req.body;
-            const newBook = await ReadLibrary.create({ title, author, imageUrl, statut: 'lu', });
+            const newBook = await ReadLibrary.create({ title, author, imageUrl });
             res.status(201).json(newBook);
         } catch (error) {
             console.error(error);
