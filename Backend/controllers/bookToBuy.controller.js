@@ -57,7 +57,28 @@ const bookToBuyController = {
         } catch (error) {
             res.status(500).json({ error: error.message });
         }
-    }
-};
+    },
+
+    // Mise a jour d'un livre (statut)
+    updateBook: async (req, res, next) => {
+        try {
+            const bookID = req.params.bookID; // Récupérer l'ID du livre depuis les paramètres de la requête
+            const book = await Book.findByPk(bookID); // Trouver le livre par son ID
+     
+            if (!book) {
+                return res.status(404).json({ error: "Book not found" });
+            }
+     
+            const updatedBook = await book.update({ statut: "a lire" }); // Mettre à jour le statut
+     
+            res.status(200).json(updatedBook);
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ error: "Failed to update book status" });
+        }
+    },
+
+    };
+     
 
 module.exports = bookToBuyController;

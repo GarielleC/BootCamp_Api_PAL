@@ -23,5 +23,19 @@ ReadLibraryRouter.route('/add')
         res.status(405).send('Unavailable');
     });
 
+    // Route pour supprimer un livre
+ReadLibraryRouter.route('/delete/:bookID')
+.delete(ReadLibraryController.deleteBook)
+.all((req, res) => {
+res.status(405).send('Unavailable');
+});
+
+//Route pour mise à jour du livre
+ReadLibraryRouter.route('/update/:bookID')
+.put(ReadLibraryController.updateBook)
+.all((req, res) => {
+res.status(405).send('Unavailable');
+});
+
 
 module.exports = ReadLibraryRouter;

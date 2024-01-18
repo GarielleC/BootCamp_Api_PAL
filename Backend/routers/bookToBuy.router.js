@@ -30,4 +30,11 @@ bookToBuyRouter.route('/create')
         res.status(405).send('Unavailable');
     });
 
+//Route pour mise à jour du livre
+bookToBuyRouter.route('/update/:bookID')
+    .put(bookToBuyController.updateBook)
+    .all((req, res) => {
+    res.status(405).send('Unavailable');
+});
+
 module.exports = bookToBuyRouter;
