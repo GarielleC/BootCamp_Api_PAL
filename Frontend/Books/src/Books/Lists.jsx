@@ -1,4 +1,4 @@
-import Book from "./BooksToReads";
+import Book from "./BookToRead";
 
 
 const Lists = () => {

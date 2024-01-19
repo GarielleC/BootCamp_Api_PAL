@@ -57,7 +57,7 @@ const Form = (props) => {
                 name="author"
                 value={values.author}
                 onChange={handleChange} />
-                 <button type="submit">+ Ajouter</button>
+                 <button type="submit">💸 A acheter</button>
         </form>
     </section>
     
