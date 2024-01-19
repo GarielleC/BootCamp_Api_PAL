@@ -42,7 +42,7 @@ const authController = {
                     // Information que l'insertion des données s'est correctement déroulée, et que le compte est crée
                     .status(201)
                     // Redirection des informations utilisateur sur la route login 
-                    .location(`api/auth/login`)
+                    .location(`api/login`)
                     .json(authInserted)
             } else {
                 return res.status(500).json({ message: 'Erreur lors de l\'insertion des données' });

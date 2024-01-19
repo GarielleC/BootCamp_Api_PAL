@@ -1,5 +1,5 @@
 //Importations
-const authController = require('../Controllers/auth.controller');
+const authController = require('../controllers/auth.controller');
 const authRouter = require('express').Router(); //Permet de crée une nouvelle instance de routeur Express et la stocke dans la variable authRouter
 
 

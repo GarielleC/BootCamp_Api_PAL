@@ -5,6 +5,11 @@ import Home from '../Home/Home.jsx';
 import BookToBuy from '../Books/BookToBuy.jsx';
 import BookToRead from '../Books/BookToRead.jsx';
 import ReadLibrary from '../Books/ReadLibrary.jsx';
+// import Login from "../components/pages/Login/Login.jsx";
+// import Register from "../components/pages/Register/Register.jsx";
+// import LandingPage from "../components/pages/LandingPage/LandingPage.jsx";
+
+
 
 const router = createBrowserRouter([
     {
@@ -15,17 +20,17 @@ const router = createBrowserRouter([
                 path: "/",
                 element: <Home />,
             },
-            
+
             {
-                path: "books/booktobuy",  // Ajout du /
+                path: "books/booktobuy",  
                 element: <BookToBuy />,
             },
             {
-                path: "books/booktoread",  // Ajout du /
+                path: "books/booktoread",  
                 element: <BookToRead />,
             },
             {
-                path: "books/readlibrary",  // Ajout du /
+                path: "books/readlibrary", 
                 element: <ReadLibrary />,
             },
         ],

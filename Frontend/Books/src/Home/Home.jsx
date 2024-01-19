@@ -11,51 +11,37 @@ const Home = () => {
 
     return (
         <section className='Home'>
-            <div className='Produit'>
-                <h2>Nos Produits</h2>
-                    <p>Explorez notre vaste sélection de drones FPV, de voitures télécommandées, et de tous les composants nécessaires pour les personnaliser et les améliorer. Nous sommes fiers de proposer uniquement les marques les plus réputées de l'industrie pour garantir une performance exceptionnelle.</p>
+            <div>
+                <h2>Bienvenue sur ReadEase</h2>
+
+                <h3>ReadEase - L'Art de Simplifier Votre Monde Livresque</h3>
+                    <p>BBienvenue sur ReadEase, l'endroit où la lecture devient un plaisir organisé ! Perdre la trace de votre Pile À Lire peut être frustrant, mais ReadEase est là pour transformer votre expérience de lecture.</p>
+
+                    <p>Explorez la convivialité de notre plateforme qui mémorise chaque livre que vous souhaitez acquérir. Planifiez vos futures lectures, élaborez votre bibliothèque virtuelle, et gérez votre PAL sans le moindre souci.</p>
+
+                    <p>En un geste simple, ajoutez un livre à votre liste d'achats, il s'incorpore automatiquement à votre liste à lire. Une fois savouré, le livre se range naturellement dans votre bibliothèque personnelle. Tout cela à la portée d'un simple clic !</p>
+
+                    <p>ReadEase, où la gestion de vos livres devient aussi plaisante que la lecture elle-même. Découvrez une nouvelle manière de vivre votre passion pour les livres dès aujourd'hui !</p>
             </div>
             
-            <div className='Drone'>
-                <h3>Drones FPV :</h3>
-                    <p>Découvrez la sensation du vol immersif grâce à notre gamme de drones FPV. Des courses palpitantes aux vols stables, nous avons le drone parfait pour vous.</p>
+            <div>
+                <h3 className='Fonctionnalités'>Découvrez les fonctionnalités exceptionnelles</h3>
+                <h4 className='Acheter'>📘 Livres à Acheter:</h4>
+                    <p>Ajoutez instantanément les livres qui vous captivent à votre liste d'achats en un simple clic. Gardez une trace organisée de toutes les œuvres qui vous intriguent et que vous avez l'intention d'acquérir dans le futur.</p>
             </div>
 
-            <div className='Telecommande'>
-                <h3>Voitures Télécommandées :</h3>
-                    <p>Plongez dans l'univers passionnant des voitures RC. Choisissez parmi une variété de modèles, du tout-terrain aux voitures de course.</p>
-            </div>
-            <div className='Composants'>
-                <h3>Composants :</h3>
-                    <p>Personnalisez et améliorez votre équipement avec notre sélection de composants de haute qualité. Batteries, moteurs, hélices, pièces de rechange et bien plus encore.</p>
-            </div>
-            <div className='Engaments'>
-                <h2>Nos Engagements</h2>
-                    <p>Chez RC Land, nous sommes déterminés à offrir à nos clients les meilleurs avantages :</p>
+            <div className='Lire'>
+                <h4>📖 Livres à Lire:</h4>
+                    <p>Plongez dans vos prochaines aventures littéraires en toute planification. Ajoutez les livres qui vous font rêver à votre liste de lecture. Une fois lus, cochez-les et regardez-les glisser avec satisfaction dans votre bibliothèque personnelle.</p>
             </div>
 
-            <div className='Expertise'>
-                <h3>Expertise :</h3>
-                    <p>Notre équipe de passionnés est là pour vous conseiller et répondre à toutes vos questions. Nous partageons notre expertise pour vous aider à prendre des décisions éclairées.</p>
+            <div className='Biblio'>
+                <h4>📚 Bibliothèque Personnelle:</h4>
+                    <p>Créez votre propre sanctuaire littéraire virtuel en ajoutant les livres que vous avez dévorés. Votre bibliothèque personnelle vous attend à tout moment, offrant une escapade visuelle pour vous replonger dans vos lectures passées. Explorez, planifiez et savourez chaque page avec ReadEase ! 📖✨</p>
             </div>
-
-            <div className='Quality'>
-                <h3>Qualité :</h3>
-                    <p>Nous n'offrons que des produits de haute qualité, testés et approuvés par notre équipe d'experts.</p> 
-                    </div>
-
-            <div className='Service'>
-                <h3>Service Client :</h3> 
-                    <p>Votre satisfaction est notre priorité. Notre service client dévoué est là pour vous aider à chaque étape de votre expérience chez RC Land.</p>
-            </div>
-
-            <div className='Community'>
-                <h3>Communauté :</h3> 
-                    <p>Rejoignez notre communauté de passionnés RC. Partagez vos expériences, posez des questions et découvrez de nouvelles façons de profiter de votre équipement.</p>
-            </div>
-
-            <div className='fin'>
-                <p>Explorez notre site Web pour découvrir notre gamme complète de produits et laissez-nous vous aider à réaliser vos rêves de vol FPV et de courses de voitures télécommandées. Chez RC Land, l'aventure commence ici.</p>
+            <div>
+                <h3>Explorez l'Art de la Lecture Personnalisée :</h3>
+                    <p>Connectez-vous pour déverrouiller un monde de fonctionnalités exclusives. Plongez dans la joie de lire en organisant, planifiant et explorant le vaste univers des histoires captivantes. Chaque page révèle une nouvelle aventure, chaque livre ouvre une porte vers des horizons inexplorés. Permettez-nous de transformer votre expérience de lecture. Embarquez pour votre périple littéraire dès maintenant ! 📚✨</p>
             </div>
         </section>
     )

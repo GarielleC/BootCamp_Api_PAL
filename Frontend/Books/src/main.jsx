@@ -1,11 +1,12 @@
-import React from 'react';
-import { createRoot } from 'react-dom/client';
-import { RouterProvider } from 'react-router-dom';
-// import './index.scss';
-import router from './Navbar/navbar';
+import React from "react";
+import ReactDOM from "react-dom/client";
+// import App from "./App.jsx";
+import "./index.css";
+import { RouterProvider } from "react-router-dom";
+import router from "./Router/router.jsx";
 
-createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+ReactDOM.createRoot(document.getElementById("root")).render(
+    <React.StrictMode>
+        <RouterProvider router={router} />
+    </React.StrictMode>,
 );
