@@ -5,13 +5,13 @@ const authRouter = require('express').Router(); //Permet de crée une nouvelle i
 
 authRouter.route('/login')
     .post(authController.login)
-    .all((res, req) => {
+    .all((req, res) => {
         res.statusCode(405).send('Unavailable')
     });
 
     authRouter.route('/register')
     .post(authController.register)
-    .all((res, req) => {
+    .all((req, res) => {
         res.statusCode(405).send('Unavailable')
     });
 
