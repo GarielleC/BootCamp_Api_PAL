@@ -1,0 +1,25 @@
+/* navbar.css */
+
+nav ul {
+  list-style: none;
+  font-size: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-around;
+  background-color: #43364e; /* Couleur de fond de la barre de navigation */
+}
+
+nav li a {
+  text-decoration: none; /* Suppression du soulignement du lien */
+  color: white; /* Couleur du texte blanc */
+  padding: 1rem; /* Espace autour du texte du lien */
+  margin: 1rem;
+}
+
+nav li a:hover {
+  background-color: #ab8fc2; /* Couleur de fond au survol */
+  color: black;
+}
+
+  

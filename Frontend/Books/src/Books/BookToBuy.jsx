@@ -85,6 +85,7 @@ const BookToBuyList = () => {
       {bookToBuyList && bookToBuyList.length > 0 ? (
         bookToBuyList.map((book, index) => (
           <div key={index}>
+            <a href='/'> ⬅️ Retour</a>
             <p>{book.title} de {book.author}</p>
             <p>{book.imageUrl}</p>
             <p>Prix : {book.prix}</p>
