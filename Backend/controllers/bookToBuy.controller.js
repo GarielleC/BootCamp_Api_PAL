@@ -4,9 +4,9 @@ const bookToBuyController = {
     // Renvoie tous les livres à acheter
     getAllBook: async (req, res, next) => {
         try {
-             const booksToBuy = await Book.findAll({where:{statut:'a acheter'}});
+             const bookToBuy = await Book.findAll({where:{statut:'a acheter'}});
             //  On renvoie les livres à acheter à la réponse JSON
-            res.status(200).json(booksToBuy);
+            res.status(200).json(bookToBuy);
         } catch (error) {
             //Message d'erreur s'il y en a une
             console.error(error);
