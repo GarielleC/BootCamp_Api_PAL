@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-export const getAllBookToBuy = async () => {
+export const getAllBookToRead = async () => {
   try {
-    const getAllBookToBuy = await axios.get("http://localhost:8080/api/bookToBuy/getAll");
-    console.log(getAllBookToBuy);
-    return getAllBookToBuy.data;
+    const getAllBookToRead = await axios.get("http://localhost:8080/api/bookToRead/getAll");
+    console.log(getAllBookToRead);
+    return getAllBookToRead.data;
   } catch (error) {
     console.error('Error fetching book to buy:', error);
     return [];
@@ -12,9 +12,9 @@ export const getAllBookToBuy = async () => {
 };
 
 // Fonction pour créer un livre à acheter avec une image
-export const createBookToBuy = async (formData) => {
+export const addBookToRead = async (formData) => {
   try {
-    const response = await axios.post("http://localhost:8080/api/bookToBuy/create", formData, {
+    const response = await axios.post("http://localhost:8080/api/bookToRead/add", formData, {
       headers: {
         'Content-Type': 'multipart/form-data' // Indiquer que le contenu est de type "multipart/form-data" pour gérer les fichiers
       }
@@ -27,9 +27,9 @@ export const createBookToBuy = async (formData) => {
   }
 };
 
-export const getBookToBuy = async (bookID) => {
+export const getBookToRead = async (bookID) => {
   try {
-    const response = await axios.get(`http://localhost:8080/api/bookToBuy/get/${bookID}`);
+    const response = await axios.get(`http://localhost:8080/api/bookToRead/get/${bookID}`);
     return response.data;
   } catch (error) {
     console.error('Error fetching book details:', error);
@@ -37,7 +37,7 @@ export const getBookToBuy = async (bookID) => {
   }
 };
 
-export const deleteBookToBuy = async (bookID) => {
+export const deleteBookToRead = async (bookID) => {
   try {
     const response = await axios.delete(`http://localhost:8080/api/bookToBuy/delete/${bookID}`);
     return response.data;
@@ -47,9 +47,9 @@ export const deleteBookToBuy = async (bookID) => {
   }
 };
 
-export const updateBookToBuyStatut = async (bookID) => {
+export const updateBookToReadStatut = async (bookID) => {
   try {
-    const response = await axios.put(`http://localhost:8080/api/bookToBuy/update/${bookID}`);
+    const response = await axios.put(`http://localhost:8080/api/bookToRead/update/${bookID}`);
     return response.data;
   } catch (error) {
     console.error('Error updating book status:', error);

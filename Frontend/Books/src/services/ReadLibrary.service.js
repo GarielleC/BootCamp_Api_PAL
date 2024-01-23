@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-export const getAllBookToBuy = async () => {
+export const getAllReadLibrary = async () => {
   try {
-    const getAllBookToBuy = await axios.get("http://localhost:8080/api/bookToBuy/getAll");
-    console.log(getAllBookToBuy);
-    return getAllBookToBuy.data;
+    const getAllReadLibrary = await axios.get("http://localhost:8080/api/ReadLibrary/getAll");
+    console.log(getAllReadLibrary);
+    return getAllReadLibrary.data;
   } catch (error) {
     console.error('Error fetching book to buy:', error);
     return [];
@@ -12,9 +12,9 @@ export const getAllBookToBuy = async () => {
 };
 
 // Fonction pour créer un livre à acheter avec une image
-export const createBookToBuy = async (formData) => {
+export const addReadLibrary = async (formData) => {
   try {
-    const response = await axios.post("http://localhost:8080/api/bookToBuy/create", formData, {
+    const response = await axios.post("http://localhost:8080/api/ReadLibrary/add", formData, {
       headers: {
         'Content-Type': 'multipart/form-data' // Indiquer que le contenu est de type "multipart/form-data" pour gérer les fichiers
       }
@@ -27,9 +27,9 @@ export const createBookToBuy = async (formData) => {
   }
 };
 
-export const getBookToBuy = async (bookID) => {
+export const getReadLibrary = async (bookID) => {
   try {
-    const response = await axios.get(`http://localhost:8080/api/bookToBuy/get/${bookID}`);
+    const response = await axios.get(`http://localhost:8080/api/ReadLibrary/get/${bookID}`);
     return response.data;
   } catch (error) {
     console.error('Error fetching book details:', error);
@@ -37,9 +37,9 @@ export const getBookToBuy = async (bookID) => {
   }
 };
 
-export const deleteBookToBuy = async (bookID) => {
+export const deleteReadLibrary = async (bookID) => {
   try {
-    const response = await axios.delete(`http://localhost:8080/api/bookToBuy/delete/${bookID}`);
+    const response = await axios.delete(`http://localhost:8080/api/ReadLibrary/delete/${bookID}`);
     return response.data;
   } catch (error) {
     console.error('Error deleting book:', error);
@@ -47,9 +47,9 @@ export const deleteBookToBuy = async (bookID) => {
   }
 };
 
-export const updateBookToBuyStatut = async (bookID) => {
+export const updateReadLibraryStatut = async (bookID) => {
   try {
-    const response = await axios.put(`http://localhost:8080/api/bookToBuy/update/${bookID}`);
+    const response = await axios.put(`http://localhost:8080/api/ReadLibrary/update/${bookID}`);
     return response.data;
   } catch (error) {
     console.error('Error updating book status:', error);

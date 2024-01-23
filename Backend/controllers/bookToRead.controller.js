@@ -5,10 +5,10 @@ const bookToReadController = {
     getAllBook: async (req, res, next) => {
         try {
             // On récupère tous les livres
-            const booksToRead = await Book.findAll({ where:{statut:'a lire'}});
+            const bookToRead = await Book.findAll({ where:{statut:'a lire'}});
 
             // On renvoie les livres en tant que réponse JSON
-            res.status(200).json({ booksToRead });
+            res.status(200).json(bookToRead);
         } catch (error) {
             // Message d'erreur s'il y en a une
             console.error(error);

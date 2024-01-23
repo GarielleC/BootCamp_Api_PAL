@@ -74,7 +74,7 @@ const BookToBuyList = () => {
       formData.append('author', newBook.author);
       formData.append('prix', newBook.prix);
       formData.append('buyLink', newBook.buyLink);
-      formData.append('image', imageFile); // Ajouter le fichier image
+      formData.append('imageUrl', imageFile); // Ajouter le fichier image
 
       // Envoyer les données (remplacer createBookToBuy par votre fonction d'API)
       await createBookToBuy(formData); 
@@ -95,7 +95,10 @@ const BookToBuyList = () => {
       {bookToBuyList && bookToBuyList.length > 0 ? (
         bookToBuyList.map((book, index) => (
           <div key={index}>
-            <p><h3>{book.title}</h3> de {book.author}</p>
+            <div className="Titre">
+              <h3>{book.title}</h3>
+              <p>de {book.author}</p>
+            </div>
             <img 
               src={`http://localhost:8080/images/${book.imageUrl}`} 
               style={{ maxWidth: '50%', height: 'auto' }}
@@ -130,99 +133,3 @@ const BookToBuyList = () => {
 };
 
 export default BookToBuyList;
-
-// useEffect(() => {
-//   const fetchData = async () => {
-//     try {
-//       const booksToBuy = await getAllBookToBuy();
-//       console.log('Books from backend:', booksToBuy);
-//       setBooks(booksToBuy);
-//     } catch (error) {
-//       console.error("Error fetching books to buy:", error);
-//     }
-//   };
-
-//   fetchData();
-// }, []);  
-
-// const handleUpdateStatus = async (bookID) => {
-//   try {
-//     await updateBookToBuyStatut(bookID);
-//     const updatedBookToBuy = await getAllBookToBuy();
-//     setBook(updatedBookToBuy);
-//   } catch (error) {
-//     console.error("Error updating book status:", error);
-//   }
-// };
-
-// const handleDeleteBook = async (bookID) => {
-//   try {
-//     await deleteBookToBuy(bookID);
-//     const deletedBookToBuy = await Book.destroy();
-//     setBook(deletedBookToBuy);
-//   } catch (error) {
-//     console.error("Error deleting book:", error);
-//   }
-// };
-
-// const handleCreateBook = async () => {
-//   try {
-//     await createBook(newBook);
-//     const newBook = await Book.create();
-//     setBook(newBook);
-//     setNewBook({
-//       title: '',
-//       author: '',
-//       prix: '',
-//       statut:"a acheter",
-//       buyLink: '',
-//       imageUrl: ''
-//     });
-//   } catch (error) {
-//     console.error("Error creating book:", error);
-//   }
-// };
-
-// const handleInputChange = (e) => {
-//   const { name, value } = e.target;
-//   setNewBook((prevBook) => ({ ...prevBook, [name]: value }));
-// };
-// import React, { useState, useEffect } from 'react';
-// import { useParams } from 'react-router-dom';
-// import { getBookToBuy } from '../services/bookToBuy.service';
-// import { Form } from '../Books/Form';
-// // import { GetDetails } from '../services/bookToBuy.service';
-
-// const BookToBuyDetailsComponent = () => {
-//   const { ID } = useParams();
-//   const [bookDetails, setBookDetails] = useState(null);
-
-//   useEffect(() => {
-//     const fetchBookDetails = async () => {
-//       try {
-//         const data = await getBookToBuy(ID);
-//         setBookDetails(data);
-//       } catch (error) {
-//         console.error('Error fetching book details:', error);
-//       }
-//     };
-
-//     fetchBookDetails();
-//   }, [ID]);
-
-//   return (
-//     <div>
-//       {bookDetails && (
-//         <>
-//           <h2>📘 Détails du livre à acheter</h2>
-//           <p>{bookDetails.title} de {bookDetails.author}</p>
-//           <p>Image : {bookDetails.imageUrl}</p>
-//           <p>Prix : {bookDetails.prix}</p>
-//           <p>Lien pour l'acheter : {bookDetails.buyLink}</p>
-//         </>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default BookToBuyDetailsComponent;
