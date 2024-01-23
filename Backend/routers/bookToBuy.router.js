@@ -4,6 +4,7 @@ const multer = require('multer');
 const bookToBuyRouter = require('express').Router(); 
 const path = require('path');
 
+// Gestion des images fichiers
 const storage = multer.diskStorage({
     destination: function (req, file, cb){
         cb(null, 'public/images');
