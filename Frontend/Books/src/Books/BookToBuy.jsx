@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from "react";
-import {
-  getAllBookToBuy,
-  updateBookToBuyStatut,
-  deleteBookToBuy,
-  createBookToBuy
-} from '../services/bookToBuy.service';
+import {getAllBookToBuy, updateBookToBuyStatut, deleteBookToBuy, createBookToBuy} from '../services/bookToBuy.service';
+
 
 const BookToBuyList = () => {
   const [bookToBuyList, setBookToBuyList] = useState([]);
@@ -16,6 +12,14 @@ const BookToBuyList = () => {
     imageUrl: ''
   });
 
+  // État pour le fichier de l'image
+  const [imageFile, setImageFile] = useState(null);
+
+  const handleImageChange = (e) => {
+    setImageFile(e.target.files[0]); // Mettre à jour l'état avec le fichier sélectionné
+  };
+
+  // Apparition de tous les livres à lire
   const getBookToBuy = async () => {
     try {
       const res = await getAllBookToBuy();
@@ -31,23 +35,25 @@ const BookToBuyList = () => {
     getBookToBuy();
   }, []);
 
+  // Fonction pour la mise à jour du livre
   const handleUpdateStatus = async (bookID) => {
     try {
       await updateBookToBuyStatut(bookID);
       // Rafraîchir la liste après la mise à jour du statut
       getBookToBuy();
     } catch (error) {
-      console.error("Error updating book status:", error);
+      console.error("Erreur lors de la mise à jour du statut :", error);
     }
   };
 
+  // Fonxtion pour la suppression d'un livre
   const handleDeleteBook = async (bookID) => {
     try {
       await deleteBookToBuy(bookID);
       // Rafraîchir la liste après la suppression du livre
       getBookToBuy();
     } catch (error) {
-      console.error("Error deleting book:", error);
+      console.error("Erreur lors de la supression du livre :", error);
     }
   };
 
@@ -59,40 +65,44 @@ const BookToBuyList = () => {
     }));
   };
 
+  // Fonction pour créer un livre
   const handleCreateBook = async () => {
     try {
-      await createBookToBuy(newBook);
-      const updatedBookToBuy = await getAllBookToBuy();
-      setBooks(updatedBookToBuy);
-      setNewBook({
-        title: '',
-        author: '',
-        prix: '',
-        buyLink: '',
-        imageUrl: ''
-      });
+      // Créer un FormData pour envoyer les données du livre et l'image
+      const formData = new FormData();
+      formData.append('title', newBook.title);
+      formData.append('author', newBook.author);
+      formData.append('prix', newBook.prix);
+      formData.append('buyLink', newBook.buyLink);
+      formData.append('image', imageFile); // Ajouter le fichier image
+
+      // Envoyer les données (remplacer createBookToBuy par votre fonction d'API)
+      await createBookToBuy(formData); 
+
     } catch (error) {
       console.error("Error creating book:", error);
-      // Affichez un message à l'utilisateur ou effectuez une action appropriée
+      // Message d'erreur lors de la création du livre
       alert("Erreur lors de la création du livre à acheter. Veuillez réessayer.");
     }
-  };
-  
 
+    
+  };
+ 
   return (
     <div>
-      <h2>📘 Liste de livres à acheter</h2>
+      <a href='/'> ⬅️ Retour</a>
+      <h1>📘 Liste de livres à acheter</h1>
       {bookToBuyList && bookToBuyList.length > 0 ? (
         bookToBuyList.map((book, index) => (
           <div key={index}>
-            <a href='/'> ⬅️ Retour</a>
-            <p>{book.title} de {book.author}</p>
-            <p>{book.imageUrl}</p>
-            <p>Prix : {book.prix}</p>
-            <p>Lien pour l'acheter : <a href={book.buyLink} target="_blank" rel="noopener noreferrer">{book.buyLink}</a></p>
-            <button onClick={() => handleUpdateStatus(book.id)}>
-            💸 Acheter
-            </button>
+            <p><h3>{book.title}</h3> de {book.author}</p>
+            <img 
+              src={`http://localhost:8080/images/${book.imageUrl}`} 
+              style={{ maxWidth: '50%', height: 'auto' }}
+            />
+            <strong><p>Prix : {book.prix} €</p></strong>
+            <p><strong>Lien pour l'acheter :</strong><a href={book.buyLink} target="_blank" rel="noopener noreferrer">{book.buyLink}</a></p>
+            <button onClick={() => handleUpdateStatus(book.id)}>💸 Acheter</button>
             <button onClick={() => handleDeleteBook(book.id)}>🗑️</button>
             <hr />
           </div>
@@ -112,19 +122,14 @@ const BookToBuyList = () => {
         <label>Buy Link:</label>
         <input type="text" name="buyLink" value={newBook.buyLink} onChange={handleInputChange} />
         <label>Image URL:</label>
-        <input type="text" name="imageUrl" value={newBook.imageUrl} onChange={handleInputChange} />
-        <button type="button" onClick={handleCreateBook}>
-          Créer
-        </button>
+        <input type="file" onChange={handleImageChange} />
+        <button type="button" onClick={handleCreateBook}>Ajouter</button>
       </form>
     </div>
   );
 };
 
 export default BookToBuyList;
-
-
-
 
 // useEffect(() => {
 //   const fetchData = async () => {

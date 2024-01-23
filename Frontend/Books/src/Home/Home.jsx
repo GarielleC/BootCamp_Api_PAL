@@ -15,7 +15,7 @@ const Home = () => {
                 <h2>Bienvenue sur ReadEase</h2>
 
                 <h3>ReadEase - L'Art de Simplifier Votre Monde Livresque</h3>
-                    <p>BBienvenue sur ReadEase, l'endroit où la lecture devient un plaisir organisé ! Perdre la trace de votre Pile À Lire peut être frustrant, mais ReadEase est là pour transformer votre expérience de lecture.</p>
+                    <p>Bienvenue sur ReadEase, l'endroit où la lecture devient un plaisir organisé ! Perdre la trace de votre Pile À Lire peut être frustrant, mais ReadEase est là pour transformer votre expérience de lecture.</p>
 
                     <p>Explorez la convivialité de notre plateforme qui mémorise chaque livre que vous souhaitez acquérir. Planifiez vos futures lectures, élaborez votre bibliothèque virtuelle, et gérez votre PAL sans le moindre souci.</p>
 
@@ -37,7 +37,7 @@ const Home = () => {
 
             <div className='Biblio'>
                 <h4>📚 Bibliothèque Personnelle:</h4>
-                    <p>Créez votre propre sanctuaire littéraire virtuel en ajoutant les livres que vous avez dévorés. Votre bibliothèque personnelle vous attend à tout moment, offrant une escapade visuelle pour vous replonger dans vos lectures passées. Explorez, planifiez et savourez chaque page avec ReadEase ! 📖✨</p>
+                    <p>Créez votre propre sanctuaire littéraire virtuel en ajoutant les livres que vous avez dévorés. Votre bibliothèque personnelle vous attend à tout moment, offrant une escapade visuelle pour vous replonger dans vos lectures passées. Explorez, planifiez et savourez chaque page avec ReadEase !</p>
             </div>
             <div>
                 <h3>Explorez l'Art de la Lecture Personnalisée :</h3>

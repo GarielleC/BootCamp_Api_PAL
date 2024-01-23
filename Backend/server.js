@@ -12,7 +12,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Middleware pour servir les fichiers statiques sous /assets
+// Middleware pour servir les fichiers statiques 
 app.use('/images', express.static(path.join(__dirname, 'public/images')));
 
 // Routing

@@ -14,7 +14,7 @@ function App() {
         <Navbar />
         <Outlet />
         <footer>
-          <p>&copy; 2024 BooksList</p>
+          <p>&copy; 2024 ReadEase</p>
         </footer>
       </div>
     </main>

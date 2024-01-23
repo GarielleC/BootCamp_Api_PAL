@@ -15,18 +15,20 @@ const bookToBuyController = {
     },
 
     // Création d'un nouveau livre à acheter
-    createBook: async (req, res,next) =>{
-        
-        try { 
-            const { title, author, prix, buyLink, imageUrl } = req.body;
-            const newBook = await Book.create({ title, author,statut:"a acheter", prix, buyLink, imageUrl });
-            console.log(newBook);
-            res.status(201).json(newBook);
+    createBook: async (req, res, next) => {
+        try {
+          const { title, author, prix, buyLink } = req.body;
+          const imageUrl = req.file ? req.file.filename : null; // Utilisation du nom du fichier uploadé
+      
+          const newBook = await Book.create({ title, author, statut: "a acheter", prix, buyLink, imageUrl });
+          console.log(newBook);
+          res.status(201).json(newBook);
         } catch (error) {
-            console.error(error);
-            res.status(500).json({ error: "Failed to create book" });
+          console.error(error);
+          res.status(500).json({ error: "Failed to create book" });
         }
-    },
+      },
+    
     // Renvoie les détails d'un livre spécifique à acheter
     getBook: async (req, res,next) =>{
         const id = Number(req.params.bookID);

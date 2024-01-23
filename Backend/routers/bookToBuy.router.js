@@ -1,6 +1,19 @@
 // Importations
 const bookToBuyController = require('../controllers/bookToBuy.controller');
+const multer = require('multer');
 const bookToBuyRouter = require('express').Router(); 
+const path = require('path');
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb){
+        cb(null, 'public/images');
+    },
+    filename: function (req, file, cb){
+        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+    },
+});
+
+const upload = multer({ storage: storage });
 
 // Route pour récupérer tous les livres
 bookToBuyRouter.route('/getAll')
@@ -25,7 +38,7 @@ bookToBuyRouter.route('/delete/:bookID')
 
 // Route pour créer un livre
 bookToBuyRouter.route('/create')
-    .post(bookToBuyController.createBook) 
+    .post(upload.single('imageUrl'), bookToBuyController.createBook)
     .all((req, res) => {
         res.status(405).send('Unavailable');
     });
