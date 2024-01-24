@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
 import { getAllReadLibrary, updateReadLibraryStatut, deleteReadLibrary, addReadLibrary } from '../services/ReadLibrary.service';
 import BiblioLogo from '../Logos/biblio1.png'; 
+import FlècheLogo from '../Logos/flècheB.png'; 
+import '../Css/RedLibrary.css';
 
 
 const ReadLibraryList = () => {
@@ -89,7 +92,18 @@ const handleAddReadLibrary = async () => {
  
   return (
     <div>
-      <a href='/'> ⬅️ Retour</a>
+      <div className="Retour">
+        <ul>
+          <li>
+            <button>
+              <Link to='/'>
+                <img className="FlècheLogo" src={FlècheLogo} alt="logog flèche" />
+                  Retour
+              </Link>
+            </button>
+          </li>
+        </ul>
+      </div>
       <h1><img className="BiblioLogo" src={BiblioLogo} alt="Logo Biblio" />Bibliothèque</h1>
       {ReadLibraryList && ReadLibraryList.length > 0 ? (
         ReadLibraryList.map((book, index) => (

@@ -1,0 +1,36 @@
+.FlècheLogo {
+  width: 7rem; /* Taille initiale en largeur */
+  height: 2rem; /* Taille initiale en hauteur */
+  margin-right: 0.5em;
+  transform: scale(0.6); /* Réduction de 60% */
+  transform-origin: 0 0; /* Point d'origine du scaling en haut à gauche  */
+}
+
+button {
+  background-color: #922f95cc;
+  display: flex;
+  align-items: center;
+  border: solid 2px #722375f9;
+  padding: 0.5em 1em;
+  border-radius: 8px; 
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); 
+}
+
+.Retour ul {
+  align-items: center;
+  list-style: none;
+  padding: 1rem;
+}
+
+.Retour li a {
+  text-decoration: none; /* Suppression du soulignement du lien */
+  color: rgb(255, 255, 255); /* Couleur du texte blanc */
+  font-size: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.Retour li a:hover {
+  color: black;
+  /* border: solid 2px #836e93;
+  background-color: #ab8fc2; */
+}
