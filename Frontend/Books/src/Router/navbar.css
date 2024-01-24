@@ -7,7 +7,7 @@ nav ul {
   padding: 1rem;
   display: flex;
   justify-content: space-around;
-  background-color: #43364e; /* Couleur de fond de la barre de navigation */
+  background-color: #922f95cc; /* Couleur de fond de la barre de navigation */
 }
 
 nav li a {
@@ -21,7 +21,29 @@ nav li a:hover {
   background-color: #ab8fc2; /* Couleur de fond au survol */
   color: black;
 }
+.HomeLog {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.5em;
+}
 
+.LivreFermeLogo {
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-right: 0.5em;
+}
+
+.BiblioLogo {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.5em;
+}
+
+.LivreOuvertLogo {
+  width: 2rem;
+  height: 2rem;
+  margin-right: 0.5em;
+}
 
 /* img {
   /* 30% de la taille d'origine, ajustez la valeur selon vos besoins */

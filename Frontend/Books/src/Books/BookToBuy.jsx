@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {getAllBookToBuy, updateBookToBuyStatut, deleteBookToBuy, createBookToBuy} from '../services/bookToBuy.service';
+import LivreFermeLogo from '../Logos/livreFerme1.png';
 
 
 const BookToBuyList = () => {
@@ -91,7 +92,7 @@ const BookToBuyList = () => {
   return (
     <div>
       <a href='/'> ⬅️ Retour</a>
-      <h1>📘 Liste de livres à acheter</h1>
+      <h1><img className="LivreFermeLogo" src={LivreFermeLogo} alt="Logo Livre Fermé" />Liste de livres à acheter</h1>
       {bookToBuyList && bookToBuyList.length > 0 ? (
         bookToBuyList.map((book, index) => (
           <div key={index}>

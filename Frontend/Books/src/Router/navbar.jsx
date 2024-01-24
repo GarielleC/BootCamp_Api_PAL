@@ -2,14 +2,17 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './navbar.css';
 import HomeLogo from '../Logos/home.png';
+import LivreFermeLogo from '../Logos/livreFerme1.png';
+import BiblioLogo from '../Logos/biblio1.png'; 
+import LivreOuvertLogo from '../Logos/livreOuvert1.png';
 
 
 const Navbar = () => {
-    const book = {
-        ImageUrl: "livreFerme.png",
-        imageUrl: "livreOuvert.png",
+    // const book = {
+    //     ImageUrl: "livreFerme.png",
+    //     imageUrl: "livreOuvert.png",
         
-    };
+    // };
     return (
     
     <nav>
@@ -17,21 +20,14 @@ const Navbar = () => {
             <ul>
                 <li>
                     <Link to='/'>
-                        <button style={{ border: 'none', background: 'none', padding: 0, cursor: 'pointer' }}>
-                            <img src={HomeLogo} style={{ width: '2em', height: '2em' }} alt="Logo Accueil" />
-                        </button>
+                            <img className="HomeLog" src={HomeLogo} alt="Logo Accueil" />
+                            Accueil
                     </Link>
                 </li>
                 <li>
                     <Link to='/BookToBuy'>
-                        {/* <img className="img-reduite"
-                                src={
-                                    book.ImageUrl
-                                        ? `http://localhost:8080/images/${book.imageUrl}`
-                                        : "livreFerme.png"
-                                }
-                                alt="Livre à acheter"/> */}
-                                Livres à acheter</Link>
+                    <img className="LivreFermeLogo" src={LivreFermeLogo} alt="Logo Livre Fermé" />
+                        Livres à acheter</Link>
                 </li>
                 
                 {/* <li>
@@ -40,10 +36,14 @@ const Navbar = () => {
                 {/* 📘 */}
 
                 <li>
-                    <Link to='/BookToRead'>📖 Livres à livres</Link>
+                    <Link to='/BookToRead'>
+                    <img className="LivreOuvertLogo" src={LivreOuvertLogo} alt="Logo Livre Ouvert" />Livres à livres</Link>
                 </li>
+                {/* 📖 Livres à livres</Link> */}
                 <li>
-                    <Link to='/ReadLibrary'>📚 Bibliothèque</Link>
+                    <Link to='/ReadLibrary'>
+                    <img className="BiblioLogo" src={BiblioLogo} alt="Logo Biblio" />Bibliothèque</Link>
+                    {/* <img className="BiblioLogo" src={BiblioLogo} alt="Logo Biblio" />📚 Bibliothèque</Link> */}
                 </li>
             </ul>
         </div>

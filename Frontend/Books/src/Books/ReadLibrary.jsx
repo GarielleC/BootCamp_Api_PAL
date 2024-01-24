@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getAllReadLibrary, updateReadLibraryStatut, deleteReadLibrary, addReadLibrary } from '../services/ReadLibrary.service';
+import BiblioLogo from '../Logos/biblio1.png'; 
 
 
 const ReadLibraryList = () => {
@@ -89,7 +90,7 @@ const handleAddReadLibrary = async () => {
   return (
     <div>
       <a href='/'> ⬅️ Retour</a>
-      <h1>📚 Bibliothèque</h1>
+      <h1><img className="BiblioLogo" src={BiblioLogo} alt="Logo Biblio" />Bibliothèque</h1>
       {ReadLibraryList && ReadLibraryList.length > 0 ? (
         ReadLibraryList.map((book, index) => (
           <div key={index}>
