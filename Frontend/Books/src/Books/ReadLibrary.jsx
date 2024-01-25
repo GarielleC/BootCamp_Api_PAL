@@ -83,6 +83,9 @@ const handleAddReadLibrary = async () => {
     // Envoyer les données
     await addReadLibrary(formData);
 
+    // Rafraîchir la liste après l'ajout du livre
+    getReadLibrary();
+
   } catch (error) {
     console.error("Error creating book:", error);
     // Message d'erreur lors de la création du livre
@@ -135,15 +138,15 @@ const handleAddReadLibrary = async () => {
       {/* Formulaire pour créer un nouveau livre à acheter */}
       <h2>Ajout d'un livre à mettre dans la bibliothèque</h2>
       <form>
-        <label>Title:</label>
+        <label><strong>Titre :</strong></label>
         <input type="text" name="title" value={newBook.title} onChange={handleInputChange} />
-        <label>Author:</label>
+        <label><strong>Auteur(e)(s) :</strong></label>
         <input type="text" name="author" value={newBook.author} onChange={handleInputChange} />
-        <label>Prix:</label>
+        <label><strong>Prix :</strong></label>
         <input type="text" name="prix" value={newBook.prix} onChange={handleInputChange} />
-        <label>Buy Link:</label>
+        <label><strong>Lien pour acheter le livre :</strong></label>
         <input type="text" name="buyLink" value={newBook.buyLink} onChange={handleInputChange} />
-        <label>Image URL:</label>
+        <label><strong>Image :</strong></label>
         <input type="file" onChange={handleImageChange} />
         <button type="button" onClick={handleAddReadLibrary}>Ajouter</button>
       </form>

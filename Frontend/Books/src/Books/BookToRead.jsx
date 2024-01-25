@@ -80,10 +80,13 @@ const handleAddBook = async () => {
     // Envoyer les données
     await addBookToRead(formData);
 
+     // Rafraîchir la liste après l'ajout du livre
+     getBookToRead();
+
   } catch (error) {
     console.error("Error creating book:", error);
     // Message d'erreur lors de la création du livre
-    alert("Erreur lors de la création du livre à acheter. Veuillez réessayer.");
+    alert("Erreur lors de la création du livre à lire. Veuillez réessayer.");
   }
 };
  

@@ -20,6 +20,18 @@ const BookToBuyList = () => {
     setImageFile(e.target.files[0]); // Mettre à jour l'état avec le fichier sélectionné
   };
 
+  // Fonction pour réinitialiser le formulaire
+  const resetForm = () => {
+    setNewBook({
+      title: '',
+      author: '',
+      prix: '',
+      buyLink: '',
+      imageUrl: ''
+    });
+    setImageFile(null); // Réinitialiser également le fichier image
+  }; 
+
   // Apparition de tous les livres à lire
   const getBookToBuy = async () => {
     try {
@@ -80,6 +92,12 @@ const BookToBuyList = () => {
       // Envoyer les données (remplacer createBookToBuy par votre fonction d'API)
       await createBookToBuy(formData); 
 
+       // Rafraîchir la liste après l'ajout du livre
+     getBookToBuy();
+
+      // Réinitialiser le formulaire
+      resetForm();
+
     } catch (error) {
       console.error("Error creating book:", error);
       // Message d'erreur lors de la création du livre
@@ -128,6 +146,7 @@ const BookToBuyList = () => {
         <label>Image URL:</label>
         <input type="file" onChange={handleImageChange} />
         <button type="button" onClick={handleCreateBook}>Ajouter</button>
+        <button type="button" onClick={resetForm}>Réinitialiser</button>
       </form>
     </div>
   );
