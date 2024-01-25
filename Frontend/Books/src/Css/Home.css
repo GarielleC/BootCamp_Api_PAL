@@ -1,14 +1,27 @@
-.Lire 
-{
+.Lire {
     display: flex;
+    align-items: center; 
     flex-wrap: wrap;
-    /* justify-content: center; Centre les éléments horizontalement */
-}
-
-img {
-    max-width: 50%;
-    height: auto;
-    border-radius: 10px; 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.71); 
-    transform: scale(0.7); 
   }
+  
+  .ImageALire {
+    width: 30%; /* largeur de l'image */
+    border-radius: 10px; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.71); 
+  }
+
+  .TexteALire {
+    flex: 1; /* Fait en sorte que le bloc de texte prenne autant d'espace que possible */
+    margin-right: 20px; /* Ajoute une marge entre le texte et l'image */
+    text-align: center;
+    font-size: 20px;
+  }
+
+  .ImageDroit{
+    margin-right: 20px; 
+  }
+
+  .Lire h4, .Lire p {
+    margin: 1rem;  
+  }
+  

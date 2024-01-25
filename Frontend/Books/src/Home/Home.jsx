@@ -3,7 +3,7 @@
 // import './Home.scss';
 import React from 'react';
 import ImageALire from '../Logos/CharlieStory.png';
-// import '../Css/Home.css';
+import '../Css/Home.css';
 
 
 
@@ -33,14 +33,27 @@ const Home = () => {
             </div>
 
             <div className='Lire'>
-            <img className="ImageALire" src={ImageALire} alt="Image A Lire" />
-                <h4>📖 Livres à Lire:</h4>
-                    <p>Plongez dans vos prochaines aventures littéraires en toute planification. Ajoutez les livres qui vous font rêver à votre liste de lecture. Une fois lus, cochez-les et regardez-les glisser avec satisfaction dans votre bibliothèque personnelle.</p>
+                <div className='ImageDroit'>
+                    <img className="ImageALire" src={ImageALire} alt="Image A Lire" />
+                    <p class="copyright">&#169; Illustratrice: Carez Gabrielle</p>
+                </div>
+            <div className="TexteALire">
+                <h4>📖 Livres à Lire :</h4>
+                    <p>Plongez dans vos prochaines aventures littéraires en toute planification.</p>
+                    
+                    <p>Ajoutez les livres qui vous font rêver à votre liste de lecture.</p> 
+                    
+                    <p>Une fois lus, cochez-les et regardez-les glisser avec satisfaction dans votre bibliothèque personnelle.</p>
+            </div>
             </div>
 
             <div className='Biblio'>
                 <h4>📚 Bibliothèque Personnelle:</h4>
-                    <p>Créez votre propre sanctuaire littéraire virtuel en ajoutant les livres que vous avez dévorés. Votre bibliothèque personnelle vous attend à tout moment, offrant une escapade visuelle pour vous replonger dans vos lectures passées. Explorez, planifiez et savourez chaque page avec ReadEase !</p>
+                    <p>Créez votre propre sanctuaire littéraire virtuel en ajoutant les livres que vous avez dévorés.</p>
+
+                    <p>Votre bibliothèque personnelle vous attend à tout moment, offrant une escapade visuelle pour vous replonger dans vos lectures passées.</p> 
+                        
+                    <p>Explorez, planifiez et savourez chaque page avec ReadEase !</p>
             </div>
             <div>
                 <h3>Explorez l'Art de la Lecture Personnalisée :</h3>

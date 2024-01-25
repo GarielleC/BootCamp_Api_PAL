@@ -19,7 +19,8 @@ const bookToReadController = {
     // Ajoute un nouveau livre à lire
     addBook: async (req, res, next) => {
         try {
-            const { title, author, prix, buyLink, imageUrl } = req.body;
+            const { title, author, prix, buyLink } = req.body;
+            const imageUrl = req.file ? req.file.filename : null; // Utilisation du nom du fichier uploadé
 
             const newBook = await Book.create({ title, author, statut:"a lire", prix, buyLink, imageUrl });
             console.log(newBook);
