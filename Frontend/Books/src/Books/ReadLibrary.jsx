@@ -104,24 +104,32 @@ const handleAddReadLibrary = async () => {
           </li>
         </ul>
       </div>
-      <h1><img className="BiblioLogo" src={BiblioLogo} alt="Logo Biblio" />Bibliothèque</h1>
-      {ReadLibraryList && ReadLibraryList.length > 0 ? (
-        ReadLibraryList.map((book, index) => (
-          <div key={index}>
-            <div className="Titre">
-              <h3>{book.title}</h3>
-              <p>de {book.author}</p>
-            </div>
-            <img 
-              src={`http://localhost:8080/images/${book.imageUrl}`} 
-              style={{ maxWidth: '50%', height: 'auto' }}
-            />
-            <hr />
+      <h1>
+        <img className="BiblioLogo" src={BiblioLogo} alt="Logo Biblio" />
+        Bibliothèque
+        </h1>
+        <div className="Container">
+          {ReadLibraryList && ReadLibraryList.length > 0 ? (
+            ReadLibraryList.map((book, index) => (
+              <div className="Livre" key={index}>
+                <div className="Titre">
+                  <h3>{book.title}</h3>
+                  <p>de {book.author}</p>
+                </div>
+                <div className="Images">
+                <img 
+                  src={`http://localhost:8080/images/${book.imageUrl}`} 
+                  style={{ maxWidth: '50%', height: 'auto' }}
+                />
+                </div>
+                {/* Permet une séparation entre chaque livre */}
+                {/* <hr /> */} 
+              </div>
+            ))
+          ) : (
+            <p>Aucun livre à lire pour le moment.</p>
+          )}
           </div>
-        ))
-      ) : (
-        <p>Aucun livre à lire pour le moment.</p>
-      )}
       {/* Formulaire pour créer un nouveau livre à acheter */}
       <h2>Ajout d'un livre à mettre dans la bibliothèque</h2>
       <form>

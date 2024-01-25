@@ -5,7 +5,32 @@
   transform: scale(0.6); /* Réduction de 60% */
   transform-origin: 0 0; /* Point d'origine du scaling en haut à gauche  */
 }
+.Container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Centre les éléments horizontalement */
+}
+.Images {
+  overflow: hidden;
+  text-align: center; /* Ajustez selon vos préférences */
+}
 
+/* Css pour le {book.imageUrl} */
+.Images img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.71); 
+  transform: scale(0.7); 
+}
+
+.Titre {
+  padding: 10px;
+  text-align: center; /* Ajustez selon vos préférences */
+} 
+
+
+/* Css pour le bouton retour */
 button {
   background-color: #922f95cc;
   display: flex;
@@ -13,7 +38,7 @@ button {
   border: solid 2px #722375f9;
   padding: 0.5em 1em;
   border-radius: 8px; 
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); 
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.397); 
 }
 
 .Retour ul {
@@ -33,4 +58,12 @@ button {
   color: black;
   /* border: solid 2px #836e93;
   background-color: #ab8fc2; */
+}
+
+.Livre {
+  width: calc(30% - 10px); /* La largeur de chaque élément avec une marge de 5px de chaque côté */
+  margin: 5px; /* Espacement entre les éléments */
+  border-radius: 10px; /* Coins arrondis */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.71); /* Ombre légère */
+  box-sizing: border-box; /* Inclut les bordures et les marges dans le calcul de la largeur */
 }

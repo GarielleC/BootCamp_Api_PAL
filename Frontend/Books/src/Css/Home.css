@@ -1,0 +1,14 @@
+.Lire 
+{
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: center; Centre les éléments horizontalement */
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.71); 
+    transform: scale(0.7); 
+  }

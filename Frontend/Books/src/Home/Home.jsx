@@ -2,6 +2,8 @@
 // import { createRoot } from 'react-dom/client'; 
 // import './Home.scss';
 import React from 'react';
+import ImageALire from '../Logos/CharlieStory.png';
+// import '../Css/Home.css';
 
 
 
@@ -31,6 +33,7 @@ const Home = () => {
             </div>
 
             <div className='Lire'>
+            <img className="ImageALire" src={ImageALire} alt="Image A Lire" />
                 <h4>📖 Livres à Lire:</h4>
                     <p>Plongez dans vos prochaines aventures littéraires en toute planification. Ajoutez les livres qui vous font rêver à votre liste de lecture. Une fois lus, cochez-les et regardez-les glisser avec satisfaction dans votre bibliothèque personnelle.</p>
             </div>
