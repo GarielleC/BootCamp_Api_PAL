@@ -3,7 +3,7 @@
 // import './Home.scss';
 import React from 'react';
 import ImageALire from '../Logos/CharlieStory.png';
-// import '../Css/Home.css';
+import '../Css/Home.scss';
 
 
 
