@@ -8,11 +8,6 @@ import LivreOuvertLogo from '../Logos/livreOuvert1.png';
 
 
 const Navbar = () => {
-    // const book = {
-    //     ImageUrl: "livreFerme.png",
-    //     imageUrl: "livreOuvert.png",
-        
-    // };
     return (
     
     <nav>

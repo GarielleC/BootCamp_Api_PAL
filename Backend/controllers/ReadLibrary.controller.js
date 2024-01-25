@@ -15,7 +15,8 @@ const readLibraryController = {
     // Ajouter un nouveau livre à la bibliothèque de lecture
     addBook:  async (req, res, next) => {
         try {
-            const { title, author, prix, buyLink, imageUrl } = req.body;
+            const { title, author, prix, buyLink, imageUrl} = req.body;
+
             const newBook = await Book.create({ title, author, statut:"lu", prix, buyLink, imageUrl });
             console.log(newBook);
             res.status(201).json(newBook);

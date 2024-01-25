@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
-import { getAllReadLibrary, updateReadLibraryStatut, deleteReadLibrary, addReadLibrary } from '../services/ReadLibrary.service';
+import { getAllReadLibrary, addReadLibrary } from '../services/ReadLibrary.service';
 import BiblioLogo from '../Logos/biblio1.png'; 
 import FlècheLogo from '../Logos/flècheB.png'; 
 import '../Css/RedLibrary.css';
@@ -69,7 +69,7 @@ const ReadLibraryList = () => {
     }));
   };
 
-  // Fonction pour créer un livre
+// Fonction pour créer un livre
 const handleAddReadLibrary = async () => {
   try {
     // Créer un FormData pour envoyer les données du livre et l'image
@@ -89,6 +89,7 @@ const handleAddReadLibrary = async () => {
     alert("Erreur lors de la création du livre à acheter. Veuillez réessayer.");
   }
 };
+
  
   return (
     <div>
@@ -121,6 +122,7 @@ const handleAddReadLibrary = async () => {
                   src={`http://localhost:8080/images/${book.imageUrl}`} 
                   style={{ maxWidth: '50%', height: 'auto' }}
                 />
+                <button onClick={() => handleDeleteBook(book.id)}>🗑️</button>
                 </div>
                 {/* Permet une séparation entre chaque livre */}
                 {/* <hr /> */} 
@@ -133,39 +135,20 @@ const handleAddReadLibrary = async () => {
       {/* Formulaire pour créer un nouveau livre à acheter */}
       <h2>Ajout d'un livre à mettre dans la bibliothèque</h2>
       <form>
-        <label><strong>Title :</strong></label>
+        <label>Title:</label>
         <input type="text" name="title" value={newBook.title} onChange={handleInputChange} />
-        <label><strong>Auteur(e)(s) :</strong></label>
+        <label>Author:</label>
         <input type="text" name="author" value={newBook.author} onChange={handleInputChange} />
-        <label><strong>Prix :</strong></label>
+        <label>Prix:</label>
         <input type="text" name="prix" value={newBook.prix} onChange={handleInputChange} />
-        <label><strong>Lien pour l'acheter :</strong></label>
+        <label>Buy Link:</label>
         <input type="text" name="buyLink" value={newBook.buyLink} onChange={handleInputChange} />
-        <label><strong>Image :</strong></label>
+        <label>Image URL:</label>
         <input type="file" onChange={handleImageChange} />
-        <button type="button" onClick={handleAddReadLibrary}>➕ Ajouter</button>
+        <button type="button" onClick={handleAddReadLibrary}>Ajouter</button>
       </form>
     </div>
   );
 };
 
 export default ReadLibraryList;
-
-
-
-// import React from "react";
-// // import { Link } from 'react-router-dom'
-// // import Form from "./Form";
-// // import Pal from "./Pal";
-// // import { nanoid } from 'nanoid';
-
-// const ReadLibrary = () => {
-//     return (
-//       <div>
-//         <h2>📚 Bibliothèque</h2>
-//         <p>coucou</p>
-//       </div>
-//     );
-//   };
-  
-//   export default ReadLibrary;

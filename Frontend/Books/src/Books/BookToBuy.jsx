@@ -47,7 +47,7 @@ const BookToBuyList = () => {
     }
   };
 
-  // Fonxtion pour la suppression d'un livre
+  // Fonction pour la suppression d'un livre
   const handleDeleteBook = async (bookID) => {
     try {
       await deleteBookToBuy(bookID);

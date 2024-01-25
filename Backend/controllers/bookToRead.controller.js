@@ -20,6 +20,7 @@ const bookToReadController = {
     addBook: async (req, res, next) => {
         try {
             const { title, author, prix, buyLink, imageUrl } = req.body;
+
             const newBook = await Book.create({ title, author, statut:"a lire", prix, buyLink, imageUrl });
             console.log(newBook);
             res.status(201).json(newBook);
