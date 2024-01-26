@@ -7,7 +7,9 @@
   .ImageALire {
     width: 30%; /* largeur de l'image */
     border-radius: 10px; 
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.71); 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.71); 
+    text-align: right;
+    margin: 1rem;
   }
 
   .TexteALire {
@@ -23,5 +25,30 @@
 
   .Lire h4, .Lire p {
     margin: 1rem;  
+  }
+  
+  .FondHome {
+    width: 100%;
+    height: 50%;
+  }
+
+  .FondHome ::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%);
+    z-index: 1;
+  }
+  
+  /* Votre style pour l'image va ici */
+  .FondLivres img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Assure que l'image couvre entièrement le conteneur */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.71);
   }
   

@@ -3,6 +3,7 @@
 // import './Home.scss';
 import React from 'react';
 import ImageALire from '../Logos/CharlieStory.png';
+import FondLivres from '../Logos/fond.jpg';
 import '../Css/Home.css';
 
 
@@ -14,6 +15,9 @@ const Home = () => {
     return (
         <section className='Home'>
             <div>
+                <div className="FondHome">
+                    <img className="FondLivres" src={FondLivres} alt="Fond livres" />
+                </div>
                 <h2>Bienvenue sur ReadEase</h2>
 
                 <h3>ReadEase - L'Art de Simplifier Votre Monde Livresque</h3>
