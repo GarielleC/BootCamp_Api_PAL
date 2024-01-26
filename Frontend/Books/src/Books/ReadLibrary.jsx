@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
-import { getAllReadLibrary, addReadLibrary } from '../services/ReadLibrary.service';
+import { getAllReadLibrary, addReadLibrary, deleteReadLibrary} from '../services/ReadLibrary.service';
+import '../Css/Normalize.css';
 import BiblioLogo from '../Logos/biblio1.png'; 
 import FlècheLogo from '../Logos/flècheB.png'; 
+// import Poubelle from '../Logos/Poubelle.png';
 import '../Css/RedLibrary.css';
 
 
@@ -22,6 +24,18 @@ const ReadLibraryList = () => {
   const handleImageChange = (e) => {
     setImageFile(e.target.files[0]); // Mettre à jour l'état avec le fichier sélectionné
   };
+
+  // Fonction pour réinitialiser le formulaire
+const resetForm = () => {
+  setNewBook({
+    title: '',
+    author: '',
+    prix: '',
+    buyLink: '',
+    imageUrl: ''
+  });
+  setImageFile(null); // Réinitialiser également le fichier image
+};
 
   // Apparition de tous les livres à lire
   const getReadLibrary = async () => {
@@ -43,6 +57,7 @@ const ReadLibraryList = () => {
   const handleUpdateStatus = async (bookID) => {
     try {
       await updateReadLibraryStatut(bookID);
+
       // Rafraîchir la liste après la mise à jour du statut
       getReadLibrary();
     } catch (error) {
@@ -50,16 +65,16 @@ const ReadLibraryList = () => {
     }
   };
 
-  // Fonxtion pour la suppression d'un livre
-  const handleDeleteReadLibrary = async (bookID) => {
-    try {
-      await deleteReadLibrary(bookID);
-      // Rafraîchir la liste après la suppression du livre
-      getBookToRead();
-    } catch (error) {
-      console.error("Erreur lors de la supression du livre :", error);
-    }
-  };
+  // // Fonxtion pour la suppression d'un livre
+  // const handleDeleteReadLibrary = async (bookID) => {
+  //   try {
+  //     await deleteReadLibrary(bookID);
+  //     // Rafraîchir la liste après la suppression du livre
+  //     getReadLibrary();
+  //   } catch (error) {
+  //     console.error("Erreur lors de la supression du livre :", error);
+  //   }
+  // };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -85,6 +100,9 @@ const handleAddReadLibrary = async () => {
 
     // Rafraîchir la liste après l'ajout du livre
     getReadLibrary();
+
+     // Réinitialiser le formulaire
+     resetForm();
 
   } catch (error) {
     console.error("Error creating book:", error);
@@ -123,10 +141,12 @@ const handleAddReadLibrary = async () => {
                 <div className="Images">
                 <img 
                   src={`http://localhost:8080/images/${book.imageUrl}`} 
-                  style={{ maxWidth: '50%', height: 'auto' }}
                 />
-                <button onClick={() => handleDeleteBook(book.id)}>🗑️</button>
+                {/* <button onClick={() => handleDeleteBook(book.id)}>🗑️</button> */}
                 </div>
+                {/* <button className="DeleteButton" onClick={() => handleDeleteReadLibrary(book.id)}>
+                  <img className="Poubelle" src={Poubelle} alt="Logo Poubelle" />
+              </button> */}
                 {/* Permet une séparation entre chaque livre */}
                 {/* <hr /> */} 
               </div>
@@ -137,7 +157,7 @@ const handleAddReadLibrary = async () => {
           </div>
       {/* Formulaire pour créer un nouveau livre à acheter */}
       <h2>Ajout d'un livre à mettre dans la bibliothèque</h2>
-      <form>
+      <form className="Formulaire">
         <label><strong>Titre :</strong></label>
         <input type="text" name="title" value={newBook.title} onChange={handleInputChange} />
         <label><strong>Auteur(e)(s) :</strong></label>

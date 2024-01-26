@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { getAllBookToRead, updateBookToReadStatut, deleteBookToRead, addBookToRead } from '../services/bookToRead.service';
-import LivreOuvertLogo from '../Logos/livreOuvert1.png';
+import LivreOuvertLogoRead from '../Logos/livreOuvert1.png';
+import Poubelle from '../Logos/Poubelle.png';
+import '../Css/Normalize.css';
+import '../Css/BooKToRead.css';
 
 
 const BookToReadList = () => {
@@ -93,32 +96,42 @@ const handleAddBook = async () => {
   return (
     <div>
       <a href='/'> ⬅️ Retour</a>
-      <h1><img className="LivreOuvertLogo" src={LivreOuvertLogo} alt="Logo Livre Ouvert" />Liste de livres à lire</h1>
+      <h1>
+        <img className="LivreOuvertLogoRead" src={LivreOuvertLogoRead} alt="Logo Livre Ouvert" />
+      Liste de livres à lire
+      </h1>
+      <div className="ContainerRead">
       {bookToReadList && bookToReadList.length > 0 ? (
         bookToReadList.map((book, index) => (
-          <div key={index}>
+          <div className="LivreRead" key={index}>
             <div className="Titre">
               <h3>{book.title}</h3>
               <p>de {book.author}</p>
             </div>
+            <div className="ImagesRead">
             <img 
-              src={`http://localhost:8080/images/${book.imageUrl}`} 
-              style={{ maxWidth: '50%', height: 'auto' }}
+              src={`http://localhost:8080/images/${book.imageUrl}`}
             />
-            <label>
-              Lu
-              <input type="checkbox" onChange={() => handleUpdateStatus(book.id)}/>
-            </label>
-            <button onClick={() => handleDeleteBook(book.id)}>🗑️</button>
-            <hr />
-          </div>
+            </div>
+            <div className="checkbox">
+                <input type="checkbox" onChange={() => handleUpdateStatus(book.id)}/>
+                <label className="checkbox-label">
+                Lu
+              </label>
+            </div>
+            <button className="DeleteButton" onClick={() => handleDeleteBook(book.id)}>
+              <img className="Poubelle" src={Poubelle} alt="Logo Poubelle" />
+            </button>
+            </div>
+          
         ))
       ) : (
         <p>Aucun livre à lire pour le moment.</p>
       )}
+      </div>
       {/* Formulaire pour créer un nouveau livre à acheter */}
       <h2>Créer un nouveau livre à lire</h2>
-      <form>
+      <form className="FormulaireRead">
         <label><strong>Title :</strong></label>
         <input type="text" name="title" value={newBook.title} onChange={handleInputChange} />
         <label><strong>Author :</strong></label>

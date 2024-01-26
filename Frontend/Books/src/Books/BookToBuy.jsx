@@ -146,7 +146,7 @@ const BookToBuyList = () => {
         <label>Image URL:</label>
         <input type="file" onChange={handleImageChange} />
         <button type="button" onClick={handleCreateBook}>Ajouter</button>
-        <button type="button" onClick={resetForm}>Réinitialiser</button>
+        <button type="reset" onClick={resetForm}>Réinitialiser</button>
       </form>
     </div>
   );

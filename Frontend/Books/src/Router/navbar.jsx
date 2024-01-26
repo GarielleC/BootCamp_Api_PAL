@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import '../Css/Normalize.css';
 import './navbar.css';
 import HomeLogo from '../Logos/home.png';
 import LivreFermeLogo from '../Logos/livreFerme1.png';
@@ -29,11 +30,12 @@ const Navbar = () => {
                     <Link to='/BookToBuy'><img src='../Frontend/Books/src/Logos/livre fermé.png'/> Livres à acheter</Link>
                 </li> */}
                 {/* 📘 */}
-
-                <li>
-                    <Link to='/BookToRead'>
-                    <img className="LivreOuvertLogo" src={LivreOuvertLogo} alt="Logo Livre Ouvert" />Livres à livres</Link>
-                </li>
+                <div className="Open">
+                    <li>
+                        <Link to='/BookToRead'>
+                        <img className="LivreOuvertLogo" src={LivreOuvertLogo} alt="Logo Livre Ouvert" />Livres à livres</Link>
+                    </li>
+                </div>
                 {/* 📖 Livres à livres</Link> */}
                 <li>
                     <Link to='/ReadLibrary'>

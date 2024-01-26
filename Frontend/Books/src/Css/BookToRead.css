@@ -1,0 +1,104 @@
+
+/* Css pour le formulaire */
+.FormulaireRead {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 1rem; /* Centre le formulaire horizontalement */
+    padding: 1rem ; /* Espace à l'intérieur du formulaire */
+    border-radius: 10px; /* Coins arrondis du formulaire */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.469); /* Ombre autour du formulaire */
+    top: 1rem; /* Ajustez la valeur en fonction de la hauteur de votre menu */
+    align-items: center;
+  }
+  
+  /* Ajouter une marge ou un espacement entre les labels et les inputs */
+  .FormulaireRead label {
+      display: block;
+      color: rgb(0, 0, 0);
+      margin: 0.3rem;
+    }
+     
+    /* Style des inputs */
+    .FormulaireRead input {
+      width: 100%;
+      padding: 5px;
+      border: 1px solid #a430a0;
+      border-radius: 5px;
+      margin-bottom: 10px; /* Espace entre les champs de saisie */
+      text-align: left ;
+      background-color: #f5dbf6;
+    } 
+
+
+/* css pour l'ensemble du code qui concerne titre et auteur afin de les avoir un a coté de l autre par 3  */
+.ContainerRead {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centre les éléments horizontalement */
+  }
+  
+  /* css pour l'image */
+  .ImagesRead {
+    display: block;
+    margin: 0;
+    padding: 0;
+  }  
+  
+  /* Css pour le {book.imageUrl} */
+  .ImagesRead img {
+    display: block;
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    height: 100%; 
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.71);
+    transform: scale(0.7);
+    background-color: black;
+  } 
+  
+  /* css pour le titre et l auteur */
+  .TitreRead {
+    padding: 5px;
+    text-align: center; /* Ajustez selon vos préférences */
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+  
+  } 
+  
+  /* classe spcéciale pour les livres */
+  .LivreRead {
+    height: auto;
+    width: calc(30% - 1px); /* La largeur de chaque élément avec une marge de 5px de chaque côté */
+    margin: 0.5rem; /* Espacement entre les éléments */
+    border-radius: 10px; /* Coins arrondis */
+    padding: 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.71); /* Ombre légère */
+    box-sizing: border-box; /* Inclut les bordures et les marges dans le calcul de la largeur */
+  }
+
+
+  .Poubelle {
+    width: 1rem;
+    height: 1rem;
+    margin: 0.1em;
+    padding: 0.1rem;
+  }
+
+  /* Logo livre à coté de bibliothèque */
+.LivreOuvertLogoRead {
+    width: 2rem;
+    height: 2rem;
+    margin: 0.5em;
+}
+
+.checkbox {
+
+  margin: 1rem;
+  margin-left: 1rem;
+}
+
+.checkbox-label {
+  margin-left: 0.5em;
+}
+button .DeleteButton {
+  align-items: right;
+}
