@@ -5,9 +5,9 @@ import Home from '../Home/Home.jsx';
 import BookToBuy from '../Books/BookToBuy.jsx';
 import BookToRead from '../Books/BookToRead.jsx';
 import ReadLibrary from '../Books/ReadLibrary.jsx';
-// import Login from "../components/pages/Login/Login.jsx";
-// import Register from "../components/pages/Register/Register.jsx";
-// import LandingPage from "../components/pages/LandingPage/LandingPage.jsx";
+import Login from '../Compte/Login/Login.jsx';
+import Register from '../Compte/Register/Register.jsx';
+import LoadingPage from '../LoadingPage/Loading.jsx';
 
 
 
@@ -32,6 +32,14 @@ const router = createBrowserRouter([
             {
                 path: "readlibrary", 
                 element: <ReadLibrary />,
+            },
+            {
+                path: "loadingPage",
+                element: <LoadingPage />,
+            },
+            {
+                path: "login",
+                element: <Login />,
             },
         ],
     },

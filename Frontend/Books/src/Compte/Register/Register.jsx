@@ -8,10 +8,7 @@ import Input from '../Inputs/inputs';
 // import './register.scss';
 
 // Définition du composant fonctionnel Register avec une prop setIsRegistered
-const Register = (props) => {
-  // État pour suivre si l'utilisateur est déjà enregistré
-  const [isRegistered, setIsRegistered] = useState(false);
-  console.log(setIsRegistered);
+const Register = ({ setIsRegistered }) => {
 
   // États pour stocker les valeurs des champs du formulaire et les erreurs de validation
   const [inputValue, setInputValue] = useState({
@@ -75,11 +72,11 @@ const Register = (props) => {
     <div className="formulaire-container">
       <form className="Formulaire" onSubmit={handleSubmit}>
         {/* Champs de formulaire */}
-        <label htmlFor="Picture">Votre photo</label>
+        <label htmlFor="photo">Votre photo</label>
         <input type="file" name="photo" />
-        <select name="genre">
+        <select name="genre" value={inputValue.genre} onChange={(val) => handleChange("genre", val)} required>
           <option value="mme">Madame</option>
-          <option value="mr">Monsieur</option> {/* Correction de la valeur */}
+          <option value="mr">Monsieur</option>
           <option value="xs">Autre</option>
         </select>
 
@@ -92,7 +89,7 @@ const Register = (props) => {
         <label htmlFor="date">DATE DE NAISSANCE</label>
         <input type="date" name="date" value={inputValue.date} onChange={(val) => handleChange("date", val)} required />
 
-        <label htmlFor="codePostal">CODE POSTAL</label> {/* Correction du nom du label */}
+        <label htmlFor="codePostal">CODE POSTAL</label>
         <input type="text" name="codePostal" value={inputValue.codePostal} onChange={(val) => handleChange("codePostal", val)} required />
 
         <label htmlFor="pays">PAYS</label>
@@ -102,15 +99,15 @@ const Register = (props) => {
         <input type="text" name="ville" value={inputValue.ville} onChange={(val) => handleChange("ville", val)} required />
 
         <label htmlFor="email">EMAIL</label>
-        <input type="" name="email" value={inputValue.email} onChange={(val) => handleChange("email", val)} required minLength="6" maxLength="12" />
+        <input type="email" name="email" value={inputValue.email} onChange={(val) => handleChange("email", val)} required minLength="6" maxLength="12" />
 
         <label htmlFor="confirmEmail">CONFIRMATION DE VOTRE EMAIL</label>
         <input type="email" name="confirmEmail" value={inputValue.confirmEmail} onChange={(val) => handleChange("confirmEmail", val)} required minLength="6" maxLength="12" />
 
-        <label htmlFor="passwords">MOT DE PASSE</label>
+        <label htmlFor="password">MOT DE PASSE</label>
         <input type="password" name="password" value={inputValue.password} onChange={(val) => handleChange("password", val)} required />
 
-        <label htmlFor="confirmPassword">CONFIRMATION DE VOTRE MOT DE PASSE</label> {/* Correction du nom du label */}
+        <label htmlFor="confirmPassword">CONFIRMATION DE VOTRE MOT DE PASSE</label>
         <input type="password" name="confirmPassword" value={inputValue.confirmPassword} onChange={(val) => handleChange("confirmPassword", val)} required />
 
         {/* Bouton de soumission du formulaire */}
@@ -131,4 +128,3 @@ Register.propTypes = {
 
 // Export du composant Register
 export default Register;
-

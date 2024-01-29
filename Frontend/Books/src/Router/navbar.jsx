@@ -42,6 +42,9 @@ const Navbar = () => {
                     <img className="BiblioLogo" src={BiblioLogo} alt="Logo Biblio" />Bibliothèque</Link>
                     {/* <img className="BiblioLogo" src={BiblioLogo} alt="Logo Biblio" />📚 Bibliothèque</Link> */}
                 </li>
+                <li>
+                    <Link to='/login'>Login</Link>
+                </li>
             </ul>
         </div>
     </nav>    
