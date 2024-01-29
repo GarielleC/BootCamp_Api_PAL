@@ -1,6 +1,6 @@
 
 const loginValidator = require('../validator/login.validator');
-const EmailValidator = require('../validator/email.validator');
+const emailValidator = require('../validator/email.validator');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const authService = require('../services/auth.service');
@@ -9,41 +9,38 @@ const authController = {
 
     register: async (req, res) => {
         try {
-            // Récupération des données utilsateur
+            // Récupération des données utilisateur
             const authData = req.body;
-
-            // Validation les informations récupérées depuis les données utilisateur
-            const validatedData = await loginValidator.validate(authData);
-
-            // Destructuring des données vérifées
-            const { genre, name, prenom, codePostal, dateNaissance, pays, ville, email, login, password } = validatedData;
-            
-            const hashedPassword = bcrypt.hashSync(password, 10);
-
+    
+            // Validation des informations récupérées depuis les données utilisateur
+            await loginValidator({ password: authData.password });
+            await emailValidator(req, res);
+    
+            // Hashage du mot de passe
+            const hashedPassword = bcrypt.hashSync(authData.password, 10);
+    
             // Création de l'objet utilisateur à insérer
             const userData = {
-                login,
-                name,
-                prenom,
-                email,
-                codePostal,
-                dateNaissance,
-                pays,
-                ville,
-                genre,
+                login: authData.login,
+                name: authData.name,
+                prenom: authData.prenom,
+                email: authData.email,
+                codePostal: authData.codePostal,
+                dateNaissance: authData.dateNaissance,
+                pays: authData.pays,
+                ville: authData.ville,
+                genre: authData.genre,
                 password: hashedPassword, 
             };
-
+    
             // Envoi des données validées et hashées à la DB
             const authInserted = await authService.insert(userData);
-
+    
             if (authInserted) {
                 res
-                    // Information que l'insertion des données s'est correctement déroulée, et que le compte est crée
                     .status(201)
-                    // Redirection des informations utilisateur sur la route login 
-                    .location(`api/login`)
-                    .json(authInserted)
+                    .location(`api/auth/login`)
+                    .json(authInserted);
             } else {
                 return res.status(500).json({ message: 'Erreur lors de l\'insertion des données' });
             }
@@ -52,6 +49,7 @@ const authController = {
             return res.status(400).json({ message: 'Erreur de validation', errors: validationError.errors });
         }
     },
+    
 
     login: async (req, res) => {
         try {

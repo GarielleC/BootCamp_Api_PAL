@@ -1,25 +1,25 @@
 module.exports = function(req, res, next) {
-    const { Password } = req.body; 
+    const { password } = req.body; 
 
     let errors = [];
 
-    if (!Password || Password.length < 12) {
+    if (!password || password.length < 12) {
         errors.push("Votre mot de passe doit contenir au moins 12 caractères.");
     }
 
-    if (!/[A-Z]/.test(Password)) {
+    if (!/[A-Z]/.test(password)) {
         errors.push("Votre mot de passe doit contenir au moins une lettre majuscule.");
     }
 
-    if (!/[a-z]/.test(Password)) {
+    if (!/[a-z]/.test(password)) {
         errors.push("Votre mot de passe doit contenir au moins une lettre minuscule.");
     }
 
-    if (!/[0-9]/.test(Password)) {
+    if (!/[0-9]/.test(password)) {
         errors.push("Votre mot de passe doit contenir au moins un chiffre.");
     }
 
-    if (!/[!@#$%^&*]/.test(Password)) {
+    if (!/[!@#$%^&*]/.test(password)) {
         errors.push("Votre mot de passe doit contenir au moins un caractère spécial.");
     }
 
