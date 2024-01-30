@@ -74,11 +74,12 @@ const Register = ({ setIsRegistered }) => {
         {/* Champs de formulaire */}
         <label htmlFor="photo">Votre photo</label>
         <input type="file" name="photo" />
-        <select name="genre" value={inputValue.genre} onChange={(val) => handleChange("genre", val)} required>
+        <select name="genre" value={inputValue.genre} onChange={(e) => handleChange("genre", e.target.value)} required>
           <option value="mme">Madame</option>
           <option value="mr">Monsieur</option>
           <option value="xs">Autre</option>
         </select>
+
 
         <label htmlFor="name">NOM</label>
         <input type="text" name="name" value={inputValue.name} size="16" onChange={(val) => handleChange("name", val)} required />
