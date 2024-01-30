@@ -73,7 +73,7 @@ const Register = ({ setIsRegistered }) => {
       <form className="Formulaire" onSubmit={handleSubmit}>
         {/* Champs de formulaire */}
         <label htmlFor="photo">Votre photo</label>
-        <input type="file" name="photo" />
+        <Input type="file" name="photo" />
         <select name="genre" value={inputValue.genre} onChange={(e) => handleChange("genre", e.target.value)} required>
           <option value="mme">Madame</option>
           <option value="mr">Monsieur</option>
@@ -82,34 +82,34 @@ const Register = ({ setIsRegistered }) => {
 
 
         <label htmlFor="name">NOM</label>
-        <input type="text" name="name" value={inputValue.name} size="16" onChange={(val) => handleChange("name", val)} required />
+        <Input type="text" name="name" value={inputValue.name} size="16" onChange={(val) => handleChange("name", val)} required />
 
         <label htmlFor="prenom">PRÉNOM</label>
-        <input type="text" name="prenom" value={inputValue.prenom} size="16" onChange={(val) => handleChange("prenom", val)} required />
+        <Input type="text" name="prenom" value={inputValue.prenom} size="16" onChange={(val) => handleChange("prenom", val)} required />
 
         <label htmlFor="date">DATE DE NAISSANCE</label>
-        <input type="date" name="date" value={inputValue.date} onChange={(val) => handleChange("date", val)} required />
+        <Input type="date" name="date" value={inputValue.date} onChange={(val) => handleChange("date", val)} required />
 
         <label htmlFor="codePostal">CODE POSTAL</label>
-        <input type="text" name="codePostal" value={inputValue.codePostal} onChange={(val) => handleChange("codePostal", val)} required />
+        <Input type="text" name="codePostal" value={inputValue.codePostal} onChange={(val) => handleChange("codePostal", val)} required />
 
         <label htmlFor="pays">PAYS</label>
-        <input type="text" name="pays" value={inputValue.pays} onChange={(val) => handleChange("pays", val)} required />
+        <Input type="text" name="pays" value={inputValue.pays} onChange={(val) => handleChange("pays", val)} required />
 
         <label htmlFor="ville">VILLE</label>
-        <input type="text" name="ville" value={inputValue.ville} onChange={(val) => handleChange("ville", val)} required />
+        <Input type="text" name="ville" value={inputValue.ville} onChange={(val) => handleChange("ville", val)} required />
 
         <label htmlFor="email">EMAIL</label>
-        <input type="email" name="email" value={inputValue.email} onChange={(val) => handleChange("email", val)} required minLength="6" maxLength="12" />
+        <Input type="email" name="email" value={inputValue.email} onChange={(val) => handleChange("email", val)} required minLength="6" maxLength="12" />
 
         <label htmlFor="confirmEmail">CONFIRMATION DE VOTRE EMAIL</label>
-        <input type="email" name="confirmEmail" value={inputValue.confirmEmail} onChange={(val) => handleChange("confirmEmail", val)} required minLength="6" maxLength="12" />
+        <Input type="email" name="confirmEmail" value={inputValue.confirmEmail} onChange={(val) => handleChange("confirmEmail", val)} required minLength="6" maxLength="12" />
 
         <label htmlFor="password">MOT DE PASSE</label>
-        <input type="password" name="password" value={inputValue.password} onChange={(val) => handleChange("password", val)} required />
+        <Input type="password" name="password" value={inputValue.password} onChange={(val) => handleChange("password", val)} required />
 
         <label htmlFor="confirmPassword">CONFIRMATION DE VOTRE MOT DE PASSE</label>
-        <input type="password" name="confirmPassword" value={inputValue.confirmPassword} onChange={(val) => handleChange("confirmPassword", val)} required />
+        <Input type="password" name="confirmPassword" value={inputValue.confirmPassword} onChange={(val) => handleChange("confirmPassword", val)} required />
 
         {/* Bouton de soumission du formulaire */}
         <button type="submit">Enregistrer</button>

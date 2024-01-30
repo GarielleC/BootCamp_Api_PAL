@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
-// import Input from "../Inputs/Input";
+import Input from '../Inputs/inputs';
 import Register from '../Register/Register';
-// import pour généré un sms de verification de code
-// import * as phoneToken from 'generate-sms-verification-code';
+
 
 // Définition du composant de connexion (Login)
 const Login = (props) => {
@@ -18,11 +17,6 @@ const Login = (props) => {
     email: "",
     password: "",
   });
-
-  // //vérification gsm
-  // const generateUserVerificationCode = () => {
-  //   return phoneToken(4);
-  // }
 
   // État pour suivre si l'utilisateur est connecté
   const [isLoggedIn, setLoggedIn] = useState(false);
@@ -61,7 +55,7 @@ const Login = (props) => {
         <>
           <form onSubmit={handleLogin}>
            <label htmlFor='Email'>Email</label>
-            <input
+            <Input
               label="Email"
               type="text"
               name="email"
@@ -72,7 +66,7 @@ const Login = (props) => {
 
             {/* <label htmlFor='Password'> */}
             <label htmlFor='password'>Mot de passe</label>
-            <input
+            <Input
               label="Password"
               type="password"
               name="password"
