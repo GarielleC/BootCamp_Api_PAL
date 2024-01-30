@@ -48,15 +48,5 @@ nav li a:hover {
 .LivreOuvertLogo {
   width: 2rem;
   margin: 0.5em;
-  align-items: center;
 }
-
-/* img {
-  /* 30% de la taille d'origine, ajustez la valeur selon vos besoins */
- /* transform: scale(0.01); */
-/*}*/
-/* .img-reduite { */
-  /* transform: scale(0.01); */
-/* }  */
-/* navbar.css */
 

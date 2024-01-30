@@ -30,12 +30,10 @@ const Navbar = () => {
                     <Link to='/BookToBuy'><img src='../Frontend/Books/src/Logos/livre fermé.png'/> Livres à acheter</Link>
                 </li> */}
                 {/* 📘 */}
-                <div className="Open">
                     <li>
                         <Link to='/BookToRead'>
                         <img className="LivreOuvertLogo" src={LivreOuvertLogo} alt="Logo Livre Ouvert" />Livres à livres</Link>
                     </li>
-                </div>
                 {/* 📖 Livres à livres</Link> */}
                 <li>
                     <Link to='/ReadLibrary'>
