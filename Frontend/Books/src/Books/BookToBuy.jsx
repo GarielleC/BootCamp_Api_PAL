@@ -71,9 +71,15 @@ const BookToBuyList = () => {
   // Fonction pour la suppression d'un livre
   const handleDeleteBook = async (bookID) => {
     try {
+      // Afficher une boîte de dialogue de confirmation
+      const isConfirmed = window.confirm('Êtes-vous sûr de vouloir supprimer ce livre ?');
+
+    // Vérifier si l'utilisateur a confirmé
+    if (isConfirmed) {
       await deleteBookToBuy(bookID);
       // Rafraîchir la liste après la suppression du livre
       getBookToBuy();
+    }
     } catch (error) {
       console.error("Erreur lors de la supression du livre :", error);
     }

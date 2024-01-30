@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { getAllBookToRead, updateBookToReadStatut, deleteBookToRead, addBookToRead } from '../services/bookToRead.service';
 import LivreOuvertLogoRead from '../Logos/livreOuvert1.png';
 import Poubelle from '../Logos/Poubelle.png';
-
+import '../Css/Normalize.css';
 import '../Css/BookToRead.css';
 
 
@@ -56,16 +56,25 @@ const BookToReadList = () => {
     }
   };
 
-  // Fonxtion pour la suppression d'un livre
-  const handleDeleteBook = async (bookID) => {
-    try {
+ // Fonction pour la suppression d'un livre
+const handleDeleteBook = async (bookID) => {
+  try {
+    // Afficher une boîte de dialogue de confirmation
+    const isConfirmed = window.confirm('Êtes-vous sûr de vouloir supprimer ce livre ?');
+
+    // Vérifier si l'utilisateur a confirmé
+    if (isConfirmed) {
+      // Supprimer le livre
       await deleteBookToRead(bookID);
+
       // Rafraîchir la liste après la suppression du livre
       getBookToRead();
-    } catch (error) {
-      console.error("Erreur lors de la supression du livre :", error);
     }
-  };
+  } catch (error) {
+    console.error("Erreur lors de la suppression du livre :", error);
+  }
+};
+
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
