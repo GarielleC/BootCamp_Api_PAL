@@ -68,7 +68,7 @@ module.exports = (sequelize) => {
 
         hashedPassword: {
             type: DataTypes.STRING(250),
-            allowNull: false,
+            allowNull: true,
         },
 
         jwt: {

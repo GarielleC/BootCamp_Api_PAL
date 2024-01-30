@@ -110,6 +110,10 @@ const handleAddReadLibrary = async () => {
     alert("Erreur lors de la création du livre à acheter. Veuillez réessayer.");
   }
 };
+// Fonction pour calculer le total des livres à lire
+const calculateTotalBooks = () => {
+  return ReadLibraryList.length;
+};
 
  
   return (
@@ -130,6 +134,10 @@ const handleAddReadLibrary = async () => {
         <img className="BiblioLogo" src={BiblioLogo} alt="Logo Biblio" />
         Bibliothèque
         </h1>
+
+        {/* Affiche le total des livres à lire */}
+        <h2>Total des livres lus : {calculateTotalBooks()}</h2>
+
         <div className="Container">
           {ReadLibraryList && ReadLibraryList.length > 0 ? (
             ReadLibraryList.map((book, index) => (

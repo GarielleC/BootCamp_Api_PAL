@@ -92,6 +92,10 @@ const handleAddBook = async () => {
     alert("Erreur lors de la création du livre à lire. Veuillez réessayer.");
   }
 };
+ // Fonction pour calculer le total des livres à lire
+ const calculateTotalBooks = () => {
+  return bookToReadList.length;
+};
  
   return (
     <div>
@@ -100,6 +104,9 @@ const handleAddBook = async () => {
         <img className="LivreOuvertLogoRead" src={LivreOuvertLogoRead} alt="Logo Livre Ouvert" />
       Liste de livres à lire
       </h1>
+      {/* Affiche le total des livres à lire */}
+      <h2>Total des livres à parcourir : {calculateTotalBooks()}</h2>
+
       <div className="ContainerRead">
       {bookToReadList && bookToReadList.length > 0 ? (
         bookToReadList.map((book, index) => (
@@ -129,6 +136,7 @@ const handleAddBook = async () => {
         <p>Aucun livre à lire pour le moment.</p>
       )}
       </div>
+
       {/* Formulaire pour créer un nouveau livre à acheter */}
       <h2>Créer un nouveau livre à lire</h2>
       <form className="FormulaireRead">

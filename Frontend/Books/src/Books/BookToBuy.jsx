@@ -39,6 +39,12 @@ const BookToBuyList = () => {
       if (res) {
         setBookToBuyList(res);
       }
+
+         // Trier les livres par ordre alphabétique ici
+      const sortedBooks = [...res];
+      sortedBooks.sort((a, b) => a.title.localeCompare(b.title));
+      setBookToBuyList(sortedBooks);
+      
     } catch (err) {
       console.error(err);
     }
@@ -102,15 +108,29 @@ const BookToBuyList = () => {
       console.error("Error creating book:", error);
       // Message d'erreur lors de la création du livre
       alert("Erreur lors de la création du livre à acheter. Veuillez réessayer.");
-    }
-
-    
+    } 
   };
+
+     // Fonction pour trier les livres par ordre alphabétique
+    const sortBooksAlphabetically = () => {
+    const sortedBooks = [...bookToBuyList];
+    sortedBooks.sort((a, b) => a.title.localeCompare(b.title));
+    setBookToBuyList(sortedBooks);
+  };
+
+  // Fonction pour calculer le total des livres à lire
+  const calculateTotalBooksToBuy = () => {
+    return bookToBuyList.length;
+  };  
  
   return (
     <div>
       <a href='/'> ⬅️ Retour</a>
       <h1><img className="LivreFermeLogo" src={LivreFermeLogo} alt="Logo Livre Fermé" />Liste de livres à acheter</h1>
+
+      {/* Affiche le total des livres à lire */}
+      <h2>Total des livres a acheter : {calculateTotalBooksToBuy()}</h2>
+
       {bookToBuyList && bookToBuyList.length > 0 ? (
         bookToBuyList.map((book, index) => (
           <div key={index}>
