@@ -55,11 +55,6 @@ module.exports = (sequelize) => {
                 isEmail: true,
             },
         },
-
-        password: {
-            type: DataTypes.STRING(250),
-            allowNull: false,
-        },
         
         login: {
             type: DataTypes.STRING(100),
