@@ -4,6 +4,7 @@ class authDTO {
      // Déclaration des propriétés de la classe
     id;
     login;
+    password;
     hashedPassword;
 
     // Constructeur de la classe, qui prend un objet 'data' en paramètre
@@ -11,6 +12,7 @@ class authDTO {
         // Initialisation des propriétés de la classe avec les valeurs fournies dans 'data'
         this.id = data.id;
         this.login = data.login;
+        this.password = data.password;
         this.hashedPassword = data.hashedPassword;
     }
 }

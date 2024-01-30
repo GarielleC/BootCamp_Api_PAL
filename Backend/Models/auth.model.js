@@ -30,21 +30,21 @@ module.exports = (sequelize) => {
 
         codePostal: {
             type: DataTypes.STRING(10),
-            allowNull: true,
+            allowNull: false,
         },
         dateNaissance: {
             type: DataTypes.DATEONLY,
-            allowNull: true,
+            allowNull: false,
         },
 
         pays: {
             type: DataTypes.STRING(50),
-            allowNull: true,
+            allowNull: false,
         },
 
         ville: {
             type: DataTypes.STRING(100),
-            allowNull: true,
+            allowNull: false,
         },
 
         email: {
@@ -87,7 +87,7 @@ module.exports = (sequelize) => {
                 unique: false,
             },
         ]
-    })
+    });
 
     return Auth;
 }

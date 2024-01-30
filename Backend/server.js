@@ -12,9 +12,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Middleware body-parser pour traiter les données JSON
-app.use(bodyParser.json());
-
 // Middleware pour servir les fichiers statiques 
 app.use('/images', express.static(path.join(__dirname, 'public/images')));
 

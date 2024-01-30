@@ -1,6 +1,4 @@
 
-const loginValidator = require('../validator/login.validator');
-const emailValidator = require('../validator/email.validator');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const authService = require('../services/auth.service');
@@ -11,10 +9,6 @@ const authController = {
         try {
             // Récupération des données utilisateur
             const authData = req.body;
-    
-            // Validation des informations récupérées depuis les données utilisateur
-            await loginValidator({ password: authData.password });
-            await emailValidator(req, res);
     
             // Hashage du mot de passe
             const hashedPassword = bcrypt.hashSync(authData.password, 10);
