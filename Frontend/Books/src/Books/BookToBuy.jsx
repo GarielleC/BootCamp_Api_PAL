@@ -154,10 +154,12 @@ const BookToBuyList = () => {
                   <a href={book.buyLink} target="_blank" rel="noopener noreferrer">{book.buyLink}</a>
                 </p>
               </div>
-              <button onClick={() => handleUpdateStatus(book.id)}>💸 Acheter</button>
-              <button className="DeleteButtonBuy" onClick={() => handleDeleteBook(book.id)}>
-              <img className="PoubelleBuy" src={PoubelleBuy} alt="Logo Poubelle" />
-            </button>
+              <div className="Button-container">
+                <button className="Achat" onClick={() => handleUpdateStatus(book.id)}>💸 Acheter</button>
+                <button className="DeleteButtonBuy" onClick={() => handleDeleteBook(book.id)}>
+                  <img className="PoubelleBuy" src={PoubelleBuy} alt="Logo Poubelle" />
+                </button>
+            </div>
               {/* <hr /> */}
             </div>
           ))

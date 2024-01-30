@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { getAllBookToRead, updateBookToReadStatut, deleteBookToRead, addBookToRead } from '../services/bookToRead.service';
 import LivreOuvertLogoRead from '../Logos/livreOuvert1.png';
 import Poubelle from '../Logos/Poubelle.png';
-import '../Css/Normalize.css';
-import '../Css/BooKToRead.css';
+
+import '../Css/BookToRead.css';
 
 
 const BookToReadList = () => {

@@ -20,9 +20,8 @@
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.71);
     transform: scale(0.7);
-    margin: 5px;
-    padding: 5px;
-    background-color: black;
+    align-items: center;
+    border: 0.3rem solid black;
   } 
   
   /* css pour le titre et l auteur */
@@ -68,7 +67,7 @@
   }
   
   /* Ajouter une marge ou un espacement entre les labels et les inputs */
-  .FormulaireRBuy label {
+  .FormulaireBuy label {
       display: block;
       color: rgb(0, 0, 0);
       margin: 0.3rem;
@@ -97,10 +96,30 @@
 
     .Informations .prix-rouge {
       color: red;
-      margin: 0.2rem;
+      margin: 0.5rem;
     }
     
     .Informations p a {
       vertical-align: middle;
+      margin-bottom: 0.5rem;
     }
-    
+
+
+    .Button-container {
+      display: flex;
+      justify-content: space-between; /* Pour espacer les éléments */
+      flex-direction: row;
+      align-items: center;
+      margin: 1rem;
+    }
+
+    .DeleteButtonBuy {
+      align-self: flex-end; /* Aligner le bouton de suppression à gauche */
+    }
+    button{
+      margin:0.2rem;
+    }
+    .Achat {
+      align-self: flex-start;
+      color: white;
+    }

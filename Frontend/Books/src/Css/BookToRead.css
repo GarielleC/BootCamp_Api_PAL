@@ -53,9 +53,7 @@
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.71);
     transform: scale(0.7);
-    margin: 5px;
-    padding: 5px;
-    background-color: black;
+    border: 5px solid black;
   } 
   
   /* css pour le titre et l auteur */
@@ -117,3 +115,29 @@
   align-self: flex-end; /* Aligner le bouton de suppression à gauche */
 }
 
+
+/* Code a revoir pour que le checkbox soit en face du boutton poubelle
+
+.checkbox-container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center; /* Ajout de cette ligne pour centrer les éléments verticalement */
+  /* margin: 1rem;
+}
+
+.checkbox {
+  align-self: flex-start;
+}
+
+.checkbox input {
+  margin-right: 0.5em;
+}
+
+.checkbox-label {
+  margin-left: 0.5em;
+}
+
+.DeleteButton {
+  align-self: flex-end;
+} */
