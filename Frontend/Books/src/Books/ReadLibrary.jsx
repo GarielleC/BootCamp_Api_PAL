@@ -44,6 +44,12 @@ const resetForm = () => {
       if (res) {
         setReadLibraryList(res);
       }
+
+      // Trier les livres par ordre alphabétique ici
+      const sortedBooks = [...res];
+      sortedBooks.sort((a, b) => a.title.localeCompare(b.title));
+      setReadLibraryList(sortedBooks);
+
     } catch (err) {
       console.error(err);
     }

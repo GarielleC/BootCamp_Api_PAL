@@ -30,6 +30,12 @@ const BookToReadList = () => {
       if (res) {
         setBookToReadList(res);
       }
+
+      // Trier les livres par ordre alphabétique ici
+      const sortedBooks = [...res];
+      sortedBooks.sort((a, b) => a.title.localeCompare(b.title));
+      setBookToReadList(sortedBooks);
+
     } catch (err) {
       console.error(err);
     }
@@ -116,9 +122,9 @@ const handleAddBook = async () => {
               <p>de {book.author}</p>
             </div>
             <div className="ImagesRead">
-            <img 
-              src={`http://localhost:8080/images/${book.imageUrl}`}
-            />
+              <img 
+                src={`http://localhost:8080/images/${book.imageUrl}`}
+              />
             </div>
             <div className="checkbox">
                 <input type="checkbox" onChange={() => handleUpdateStatus(book.id)}/>

@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import {getAllBookToBuy, updateBookToBuyStatut, deleteBookToBuy, createBookToBuy} from '../services/bookToBuy.service';
 import LivreFermeLogo from '../Logos/livreFerme1.png';
+import PoubelleBuy from '../Logos/Poubelle.png';
+import '../Css/Normalize.css';
+import '../Css/BookToBuy.css';
 
 
 const BookToBuyList = () => {
@@ -40,7 +43,7 @@ const BookToBuyList = () => {
         setBookToBuyList(res);
       }
 
-         // Trier les livres par ordre alphabétique ici
+      // Trier les livres par ordre alphabétique ici
       const sortedBooks = [...res];
       sortedBooks.sort((a, b) => a.title.localeCompare(b.title));
       setBookToBuyList(sortedBooks);
@@ -131,30 +134,36 @@ const BookToBuyList = () => {
       {/* Affiche le total des livres à lire */}
       <h2>Total des livres a acheter : {calculateTotalBooksToBuy()}</h2>
 
-      {bookToBuyList && bookToBuyList.length > 0 ? (
-        bookToBuyList.map((book, index) => (
-          <div key={index}>
-            <div className="Titre">
-              <h3>{book.title}</h3>
-              <p>de {book.author}</p>
+      <div className="ContainerBuy">
+        {bookToBuyList && bookToBuyList.length > 0 ? (
+          bookToBuyList.map((book, index) => (
+            <div className="LivreBuy" key={index}>
+              <div className="TitreBuy">
+                <h3>{book.title}</h3>
+                <p>de {book.author}</p>
+              </div>
+              <div className="ImagesBuy">
+                <img 
+                  src={`http://localhost:8080/images/${book.imageUrl}`}
+                />
+              </div>
+              <strong><p>Prix : {book.prix} €</p></strong>
+              <p><strong>Lien pour l'acheter :</strong><a href={book.buyLink} target="_blank" rel="noopener noreferrer">{book.buyLink}</a></p>
+              <button onClick={() => handleUpdateStatus(book.id)}>💸 Acheter</button>
+              <button className="DeleteButtonBuy" onClick={() => handleDeleteBook(book.id)}>
+              <img className="PoubelleBuy" src={PoubelleBuy} alt="Logo Poubelle" />
+            </button>
+              {/* <hr /> */}
             </div>
-            <img 
-              src={`http://localhost:8080/images/${book.imageUrl}`} 
-              style={{ maxWidth: '50%', height: 'auto' }}
-            />
-            <strong><p>Prix : {book.prix} €</p></strong>
-            <p><strong>Lien pour l'acheter :</strong><a href={book.buyLink} target="_blank" rel="noopener noreferrer">{book.buyLink}</a></p>
-            <button onClick={() => handleUpdateStatus(book.id)}>💸 Acheter</button>
-            <button onClick={() => handleDeleteBook(book.id)}>🗑️</button>
-            <hr />
-          </div>
-        ))
-      ) : (
-        <p>Aucun livre à acheter pour le moment.</p>
-      )}
+          ))
+        ) : (
+          <p>Aucun livre à acheter pour le moment.</p>
+        )}
+      </div>
+
       {/* Formulaire pour créer un nouveau livre à acheter */}
       <h2>Créer un nouveau livre à acheter</h2>
-      <form>
+      <form className="FormulaireBuy">
         <label>Title:</label>
         <input type="text" name="title" value={newBook.title} onChange={handleInputChange} />
         <label>Author:</label>
