@@ -53,7 +53,7 @@
   }
 
   button .DeleteButtonBuy {
-    align-items: right;
+    align-self: flex-end; /* Aligne à droite */
   }
 
   /* Css pour le formulaire */

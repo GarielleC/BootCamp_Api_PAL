@@ -92,15 +92,28 @@
     margin: 0.5em;
 }
 
-.checkbox {
-
+.checkbox-container {
+  display: flex;
+  justify-content: space-between; /* Pour espacer les éléments */
+  flex-direction: column; /* Mettre les éléments en colonne */
+  align-items: right; 
   margin: 1rem;
-  margin-left: 1rem;
+}
+
+.checkbox {
+  margin-left: auto; /* Déplace la classe "checkbox" à droite */ 
+  margin-bottom: 0.5rem;
+}
+
+.checkbox input {
+  margin-right: 0.5em; /* Ajouter une marge à droite du checkbox */
 }
 
 .checkbox-label {
-  margin-left: 0.5em;
+  margin-left: 0.5em; /* Ajouter une marge à gauche du label */
+} 
+
+.DeleteButton {
+  align-self: flex-end; /* Aligner le bouton de suppression à gauche */
 }
-button .DeleteButton {
-  align-items: right;
-}
+

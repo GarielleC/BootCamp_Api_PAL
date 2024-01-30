@@ -126,15 +126,17 @@ const handleAddBook = async () => {
                 src={`http://localhost:8080/images/${book.imageUrl}`}
               />
             </div>
-            <div className="checkbox">
-                <input type="checkbox" onChange={() => handleUpdateStatus(book.id)}/>
-                <label className="checkbox-label">
-                Lu
-              </label>
-            </div>
-            <button className="DeleteButton" onClick={() => handleDeleteBook(book.id)}>
-              <img className="Poubelle" src={Poubelle} alt="Logo Poubelle" />
-            </button>
+            <div className="checkbox-container">
+              <div className="checkbox">
+                  <input type="checkbox" onChange={() => handleUpdateStatus(book.id)}/>
+                  <label className="checkbox-label">
+                  Lu
+                </label>
+              </div>
+              <button className="DeleteButton" onClick={() => handleDeleteBook(book.id)}>
+                <img className="Poubelle" src={Poubelle} alt="Logo Poubelle" />
+              </button>
+              </div>
             </div>
           
         ))
