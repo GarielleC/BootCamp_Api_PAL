@@ -147,8 +147,13 @@ const BookToBuyList = () => {
                   src={`http://localhost:8080/images/${book.imageUrl}`}
                 />
               </div>
-              <strong><p>Prix : {book.prix} €</p></strong>
-              <p><strong>Lien pour l'acheter :</strong><a href={book.buyLink} target="_blank" rel="noopener noreferrer">{book.buyLink}</a></p>
+              <div className="Informations">
+                <p>Prix : <span className="prix-rouge">{book.prix} €</span></p>
+
+                <p>Lien pour l'acheter :
+                  <a href={book.buyLink} target="_blank" rel="noopener noreferrer">{book.buyLink}</a>
+                </p>
+              </div>
               <button onClick={() => handleUpdateStatus(book.id)}>💸 Acheter</button>
               <button className="DeleteButtonBuy" onClick={() => handleDeleteBook(book.id)}>
               <img className="PoubelleBuy" src={PoubelleBuy} alt="Logo Poubelle" />

@@ -84,3 +84,23 @@
       text-align: left ;
       background-color: #f5dbf6;
     } 
+
+    /* Informations Books */
+    .Informations p {
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between; /* Pour espacer les éléments */
+      flex-direction: column; /* Mettre les éléments en colonne */
+      margin: 1rem;
+      /* margin-bottom: 1rem; */
+    }
+
+    .Informations .prix-rouge {
+      color: red;
+      margin: 0.2rem;
+    }
+    
+    .Informations p a {
+      vertical-align: middle;
+    }
+    
