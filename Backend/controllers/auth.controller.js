@@ -7,7 +7,7 @@ const authService = require('../services/auth.service');
 
 const authController = {
 
-    register: async (req, res) => {
+    register: async (req, res, next) => {
         try {
             // Récupération des données utilisateur
             const authData = req.body;
@@ -51,7 +51,7 @@ const authController = {
     },
     
 
-    login: async (req, res) => {
+    login: async (req, res, next) => {
         try {
             const { login, password } = req.body;
 

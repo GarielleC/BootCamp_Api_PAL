@@ -134,7 +134,7 @@ const handleAddBook = async () => {
       <form className="FormulaireRead">
         <label><strong>Title :</strong></label>
         <input type="text" name="title" value={newBook.title} onChange={handleInputChange} />
-        <label><strong>Author :</strong></label>
+        <label><strong>Auteur(e)(s) :</strong></label>
         <input type="text" name="author" value={newBook.author} onChange={handleInputChange} />
         <label><strong>Prix :</strong></label>
         <input type="text" name="prix" value={newBook.prix} onChange={handleInputChange} />
