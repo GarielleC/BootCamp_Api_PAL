@@ -7,7 +7,6 @@ import {
 } from "../services/bookToRead.service";
 import LivreOuvertLogoRead from "../Logos/livreOuvert1.png";
 import Poubelle from "../Logos/Poubelle.png";
-// import "../Css/Normalize.css";
 import "../Css/BookToRead.css";
 
 const BookToReadList = () => {
@@ -19,6 +18,8 @@ const BookToReadList = () => {
         buyLink: "",
         imageUrl: "",
     });
+
+    const [isFormVisible, setIsFormVisible] = useState(false);
 
     // État pour le fichier de l'image
     const [imageFile, setImageFile] = useState(null);
@@ -116,7 +117,7 @@ const BookToReadList = () => {
     };
 
     return (
-        <div>
+        <section>
             <a href="/"> ⬅️ Retour</a>
             <h1>
                 <img
@@ -126,8 +127,60 @@ const BookToReadList = () => {
                 />
                 Liste de livres à lire
             </h1>
+
             {/* Affiche le total des livres à lire */}
             <h2>Total des livres à parcourir : {calculateTotalBooks()}</h2>
+
+            {/* Bouton pour afficher ou masquer le formulaire */}
+            <button
+                className="FormVisibility"
+                onClick={() => setIsFormVisible(!isFormVisible)}
+            >
+                {isFormVisible
+                    ? "Masquer le formulaire"
+                    : "Création un nouveau livre à lire"}
+            </button>
+
+            {/* Formulaire pour créer un nouveau livre à acheter */}
+            {isFormVisible && (
+                <div>
+                    <form className="FormulaireRead">
+                        <label>Title :</label>
+                        <input
+                            type="text"
+                            name="title"
+                            value={newBook.title}
+                            onChange={handleInputChange}
+                        />
+                        <label>Auteur(e)(s) :</label>
+                        <input
+                            type="text"
+                            name="author"
+                            value={newBook.author}
+                            onChange={handleInputChange}
+                        />
+                        <label>Prix :</label>
+                        <input
+                            type="text"
+                            name="prix"
+                            value={newBook.prix}
+                            onChange={handleInputChange}
+                        />
+                        <label>Lien pour acheter le livre :</label>
+                        <input
+                            type="text"
+                            name="buyLink"
+                            value={newBook.buyLink}
+                            onChange={handleInputChange}
+                        />
+                        <label>Image :</label>
+                        <input type="file" onChange={handleImageChange} />
+                        <button type="button" onClick={handleAddBook}>
+                            ➕ Ajouter
+                        </button>
+                    </form>
+                </div>
+            )}
 
             <div className="ContainerRead">
                 {bookToReadList && bookToReadList.length > 0 ? (
@@ -166,55 +219,7 @@ const BookToReadList = () => {
                     <p>Aucun livre à lire pour le moment.</p>
                 )}
             </div>
-
-            {/* Formulaire pour créer un nouveau livre à acheter */}
-            <h2>Créer un nouveau livre à lire</h2>
-            <form className="FormulaireRead">
-                <label>
-                    <strong>Title :</strong>
-                </label>
-                <input
-                    type="text"
-                    name="title"
-                    value={newBook.title}
-                    onChange={handleInputChange}
-                />
-                <label>
-                    <strong>Auteur(e)(s) :</strong>
-                </label>
-                <input
-                    type="text"
-                    name="author"
-                    value={newBook.author}
-                    onChange={handleInputChange}
-                />
-                <label>
-                    <strong>Prix :</strong>
-                </label>
-                <input
-                    type="text"
-                    name="prix"
-                    value={newBook.prix}
-                    onChange={handleInputChange}
-                />
-                <label>
-                    <strong>Lien pour acheter le livre :</strong>
-                </label>
-                <input
-                    type="text"
-                    name="buyLink"
-                    value={newBook.buyLink}
-                    onChange={handleInputChange}
-                />
-                <label>
-                    <strong>Image :</strong>
-                </label>
-                <input type="file" onChange={handleImageChange} />
-                <button type="button" onClick={handleAddBook}>
-                    ➕ Ajouter
-                </button>
-            </form>
-        </div>
+        </section>
     );
 };
 
