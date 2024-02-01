@@ -40,20 +40,20 @@ button {
 
 /* css pour l'ensemble du code qui concerne titre et auteur afin de les avoir un a coté de l autre par 3  */
 .Container {
-  display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    flex-direction: row;
   /* display: flex;
   flex-wrap: wrap;
   gap: 1rem;
   justify-content: center; Centre les éléments horizontalement */
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 1rem;
 }
 
 /* css pour l'image */
 .Images {
-  /* overflow: hidden; */
-  text-align: center; /* Ajustez selon vos préférences */
+  display: flex;
+  justify-content: center; 
 }
 
 /* Css pour le {book.imageUrl} */
@@ -63,6 +63,7 @@ button {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.71); 
   transform: scale(0.7); 
   border: 5px solid black;
+  align-items: center;
 }
 
 /* css pour le titre et l auteur */
@@ -75,12 +76,13 @@ button {
 
 /* classe spcéciale pour les livres */
 .Livre {
-  height: auto;
+  display: grid;
+  /* height: auto; */
   width: calc(30% - 1px); /* La largeur de chaque élément avec une marge de 5px de chaque côté */
-  margin: 5px; /* Espacement entre les éléments */
   border-radius: 10px; /* Coins arrondis */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.71); /* Ombre légère */
-  box-sizing: border-box; /* Inclut les bordures et les marges dans le calcul de la largeur */
+  justify-content: space-between;
+  /* box-sizing: border-box; Inclut les bordures et les marges dans le calcul de la largeur */
 }
 
 
