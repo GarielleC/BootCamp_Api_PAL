@@ -51,9 +51,7 @@
     padding: 0.1rem;
   }
 
-  button .DeleteButtonBuy {
-    align-self: flex-end; /* Aligne à droite */
-  }
+
 
   /* Css pour le formulaire */
 .FormulaireBuy {

@@ -41,8 +41,13 @@ button {
 /* css pour l'ensemble du code qui concerne titre et auteur afin de les avoir un a coté de l autre par 3  */
 .Container {
   display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-direction: row;
+  /* display: flex;
   flex-wrap: wrap;
-  justify-content: center; /* Centre les éléments horizontalement */
+  gap: 1rem;
+  justify-content: center; Centre les éléments horizontalement */
 }
 
 /* css pour l'image */
@@ -53,8 +58,7 @@ button {
 
 /* Css pour le {book.imageUrl} */
 .Images img {
-  max-width:80%;
-  /* max-width: 100%;*/
+  max-width: 100%;
   border-radius: 10px; 
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.71); 
   transform: scale(0.7); 

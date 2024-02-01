@@ -24,7 +24,7 @@ const authController = {
                 pays: authData.pays,
                 ville: authData.ville,
                 genre: authData.genre,
-                password: hashedPassword, 
+                hashedPassword: hashedPassword, 
             };
     
             // Envoi des données validées et hashées à la DB

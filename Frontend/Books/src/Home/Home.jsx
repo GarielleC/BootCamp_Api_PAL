@@ -4,6 +4,7 @@
 import React from 'react';
 import ImageALire from '../Logos/CharlieStory.png';
 import FondLivres from '../Logos/fond.jpg';
+import '../Css/Normalize.css';
 import '../Css/Home.css';
 
 
@@ -13,11 +14,11 @@ const Home = () => {
    
 
     return (
-        <section className='Home'>
+        <section className="Home">
             <div>
-                <div className="FondHome">
+                {/* <div className="FondHome">
                     <img className="FondLivres" src={FondLivres} alt="Fond livres" />
-                </div>
+                </div> */}
                 <h2>Bienvenue sur ReadEase</h2>
 
                 <h3>ReadEase - L'Art de Simplifier Votre Monde Livresque</h3>
@@ -36,19 +37,17 @@ const Home = () => {
                     <p>Ajoutez instantanément les livres qui vous captivent à votre liste d'achats en un simple clic. Gardez une trace organisée de toutes les œuvres qui vous intriguent et que vous avez l'intention d'acquérir dans le futur.</p>
             </div>
 
-            <div className='Lire'>
-                <div className='ImageDroit'>
+            <div className="Lire">
+                <div className="ImageWrapper">
                     <img className="ImageALire" src={ImageALire} alt="Image A Lire" />
-                    <p class="copyright">&#169; Illustratrice: Carez Gabrielle</p>
+                    <p className="copyright">&#169; Illustratrice: Carez Gabrielle</p>
                 </div>
-            <div className="TexteALire">
-                <h4>📖 Livres à Lire :</h4>
+                <div className="TexteALire">
+                    <h4>📖 Livres à Lire :</h4>
                     <p>Plongez dans vos prochaines aventures littéraires en toute planification.</p>
-                    
                     <p>Ajoutez les livres qui vous font rêver à votre liste de lecture.</p> 
-                    
                     <p>Une fois lus, cochez-les et regardez-les glisser avec satisfaction dans votre bibliothèque personnelle.</p>
-            </div>
+                </div>
             </div>
 
             <div className='Biblio'>
