@@ -119,17 +119,19 @@ const BookToReadList = () => {
     return (
         <section>
             <a href="/"> ⬅️ Retour</a>
-            <h1>
+            <div className="big_title">
                 <img
                     className="LivreOuvertLogoRead"
                     src={LivreOuvertLogoRead}
                     alt="Logo Livre Ouvert"
                 />
-                Liste de livres à lire
-            </h1>
+                <h1>Liste de livres à lire</h1>
+            </div>
 
             {/* Affiche le total des livres à lire */}
-            <h2>Total des livres à parcourir : {calculateTotalBooks()}</h2>
+            <h2>Total des livres à parcourir : 
+            <span class="number_red">{calculateTotalBooks()}</span>
+            </h2>
 
             {/* Bouton pour afficher ou masquer le formulaire */}
             <button

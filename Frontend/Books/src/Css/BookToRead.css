@@ -5,6 +5,13 @@ section {
 h2 {
     margin-top: 1rem;
     margin-bottom: 1rem;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.number_red {
+    color: rgb(255, 0, 123);
+    margin: 0.5rem;
 }
 
 /* Css pour le formulaire */
@@ -92,10 +99,16 @@ button:active {
     min-height: 60px;
     font-size: 15px;
     margin-top: 0.5rem;
+    margin-bottom: 0.2rem;
+    color: #ffffff;
 }
 
 .TitreRead h3 {
     font-weight: bold;
+}
+
+.TitreRead p {
+    margin-top: 1rem;
 }
 
 /* classe spcéciale pour les livres */
@@ -103,10 +116,14 @@ button:active {
     display: flex;
     border-radius: 10px; /* Coins arrondis */
     padding: 0;
+    margin-top: 0.3rem;
+    margin-bottom: 0.2rem;
+    text-align: center;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.71); /* Ombre légère */
     justify-content: space-between;
     flex-direction: column;
     width: 100%;
+    background-color: black;
 }
 
 .LivreRead__img {
@@ -125,9 +142,23 @@ button:active {
 
 /* Logo livre à coté de bibliothèque */
 .LivreOuvertLogoRead {
-    width: 2rem;
-    height: 2rem;
-    margin: 0.5em;
+    width: 5%;
+    gap: 1rem;
+}
+.big_title {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+    /* text-align: center; */
+    flex-wrap: nowrap;
+    justify-content: center;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+.big_title h1 {
+    font-size: 30px;
+    font-weight: bold;
 }
 
 .checkbox-container {
@@ -136,13 +167,10 @@ button:active {
     align-items: center;
     margin: 0.5rem;
     justify-content: space-between;
+    color: #ffffff;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-
-/*.checkbox {
-  /* margin-left: auto; */
-/* Déplace la classe "checkbox" à droite */
-/* margin-bottom: 0.5rem;
-} */
 
 .checkbox input {
     margin-right: 0.5em; /* Ajouter une marge à droite du checkbox */
@@ -157,29 +185,3 @@ button:active {
     border: 2px solid #882984;
     background-color: #a430a0;
 }
-
-/* Code a revoir pour que le checkbox soit en face du boutton poubelle
-
-.checkbox-container {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  align-items: center; /* Ajout de cette ligne pour centrer les éléments verticalement */
-/* margin: 1rem;
-}
-
-.checkbox {
-  align-self: flex-start;
-}
-
-.checkbox input {
-  margin-right: 0.5em;
-}
-
-.checkbox-label {
-  margin-left: 0.5em;
-}
-
-.DeleteButton {
-  align-self: flex-end;
-} */

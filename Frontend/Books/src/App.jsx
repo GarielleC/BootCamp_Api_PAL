@@ -2,7 +2,7 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import Navbar from "./Router/navbar";
 import "./Css/Normalize.css";
-// import './App.css'
+import "./App.css";
 
 function App() {
     return (

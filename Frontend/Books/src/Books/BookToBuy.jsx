@@ -133,7 +133,7 @@ const BookToBuyList = () => {
   };  
  
   return (
-    <div>
+    <section>
       <a href='/'> ⬅️ Retour</a>
       <h1><img className="LivreFermeLogo" src={LivreFermeLogo} alt="Logo Livre Fermé" />Liste de livres à acheter</h1>
 
@@ -190,7 +190,7 @@ const BookToBuyList = () => {
         <button type="button" onClick={handleCreateBook}>Ajouter</button>
         <button type="reset" onClick={resetForm}>Réinitialiser</button>
       </form>
-    </div>
+    </section>
   );
 };
 
