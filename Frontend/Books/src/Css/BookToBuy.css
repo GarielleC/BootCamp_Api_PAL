@@ -132,11 +132,11 @@ button:active {
 }
 .Informations a {
     font-size: 10px;
-    /* overflow: hidden; */
+    overflow: hidden;
     width: 100%;
     margin-top: 0.5rem;
-    text-align: right;
 }
+
 .Informations .prix-rouge {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: red;
