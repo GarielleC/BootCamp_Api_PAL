@@ -70,7 +70,6 @@ button:active {
     grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
     margin-top: 1rem;
-    /* width: 100%; */
 }
 
 /* css pour l'image */

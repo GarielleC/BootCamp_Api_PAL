@@ -119,6 +119,7 @@ const BookToReadList = () => {
     return (
         <section>
             <a href="/"> ⬅️ Retour</a>
+            
             <div className="big_title">
                 <img
                     className="LivreOuvertLogoRead"
@@ -129,8 +130,9 @@ const BookToReadList = () => {
             </div>
 
             {/* Affiche le total des livres à lire */}
-            <h2>Total des livres à parcourir : 
-            <span class="number_red">{calculateTotalBooks()}</span>
+            <h2>
+                Total des livres à parcourir :
+                <span class="number_red">{calculateTotalBooks()}</span>
             </h2>
 
             {/* Bouton pour afficher ou masquer le formulaire */}
@@ -140,7 +142,7 @@ const BookToReadList = () => {
             >
                 {isFormVisible
                     ? "Masquer le formulaire"
-                    : "Création un nouveau livre à lire"}
+                    : "Création d'un nouveau livre à lire"}
             </button>
 
             {/* Formulaire pour créer un nouveau livre à acheter */}
