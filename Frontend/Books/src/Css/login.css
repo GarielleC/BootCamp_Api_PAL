@@ -1,0 +1,78 @@
+/* importations de style font */
+@import url("https://fonts.googleapis.com/css2?family=Courgette&family=Dancing+Script&family=Gowun+Batang&family=Montserrat+Alternates&family=Protest+Riot&family=Satisfy&family=Vollkorn&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Courgette&family=Dancing+Script&family=Gowun+Batang&family=Montserrat+Alternates:wght@400;700&family=Protest+Riot&family=Satisfy&family=Vollkorn&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Courgette&family=Dancing+Script:wght@400;700&family=Gowun+Batang&family=Montserrat+Alternates:wght@400;700&family=Protest+Riot&family=Satisfy&family=Vollkorn&display=swap");
+/* font-family: "Protest Riot", sans-serif; pour titre
+font-family: 'Gowun Batang', serif;
+font-family: 'Dancing Script', cursive; pour titre
+font-family: 'Satisfy', cursive; pour titre si jamais mais pas texte
+font-family: 'Vollkorn', serif; 
+font-family: 'Montserrat Alternates', sans-serif;
+font-family: 'Courgette', cursive;*/
+
+.log {
+    font-family: "Montserrat Alternates", sans-serif;
+    font-weight: bold;
+    gap: 1rem;
+    margin: 1rem;
+    margin-top: 4rem;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.71);
+    border-radius: 10px; /* Coins arrondis */
+}
+
+.logout label {
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.logout input {
+    display: flex;
+    padding: 5px;
+    border: 1px solid #a430a0;
+    border-radius: 5px;
+    width: -webkit-fill-available;
+    background-color: #f5dbf6;
+    margin: 0.3rem;
+}
+.logout {
+    margin: 2rem;
+}
+.log_register button {
+    display: grid;
+    border: 2px solid #8f528d;
+    background-color: #a430a0;
+    margin: 1rem;
+    padding: 0;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 0.5rem;
+    font-family: "Montserrat Alternates", sans-serif;
+}
+
+.log_register {
+    display: flex;
+    justify-content: space-between; /* Pour espacer les éléments */
+    flex-direction: row;
+    align-items: center;
+    margin: 1rem;
+}
+
+.connexion {
+    align-self: flex-end; /* Aligner le bouton de suppression à gauche */
+    color: white;
+}
+.register {
+    color: white;
+}
+
+.log_register button:hover {
+    border: 2px solid #c5ace1;
+    background-color: #ddcdf0;
+    color: black;
+}
