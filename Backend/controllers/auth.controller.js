@@ -47,7 +47,7 @@ const authController = {
 
     login: async (req, res, next) => {
         try {
-            const { login, password } = req.body;
+            const { login, hashedPassword } = req.body;
 
             // Vérification de l'existence de l'utilisateur via son login
             const user = await authService.exist(login);
@@ -70,7 +70,7 @@ const authController = {
             }
 
             // Vérification du password fourni par l'utilisateur avec le password hashé dans la DB
-            const passwordMatch = await bcrypt.compare(password, user.hashedPassword);
+            const passwordMatch = await bcrypt.compare(hashedPassword, user.hashedPassword);
             if (!passwordMatch) {
                 // Si les mots de passe ne correspondent pas, renvoi une réponse 401 (Unauthorized)
                 return res.status(401).json({ message: 'Mot de passe incorrect' })

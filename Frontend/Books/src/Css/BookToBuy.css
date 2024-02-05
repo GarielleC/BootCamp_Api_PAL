@@ -27,7 +27,7 @@ h2 {
 .RetourButton button:active {
     border: 2px solid #c5ace1;
     background-color: #ddcdf0;
-    color: black;
+    color: #1a1919;
 }
 .RetourButton {
     padding: 1rem;
@@ -40,7 +40,7 @@ h2 {
     color: white;
 }
 .BackBuy a:hover {
-    color: black;
+    color: #1a1919;
 }
 
 .RetourButton button:hover {
@@ -126,7 +126,7 @@ h2 {
     justify-content: space-between;
     flex-direction: column;
     width: 100%;
-    background-color: black;
+    background-color: #1a1919;
 }
 
 .LivreBuy__img {
@@ -210,4 +210,41 @@ h2 {
     flex-direction: row;
     align-items: center;
     margin: 1rem;
+}
+
+@media screen and (max-width: 600px) {
+    /* Styles spécifiques pour les écrans de 600 pixels de largeur et moins */
+    section {
+        margin: 0.5rem;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    .LivreFermeLogo {
+        width: 7%;
+    }
+
+    .big_title_buy h1 {
+        font-size: 24px;
+    }
+
+    .ContainerBuy {
+        grid-template-columns: 1fr;
+    }
+
+    /* Styles pour les boutons dans le media query */
+    .RetourButton button {
+        margin: 0.5rem; /* Ajoutez d'autres styles au besoin */
+    }
+
+    .BackBuy a {
+        gap: 0.5rem; /* Ajoutez d'autres styles au besoin */
+    }
+
+    .RetourButton button:hover {
+        border: 2px solid #c5ace1;
+        background-color: #ddcdf0;
+    }
 }
