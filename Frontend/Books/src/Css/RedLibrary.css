@@ -17,12 +17,13 @@ h2 {
 /* css pour le bouton retour */
 button {
     display: grid;
-    border: 2px solid #fae1f9;
-    background-color: #e8b9e7;
+    border: 2px solid #8f528d;
+    background-color: #a430a0;
     margin: 1rem;
     padding: 0;
     font-weight: bold;
     border-radius: 10px;
+    padding: 0.5rem;
 }
 
 button:active {
@@ -35,7 +36,6 @@ button:active {
 .Back a {
     display: flex;
     align-items: center;
-    margin: 0.5rem;
     text-decoration: none;
 }
 
@@ -44,7 +44,7 @@ button:active {
     max-width: 200px;
 }
 .Back p {
-    color: #633d80;
+    color: white;
     margin-left: 0.5rem;
     margin-right: 0.5rem;
 }
@@ -166,4 +166,20 @@ button:active {
     flex-direction: row;
     align-items: center;
     margin: 1rem;
+}
+
+/* Media query pour les téléphones */
+@media only screen and (max-width: 600px) {
+    /* Ajoutez ici les styles spécifiques pour les téléphones */
+    .big_title_biblio h1 {
+        font-size: 24px;
+    }
+
+    .BiblioLogoPage {
+        width: 7%;
+    }
+
+    .Container {
+        grid-template-columns: 1fr;
+    }
 }

@@ -55,15 +55,15 @@ const BookToReadList = () => {
     // Fonction pour la mise à jour du livre
     const handleUpdateStatus = async (bookID) => {
         try {
-            // Ajouter immédiatement le livre à la liste des cochés
+            // Ajout immédiat du livre à la liste des cochés
             setCheckedBooks((prevCheckedBooks) => [...prevCheckedBooks, bookID]);
 
-            // Afficher une boîte de dialogue de confirmation
+            // Boite de dialogue de vérification
             const isConfirmed = window.confirm(
-                "Êtes-vous sûr de vouloir marquer ce livre comme lu ?",
+                "Êtes-vous sûr de vouloir mettre ce livre dans votre bibliothèque ?",
             );
 
-            // Vérifier si l'utilisateur a confirmé
+            // Vérification si l'utilisateur a confirmé
             if (isConfirmed) {
                 // Mettre à jour le statut
                 await updateBookToReadStatut(bookID);
@@ -71,7 +71,7 @@ const BookToReadList = () => {
                 // Rafraîchir la liste après la mise à jour du statut
                 getBookToRead();
             } else {
-                // Si l'utilisateur annule, décocher la case à cocher en mettant à jour l'état local
+                // Si l'utilisateur annule, dla case se décoche automatiquement
                 setCheckedBooks((prevCheckedBooks) =>
                     prevCheckedBooks.filter((id) => id !== bookID),
                 );
@@ -79,7 +79,7 @@ const BookToReadList = () => {
         } catch (error) {
             console.error("Erreur lors de la mise à jour du statut :", error);
 
-            // Si une erreur se produit, décocher la case à cocher en mettant à jour l'état local
+            // Si une erreur se produit, la case se décoche automatiquement
             setCheckedBooks((prevCheckedBooks) =>
                 prevCheckedBooks.filter((id) => id !== bookID),
             );

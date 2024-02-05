@@ -14,19 +14,42 @@ h2 {
     margin: 0.5rem;
 }
 
-button {
-    border: 2px solid #882984;
+.RetourButton button {
+    display: grid;
+    border: 2px solid #8f528d;
     background-color: #a430a0;
-    margin-top: 1.5rem;
-    margin-bottom: 1rem;
-    color: white;
-    font-size: 15px;
+    margin: 1rem;
+    padding: 0;
     font-weight: bold;
+    border-radius: 10px;
+    padding: 0.5rem;
 }
-button:active {
-    border: 2px solid #9274b5;
-    background-color: #cdb6e7;
+.RetourButton button:active {
+    border: 2px solid #c5ace1;
+    background-color: #ddcdf0;
     color: black;
+}
+.RetourButton {
+    padding: 1rem;
+}
+.BackBuy a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 1rem;
+    color: white;
+}
+.BackBuy a:hover {
+    color: black;
+}
+
+.RetourButton button:hover {
+    border: 2px solid #c5ace1;
+    background-color: #ddcdf0;
+}
+.BackBuy {
+    display: flex;
+    max-width: 200px;
 }
 
 /* Css pour le formulaire */
