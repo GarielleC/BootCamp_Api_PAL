@@ -155,13 +155,13 @@ const ReadLibraryList = () => {
             </div>
 
             {/* Affiche le total des livres à lire */}
-            <h2>
+            <h2 className="Tot">
                 Total des livres lus :
                 <span class="number_lib">{calculateTotalBooks()}</span>
             </h2>
 
             {/* Bouton pour afficher ou masquer le formulaire */}
-            <button onClick={() => setIsFormVisible(!isFormVisible)}>
+            <button className="visibility" onClick={() => setIsFormVisible(!isFormVisible)}>
                 {isFormVisible
                     ? "Masquer le formulaire"
                     : "Création d'un nouveau livre dans la bibliothèque"}

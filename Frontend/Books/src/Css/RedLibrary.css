@@ -14,11 +14,12 @@ section {
     margin: 1rem;
 }
 
-h2 {
+.Tot h2 {
     margin-top: 1rem;
     margin-bottom: 1rem;
     font-size: 20px;
     font-weight: bold;
+    font-family: "Montserrat Alternates", sans-serif;
 }
 
 .number_lib {
@@ -45,32 +46,53 @@ button:active {
 }
 
 /* Style du lien à l'intérieur du bouton */
-.Back a {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-}
-
 .Back {
     display: flex;
     max-width: 200px;
 }
-.Back p {
+
+.Back a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 1rem;
     color: white;
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-}
-.Back p:active {
-    color: #dec6f1;
 }
 
 .Retour {
     padding: 1rem;
 }
 
+.Retour {
+    padding: 1rem;
+}
+
+.Retour button {
+    display: grid;
+    border: 2px solid #8f528d;
+    background-color: #a430a0;
+    margin: 1rem;
+    padding: 0;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 0.5rem;
+    font-family: "Montserrat Alternates", sans-serif;
+}
+
+.Retour button:active {
+    border: 2px solid #c5ace1;
+    background-color: #ddcdf0;
+    color: black;
+}
+
+.Retour button:hover {
+    border: 2px solid #c5ace1;
+    background-color: #ddcdf0;
+}
+
 /* Css pour le formulaire */
 .Formulaire {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: "Montserrat Alternates", sans-serif;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.469);
     display: flex;
@@ -112,7 +134,7 @@ button:active {
 .Titre {
     padding: 5px;
     text-align: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: "Montserrat Alternates", sans-serif;
     min-height: 60px;
     font-size: 15px;
     margin-top: 0.5rem;
@@ -163,7 +185,7 @@ button:active {
 }
 
 .big_title_biblio h1 {
-    font-size: 30px;
+    font-size: 50px;
     font-weight: bold;
     font-family: "Dancing Script", cursive;
     color: #7daedc;
@@ -176,10 +198,45 @@ button:active {
 
 .BouttonCreation {
     display: flex;
-    justify-content: space-between;
     flex-direction: row;
     align-items: center;
-    margin: 1rem;
+    justify-content: space-between;
+}
+
+.BouttonCreation button {
+    display: grid;
+    border: 2px solid #8f528d;
+    background-color: #a430a0;
+    margin: 2rem;
+    font-weight: bolder;
+    border-radius: 10px;
+    padding: 0.5rem;
+    font-family: "Montserrat Alternates", sans-serif;
+    color: white;
+}
+.BouttonCreation button:hover {
+    border: 2px solid #c5ace1;
+    background-color: #ddcdf0;
+    color: black;
+}
+
+/* Css pour le formulaire */
+.visibility {
+    isplay: grid;
+    border: 2px solid #8f528d;
+    background-color: #a430a0;
+    margin: 2rem;
+    font-weight: bolder;
+    border-radius: 10px;
+    padding: 0.5rem;
+    font-family: "Montserrat Alternates", sans-serif;
+    color: white;
+}
+
+.visibility:hover {
+    border: 2px solid #c5ace1;
+    background-color: #ddcdf0;
+    color: black;
 }
 
 /* Media query pour les téléphones */
