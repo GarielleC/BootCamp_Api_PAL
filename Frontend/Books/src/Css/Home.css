@@ -1,33 +1,47 @@
+/* importations de style font */
+@import url("https://fonts.googleapis.com/css2?family=Courgette&family=Dancing+Script&family=Gowun+Batang&family=Montserrat+Alternates&family=Protest+Riot&family=Satisfy&family=Vollkorn&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Courgette&family=Dancing+Script&family=Gowun+Batang&family=Montserrat+Alternates:wght@400;700&family=Protest+Riot&family=Satisfy&family=Vollkorn&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Courgette&family=Dancing+Script:wght@400;700&family=Gowun+Batang&family=Montserrat+Alternates:wght@400;700&family=Protest+Riot&family=Satisfy&family=Vollkorn&display=swap");
+/* font-family: "Protest Riot", sans-serif; pour titre
+font-family: 'Gowun Batang', serif;
+font-family: 'Dancing Script', cursive; pour titre
+font-family: 'Satisfy', cursive; pour titre si jamais mais pas texte
+font-family: 'Vollkorn', serif; 
+font-family: 'Montserrat Alternates', sans-serif;
+font-family: 'Courgette', cursive;*/
+
 .Home {
     margin: 1rem;
 }
 .first {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 20px;
 }
 
 .first p {
     margin-top: 1rem;
     margin-bottom: 1rem;
+    font-family: "Montserrat Alternates", sans-serif;
 }
 .first h3 {
     font-weight: bold;
-    color: #a430a0;
-    font-size: 25px;
+    color: #7daedc;
+    font-size: 2rem;
     margin-bottom: 2rem;
+    font-family: "Dancing Script", cursive;
 }
 li {
     margin: 1rem;
-    color: #a430a0;
+    color: #7daedc;
     list-style-type: disclosure-closed;
 }
 
 .first h2 {
     margin-top: 3rem;
     margin-bottom: 6rem;
-    font-size: 30px;
-    font-weight: bold;
+    font-size: 3rem;
+    font-weight: bolder;
     text-align: center;
+    font-family: "Dancing Script", cursive;
 }
 
 .Lire {
@@ -60,63 +74,73 @@ li {
 
 .TexteALire {
     text-align: center;
-    font-size: 20px;
     margin-top: 2.5rem;
     margin-bottom: 2.5rem;
-}
-.TexteALire p {
-    margin-top: 1rem;
+    font-size: 20px;
 }
 
-.Lire h4 {
+.TexteALire p {
+    margin-top: 1rem;
+    font-family: "Montserrat Alternates", sans-serif;
+}
+
+.TexteALire h4 {
     margin: 1rem;
     font-weight: bold;
     color: #cf80d2;
+    font-family: "Dancing Script", cursive;
+    font-size: 1.6rem;
 }
 
 .copyright {
     width: fit-content;
+    font-family: "Montserrat Alternates", sans-serif;
 }
 
 .Fonctionnalités h3 {
     font-weight: bold;
-    color: #a430a0;
-    font-size: 25px;
+    color: #7daedc;
+    font-size: 2rem;
     margin-bottom: 2rem;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: "Dancing Script", cursive;
     margin-top: 3rem;
 }
 
 .Acheter {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: "Montserrat Alternates", sans-serif;
     font-size: 20px;
 }
 .Acheter h4 {
     margin: 1rem;
-    font-weight: bold;
+    font-weight: bolder;
     color: #cf80d2;
+    font-family: "Dancing Script", cursive;
+    font-size: 1.6rem;
 }
 
 .Biblio {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: "Montserrat Alternates", sans-serif;
     font-size: 20px;
 }
 .Biblio h4 {
     margin: 1rem;
     font-weight: bold;
     color: #cf80d2;
+    font-family: "Dancing Script", cursive;
+    font-size: 1.6rem;
 }
 
 .Conclusion {
     margin-top: 5rem;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: "Montserrat Alternates", sans-serif;
     font-size: 20px;
 }
 
 .Conclusion h3 {
     font-weight: bold;
-    color: #a430a0;
-    font-size: 25px;
+    color: #7daedc;
+    font-family: "Dancing Script", cursive;
+    font-size: 2rem;
     margin-bottom: 2rem;
 }
 
