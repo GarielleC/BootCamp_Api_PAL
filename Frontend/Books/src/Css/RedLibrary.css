@@ -1,3 +1,15 @@
+/* importations de style font */
+@import url("https://fonts.googleapis.com/css2?family=Courgette&family=Dancing+Script&family=Gowun+Batang&family=Montserrat+Alternates&family=Protest+Riot&family=Satisfy&family=Vollkorn&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Courgette&family=Dancing+Script&family=Gowun+Batang&family=Montserrat+Alternates:wght@400;700&family=Protest+Riot&family=Satisfy&family=Vollkorn&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Courgette&family=Dancing+Script:wght@400;700&family=Gowun+Batang&family=Montserrat+Alternates:wght@400;700&family=Protest+Riot&family=Satisfy&family=Vollkorn&display=swap");
+/* font-family: "Protest Riot", sans-serif; pour titre
+font-family: 'Gowun Batang', serif;
+font-family: 'Dancing Script', cursive; pour titre
+font-family: 'Satisfy', cursive; pour titre si jamais mais pas texte
+font-family: 'Vollkorn', serif; 
+font-family: 'Montserrat Alternates', sans-serif;
+font-family: 'Courgette', cursive;*/
+
 section {
     margin: 1rem;
 }
@@ -129,7 +141,7 @@ button:active {
     justify-content: space-between;
     flex-direction: column;
     width: 100%;
-    background-color: black;
+    background-color: #1a1919;
 }
 
 /* css pour l'image */
@@ -153,6 +165,8 @@ button:active {
 .big_title_biblio h1 {
     font-size: 30px;
     font-weight: bold;
+    font-family: "Dancing Script", cursive;
+    color: #7daedc;
 }
 
 .BiblioLogoPage {

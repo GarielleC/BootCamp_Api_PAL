@@ -223,11 +223,11 @@ h2 {
     flex-wrap: nowrap;
     justify-content: center;
     margin-top: 3rem;
-    margin-bottom: 3rem;
+    margin-bottom: 6rem;
 }
 
 .big_title_buy h1 {
-    font-size: 2rem;
+    font-size: 50px;
     font-weight: bold;
     color: #7daedc;
     /* font-family: 'Gowun Batang', serif; */

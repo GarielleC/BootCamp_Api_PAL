@@ -166,7 +166,7 @@ const BookToReadList = () => {
             </div>
 
             {/* Affiche le total des livres à lire */}
-            <h2>
+            <h2 className="Total">
                 Total des livres à parcourir :
                 <span class="number_red">{calculateTotalBooks()}</span>
             </h2>
@@ -215,7 +215,7 @@ const BookToReadList = () => {
                         />
                         <label>Image :</label>
                         <input type="file" onChange={handleImageChange} />
-                        <button type="button" onClick={handleAddBook}>
+                        <button className="ajout" type="button" onClick={handleAddBook}>
                             ➕ Ajouter
                         </button>
                     </form>

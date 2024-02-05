@@ -1,12 +1,25 @@
+/* importations de style font */
+@import url("https://fonts.googleapis.com/css2?family=Courgette&family=Dancing+Script&family=Gowun+Batang&family=Montserrat+Alternates&family=Protest+Riot&family=Satisfy&family=Vollkorn&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Courgette&family=Dancing+Script&family=Gowun+Batang&family=Montserrat+Alternates:wght@400;700&family=Protest+Riot&family=Satisfy&family=Vollkorn&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Courgette&family=Dancing+Script:wght@400;700&family=Gowun+Batang&family=Montserrat+Alternates:wght@400;700&family=Protest+Riot&family=Satisfy&family=Vollkorn&display=swap");
+/* font-family: "Protest Riot", sans-serif; pour titre
+font-family: 'Gowun Batang', serif;
+font-family: 'Dancing Script', cursive; pour titre
+font-family: 'Satisfy', cursive; pour titre si jamais mais pas texte
+font-family: 'Vollkorn', serif; 
+font-family: 'Montserrat Alternates', sans-serif;
+font-family: 'Courgette', cursive;*/
+
 section {
     margin: 1rem;
 }
 
-h2 {
+.Total h2 {
     margin-top: 1rem;
     margin-bottom: 1rem;
     font-size: 20px;
     font-weight: bold;
+    font-family: "Montserrat Alternates", sans-serif;
 }
 
 .number_red {
@@ -14,26 +27,53 @@ h2 {
     margin: 0.5rem;
 }
 
-/* Css pour le formulaire */
+/* Css pour le boutton de la page d accueil */
 
-button {
-    border: 2px solid #882984;
-    background-color: #a430a0;
-    margin-top: 1.5rem;
-    margin-bottom: 1rem;
-    color: white;
-    font-size: 15px;
-    font-weight: bold;
+.home_back {
+    display: flex;
+    max-width: 200px;
 }
 
-button:active {
-    border: 2px solid #9274b5;
-    background-color: #cdb6e7;
+.home_back a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 1rem;
+    color: white;
+}
+
+.home_back a:hover {
+    color: #1a1919;
+}
+
+.retour_home {
+    padding: 1rem;
+}
+.retour_home button {
+    display: grid;
+    border: 2px solid #8f528d;
+    background-color: #a430a0;
+    margin: 1rem;
+    padding: 0;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 0.5rem;
+    font-family: "Montserrat Alternates", sans-serif;
+}
+
+.retour_home button:active {
+    border: 2px solid #c5ace1;
+    background-color: #ddcdf0;
     color: black;
 }
 
+.retour_home button:hover {
+    border: 2px solid #c5ace1;
+    background-color: #ddcdf0;
+}
+
 .FormulaireRead {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: "Montserrat Alternates", sans-serif;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.469);
     display: flex;
@@ -45,7 +85,7 @@ button:active {
     margin-bottom: 2rem;
 }
 
-/* Ajouter une marge ou un espacement entre les labels et les inputs */
+/* Ajout d'un espacement entre les labels et les inputs */
 .FormulaireRead label {
     color: rgb(0, 0, 0);
     margin-left: 1rem;
@@ -94,7 +134,7 @@ button:active {
 .TitreRead {
     padding: 5px;
     text-align: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: "Montserrat Alternates", sans-serif;
     min-height: 60px;
     font-size: 15px;
     margin-top: 0.5rem;
@@ -122,7 +162,7 @@ button:active {
     justify-content: space-between;
     flex-direction: column;
     width: 100%;
-    background-color: black;
+    background-color: #1a1919;
 }
 
 .LivreRead__img {
@@ -144,6 +184,7 @@ button:active {
     width: 5%;
     gap: 1rem;
 }
+/* Titre */
 .big_title {
     display: flex;
     flex-direction: row;
@@ -153,13 +194,16 @@ button:active {
     flex-wrap: nowrap;
     justify-content: center;
     margin-top: 3rem;
-    margin-bottom: 3rem;
+    margin-bottom: 6rem;
 }
 .big_title h1 {
-    font-size: 30px;
+    font-size: 50px;
     font-weight: bold;
+    font-family: "Dancing Script", cursive;
+    color: #7daedc;
 }
 
+/* Css pour le bouton lu et delete */
 .checkbox-container {
     display: flex;
     flex-direction: row;
@@ -168,7 +212,7 @@ button:active {
     justify-content: space-between;
     color: #ffffff;
     font-weight: bold;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: "Montserrat Alternates", sans-serif;
 }
 
 .checkbox input {
@@ -177,6 +221,7 @@ button:active {
 
 .checkbox-label {
     margin-left: 0.5em; /* Ajouter une marge à gauche du label */
+    font-family: "Montserrat Alternates", sans-serif;
 }
 
 .DeleteButton {
@@ -185,44 +230,79 @@ button:active {
     background-color: #a430a0;
 }
 
-/* Css pour le boutton de la page d accueil */
-.retour_home {
-    padding: 1rem;
-}
-
-.home_back {
-    display: flex;
-    max-width: 200px;
-}
-
-.home_back p {
-    color: #633d80;
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-}
-
-.home_back p:active {
-    color: #dec6f1;
-}
-
-.home_back a {
-    display: flex;
-    align-items: center;
-    margin: 0.5rem;
-    text-decoration: none;
-}
-
-button {
-    border: 2px solid #fae1f9;
-    background-color: #e8b9e7;
-    margin: 1rem;
-    padding: 0;
-    font-weight: bold;
+/* Css formulaire button */
+.FormVisibility {
+    display: grid;
+    border: 2px solid #8f528d;
+    background-color: #a430a0;
+    margin: 2rem;
+    font-weight: bolder;
     border-radius: 10px;
     padding: 0.5rem;
+    font-family: "Montserrat Alternates", sans-serif;
+    color: white;
 }
-button:active {
-    border: 2px solid #9274b5;
-    background-color: #cdb6e7;
+
+.FormVisibility:hover {
+    border: 2px solid #c5ace1;
+    background-color: #ddcdf0;
     color: black;
+}
+
+.ajout {
+    display: grid;
+    border: 2px solid #8f528d;
+    background-color: #a430a0;
+    margin: 2rem;
+    font-weight: bolder;
+    border-radius: 10px;
+    padding: 0.5rem;
+    font-family: "Montserrat Alternates", sans-serif;
+    color: white;
+}
+
+.ajout:hover {
+    border: 2px solid #c5ace1;
+    background-color: #ddcdf0;
+    color: black;
+}
+
+@media screen and (max-width: 600px) {
+    /* Styles spécifiques pour les écrans de 600 pixels de largeur et moins */
+    section {
+        margin: 0.5rem;
+    }
+
+    .Total h2 {
+        font-size: 18px;
+    }
+
+    .LivreOuvertLogoReadPage {
+        width: 15%;
+    }
+
+    .big_title {
+        flex-direction: column;
+    }
+
+    .big_title h1 {
+        font-size: 40px;
+    }
+
+    .ContainerRead {
+        grid-template-columns: 1fr;
+    }
+
+    .retour_home button {
+        margin: 0.5rem;
+    }
+
+    .home_back a {
+        gap: 0.5rem; /* Ajoutez d'autres styles au besoin */
+    }
+
+    .retour_home button:hover {
+        border: 2px solid #c5ace1;
+        background-color: #ddcdf0;
+    }
 }
