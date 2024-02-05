@@ -49,25 +49,15 @@ nav li a:hover {
     width: 2rem;
 }
 
-
 /* Media Queries pour les écrans étroits (mobiles) */
 @media only screen and (max-width: 767px) {
-  nav ul {
-      flex-direction: column;
-      align-items: stretch;
-  }
+    nav ul {
+        flex-direction: column;
+        align-items: stretch;
+    }
 
-  nav li {
-      text-align: center;
-      width: 100%;
-  }
-
-  nav li a {
-      display: block;
-      padding: 1rem;
-  }
-
-  nav li a:hover {
-      padding: 1rem; /* ajustez selon vos besoins */
-  }
+    nav li {
+        text-align: center;
+        width: 100%;
+    }
 }

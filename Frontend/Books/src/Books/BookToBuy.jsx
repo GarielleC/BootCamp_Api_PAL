@@ -243,7 +243,7 @@ const BookToBuyList = () => {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
-                                        Acheter le livre
+                                       💸 Cliquez ici pour acheter le livre
                                     </a>
                                 </p>
                             </div>
@@ -252,7 +252,7 @@ const BookToBuyList = () => {
                                     className="Achat"
                                     onClick={() => handleUpdateStatus(book.id)}
                                 >
-                                    💸 Ajouter
+                                    ➕ Ajouter
                                 </button>
                                 <button
                                     className="DeleteButtonBuy"

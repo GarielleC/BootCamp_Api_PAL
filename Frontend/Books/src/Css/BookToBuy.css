@@ -1,3 +1,15 @@
+/* importations de style font */
+@import url("https://fonts.googleapis.com/css2?family=Courgette&family=Dancing+Script&family=Gowun+Batang&family=Montserrat+Alternates&family=Protest+Riot&family=Satisfy&family=Vollkorn&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Courgette&family=Dancing+Script&family=Gowun+Batang&family=Montserrat+Alternates:wght@400;700&family=Protest+Riot&family=Satisfy&family=Vollkorn&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Courgette&family=Dancing+Script:wght@400;700&family=Gowun+Batang&family=Montserrat+Alternates:wght@400;700&family=Protest+Riot&family=Satisfy&family=Vollkorn&display=swap");
+/* font-family: "Protest Riot", sans-serif; pour titre
+font-family: 'Gowun Batang', serif;
+font-family: 'Dancing Script', cursive; pour titre
+font-family: 'Satisfy', cursive; pour titre si jamais mais pas texte
+font-family: 'Vollkorn', serif; 
+font-family: 'Montserrat Alternates', sans-serif;
+font-family: 'Courgette', cursive;*/
+
 section {
     margin: 1rem;
 }
@@ -6,7 +18,8 @@ h2 {
     margin-top: 1rem;
     margin-bottom: 1rem;
     font-size: 20px;
-    font-weight: bold;
+    font-weight: bolder;
+    font-family: "Montserrat Alternates", sans-serif;
 }
 
 .number {
@@ -14,6 +27,7 @@ h2 {
     margin: 0.5rem;
 }
 
+/* Css button retour */
 .RetourButton button {
     display: grid;
     border: 2px solid #8f528d;
@@ -23,6 +37,7 @@ h2 {
     font-weight: bold;
     border-radius: 10px;
     padding: 0.5rem;
+    font-family: "Montserrat Alternates", sans-serif;
 }
 .RetourButton button:active {
     border: 2px solid #c5ace1;
@@ -54,7 +69,6 @@ h2 {
 
 /* Css pour le formulaire */
 .FormulaireBuy {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.469);
     display: flex;
@@ -69,7 +83,8 @@ h2 {
 .FormulaireBuy label {
     color: rgb(0, 0, 0);
     margin-left: 1rem;
-    font-weight: bold;
+    font-weight: bolder;
+    font-family: "Montserrat Alternates", sans-serif;
     margin-top: 1rem;
 }
 
@@ -96,13 +111,15 @@ h2 {
 .TitreBuy {
     padding: 5px;
     text-align: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    /* font-family: 'Vollkorn', serif;  */
+    /* font-family: 'Gowun Batang', serif; */
     min-height: 60px;
     font-size: 15px;
     margin-top: 0.5rem;
     margin-bottom: 0.2rem;
     color: #ffffff;
     overflow: hidden;
+    font-family: "Montserrat Alternates", sans-serif;
 }
 
 .TitreBuy h3 {
@@ -140,12 +157,13 @@ h2 {
     margin: 0.1em;
     padding: 0.1rem;
 }
+
 /* Informations Books */
 .Informations {
     width: 100%;
+    font-family: "Montserrat Alternates", sans-serif;
 }
 .Informations p {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
     display: flex;
     flex-direction: column;
@@ -154,18 +172,30 @@ h2 {
     text-align: initial;
 }
 .Informations a {
-    font-size: 10px;
+    font-size: 15px;
     overflow: hidden;
     width: 100%;
     margin-top: 0.5rem;
+    color: red;
 }
 
 .Informations .prix-rouge {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: red;
     margin: 0.5rem;
 }
 
+/* Button delete et ajout */
+.Button-container button {
+    display: grid;
+    border: 2px solid #8f528d;
+    background-color: #a430a0;
+    margin: 1rem;
+    padding: 0;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 0.5rem;
+    font-family: "Montserrat Alternates", sans-serif;
+}
 .Button-container {
     display: flex;
     justify-content: space-between; /* Pour espacer les éléments */
@@ -183,6 +213,7 @@ h2 {
     color: white;
 }
 
+/* css pour le titre */
 .big_title_buy {
     display: flex;
     flex-direction: row;
@@ -196,9 +227,14 @@ h2 {
 }
 
 .big_title_buy h1 {
-    font-size: 30px;
+    font-size: 2rem;
     font-weight: bold;
+    color: #7daedc;
+    /* font-family: 'Gowun Batang', serif; */
+    font-family: "Dancing Script", cursive;
 }
+
+/* css logo */
 .LivreFermeLogoBuy {
     width: 3%;
     gap: 1rem;
@@ -210,6 +246,27 @@ h2 {
     flex-direction: row;
     align-items: center;
     margin: 1rem;
+}
+.BouttonCrea button {
+    display: grid;
+    border: 2px solid #8f528d;
+    background-color: #a430a0;
+    margin: 1rem;
+    padding: 0;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 0.5rem;
+    font-family: "Montserrat Alternates", sans-serif;
+}
+.FormVis {
+    display: grid;
+    border: 2px solid #8f528d;
+    background-color: #a430a0;
+    margin: 2rem;
+    font-weight: bolder;
+    border-radius: 10px;
+    padding: 0.5rem;
+    font-family: "Montserrat Alternates", sans-serif;
 }
 
 @media screen and (max-width: 600px) {
