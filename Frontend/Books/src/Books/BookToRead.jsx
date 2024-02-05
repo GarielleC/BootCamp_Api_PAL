@@ -5,7 +5,7 @@ import {
     deleteBookToRead,
     addBookToRead,
 } from "../services/bookToRead.service";
-import LivreOuvertLogoRead from "../Logos/livreOuvert1.png";
+import LivreOuvertLogoReadPage from "../Logos/livreOuvert1.png";
 import Poubelle from "../Logos/Poubelle.png";
 import "../Css/BookToRead.css";
 
@@ -18,6 +18,9 @@ const BookToReadList = () => {
         buyLink: "",
         imageUrl: "",
     });
+
+    // État local pour la gestion de la case à cocher
+    const [checkedBooks, setCheckedBooks] = useState([]);
 
     const [isFormVisible, setIsFormVisible] = useState(false);
 
@@ -52,11 +55,34 @@ const BookToReadList = () => {
     // Fonction pour la mise à jour du livre
     const handleUpdateStatus = async (bookID) => {
         try {
-            await updateBookToReadStatut(bookID);
-            // Rafraîchir la liste après la mise à jour du statut
-            getBookToRead();
+            // Ajouter immédiatement le livre à la liste des cochés
+            setCheckedBooks((prevCheckedBooks) => [...prevCheckedBooks, bookID]);
+
+            // Afficher une boîte de dialogue de confirmation
+            const isConfirmed = window.confirm(
+                "Êtes-vous sûr de vouloir marquer ce livre comme lu ?",
+            );
+
+            // Vérifier si l'utilisateur a confirmé
+            if (isConfirmed) {
+                // Mettre à jour le statut
+                await updateBookToReadStatut(bookID);
+
+                // Rafraîchir la liste après la mise à jour du statut
+                getBookToRead();
+            } else {
+                // Si l'utilisateur annule, décocher la case à cocher en mettant à jour l'état local
+                setCheckedBooks((prevCheckedBooks) =>
+                    prevCheckedBooks.filter((id) => id !== bookID),
+                );
+            }
         } catch (error) {
             console.error("Erreur lors de la mise à jour du statut :", error);
+
+            // Si une erreur se produit, décocher la case à cocher en mettant à jour l'état local
+            setCheckedBooks((prevCheckedBooks) =>
+                prevCheckedBooks.filter((id) => id !== bookID),
+            );
         }
     };
 
@@ -129,11 +155,11 @@ const BookToReadList = () => {
                     </div>
                 </button>
             </div>
-            
+
             <div className="big_title">
                 <img
-                    className="LivreOuvertLogoRead"
-                    src={LivreOuvertLogoRead}
+                    className="LivreOuvertLogoReadPage"
+                    src={LivreOuvertLogoReadPage}
                     alt="Logo Livre Ouvert"
                 />
                 <h1>Liste de livres à lire</h1>
@@ -212,7 +238,9 @@ const BookToReadList = () => {
                                 <div className="checkbox">
                                     <input
                                         type="checkbox"
+                                        id={`checkbox-${book.id}`}
                                         onChange={() => handleUpdateStatus(book.id)}
+                                        checked={checkedBooks.includes(book.id)}
                                     />
                                     <label className="checkbox-label">Lu</label>
                                 </div>

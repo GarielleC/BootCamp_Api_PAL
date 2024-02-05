@@ -4,7 +4,7 @@ import {
     addReadLibrary,
     deleteReadLibrary,
 } from "../services/ReadLibrary.service";
-import BiblioLogo from "../Logos/biblio1.png";
+import BiblioLogoPage from "../Logos/biblio1.png";
 // import Poubelle from '../Logos/Poubelle.png';
 import "../Css/RedLibrary.css";
 
@@ -122,14 +122,13 @@ const ReadLibraryList = () => {
 
             // Réinitialiser le formulaire
             resetForm();
-
         } catch (error) {
             console.error("Error creating book:", error);
             // Message d'erreur lors de la création du livre
             alert("Erreur lors de la création du livre à acheter. Veuillez réessayer.");
         }
     };
-    
+
     // Fonction pour calculer le total des livres à lire
     const calculateTotalBooks = () => {
         return ReadLibraryList.length;
@@ -151,7 +150,7 @@ const ReadLibraryList = () => {
 
             {/* Titre de la page */}
             <div className="big_title_biblio">
-                <img className="BiblioLogo" src={BiblioLogo} alt="Logo Biblio" />
+                <img className="BiblioLogoPage" src={BiblioLogoPage} alt="Logo Biblio" />
                 <h1>Bibliothèque</h1>
             </div>
 
