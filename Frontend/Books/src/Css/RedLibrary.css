@@ -196,14 +196,14 @@ button:active {
     gap: 1rem;
 }
 
-.BouttonCreation {
+.BoutonCreation {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
 }
 
-.BouttonCreation button {
+.BoutonCreation button {
     display: grid;
     border: 2px solid #8f528d;
     background-color: #a430a0;
@@ -214,7 +214,7 @@ button:active {
     font-family: "Montserrat Alternates", sans-serif;
     color: white;
 }
-.BouttonCreation button:hover {
+.BoutonCreation button:hover {
     border: 2px solid #c5ace1;
     background-color: #ddcdf0;
     color: black;

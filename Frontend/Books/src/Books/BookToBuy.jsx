@@ -133,7 +133,7 @@ const BookToBuyList = () => {
 
     return (
         <section>
-            {/* Boutton pour retourner à l'accueil */}
+            {/* Bouton pour retourner à l'accueil */}
             <div className="RetourButton">
                 <button>
                     <div className="BackBuy">
@@ -203,8 +203,8 @@ const BookToBuyList = () => {
                         <label>Image :</label>
                         <input type="file" onChange={handleImageChange} />
 
-                        {/* Boutton qui permet d'ajouter le livre créer */}
-                        <div className="BouttonCrea">
+                        {/* Bouton qui permet d'ajouter le livre créer */}
+                        <div className="BoutonCrea">
                             <button type="button" onClick={handleCreateBook}>
                                 ➕ Ajouter
                             </button>

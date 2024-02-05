@@ -144,7 +144,7 @@ const BookToReadList = () => {
 
     return (
         <section>
-            {/* Boutton pour retourner à l'accueil */}
+            {/* Bouton pour retourner à l'accueil */}
             <div className="retour_home">
                 <button>
                     <div className="home_back">

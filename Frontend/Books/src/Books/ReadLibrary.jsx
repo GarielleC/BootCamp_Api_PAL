@@ -136,7 +136,7 @@ const ReadLibraryList = () => {
 
     return (
         <section>
-            {/* Boutton pour retourner à l'accueil */}
+            {/* Bouton pour retourner à l'accueil */}
             <div className="Retour">
                 <button>
                     <div className="Back">
@@ -204,8 +204,8 @@ const ReadLibraryList = () => {
                         <label>Image :</label>
                         <input type="file" onChange={handleImageChange} />
 
-                        {/* Boutton qui permet d'ajouter le livre créer */}
-                        <div className="BouttonCreation">
+                        {/* Bouton qui permet d'ajouter le livre créer */}
+                        <div className="BoutonCreation">
                             <button type="button" onClick={handleAddReadLibrary}>
                                 ➕ Ajouter
                             </button>

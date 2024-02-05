@@ -240,14 +240,14 @@ h2 {
     gap: 1rem;
 }
 
-.BouttonCrea {
+.BoutonCrea {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
     align-items: center;
     margin: 1rem;
 }
-.BouttonCrea button {
+.BoutonCrea button {
     display: grid;
     border: 2px solid #8f528d;
     background-color: #a430a0;
