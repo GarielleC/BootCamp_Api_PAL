@@ -118,7 +118,17 @@ const BookToReadList = () => {
 
     return (
         <section>
-            <a href="/"> ⬅️ Retour</a>
+            {/* Boutton pour retourner à l'accueil */}
+            <div className="retour_home">
+                <button>
+                    <div className="home_back">
+                        <a href="/">
+                            <p>⮨</p>
+                            <p>Retour</p>
+                        </a>
+                    </div>
+                </button>
+            </div>
             
             <div className="big_title">
                 <img

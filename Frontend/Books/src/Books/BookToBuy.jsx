@@ -19,6 +19,7 @@ const BookToBuyList = () => {
         imageUrl: "",
     });
 
+    // Permet l'apparition du formulaire de création
     const [isFormVisible, setIsFormVisible] = useState(false);
 
     // État pour le fichier de l'image
@@ -132,8 +133,19 @@ const BookToBuyList = () => {
 
     return (
         <section>
-            <a href="/"> ⬅️ Retour</a>
+            {/* Boutton pour retourner à l'accueil */}
+            <div className="RetourButton">
+                <button>
+                    <div className="BackBuy">
+                        <a href="/">
+                            <p>⮨</p>
+                            <p>Retour</p>
+                        </a>
+                    </div>
+                </button>
+            </div>
 
+            {/* Titre de la page */}
             <div className="big_title_buy">
                 <img
                     className="LivreFermeLogoBuy"
@@ -190,6 +202,8 @@ const BookToBuyList = () => {
                         />
                         <label>Image :</label>
                         <input type="file" onChange={handleImageChange} />
+
+                        {/* Boutton qui permet d'ajouter le livre créer */}
                         <div className="BouttonCrea">
                             <button type="button" onClick={handleCreateBook}>
                                 ➕ Ajouter
