@@ -54,9 +54,9 @@ const Login = (props) => {
         // Sinon, afficher le formulaire de connexion
         <>
           <form onSubmit={handleLogin}>
-           <label htmlFor='Email'>Email</label>
+           <label htmlFor='Email'></label>
             <Input
-              label="Email"
+              label="Email :"
               type="text"
               name="email"
               className="input"
@@ -65,9 +65,9 @@ const Login = (props) => {
             />
 
             {/* <label htmlFor='Password'> */}
-            <label htmlFor='password'>Mot de passe</label>
+            <label htmlFor='password'></label>
             <Input
-              label="Password"
+              label="Mot de passe :"
               type="password"
               name="password"
               className="input"
