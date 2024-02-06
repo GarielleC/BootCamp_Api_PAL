@@ -22,6 +22,12 @@ font-family: 'Courgette', cursive;*/
     margin-bottom: 1rem;
     font-family: "Montserrat Alternates", sans-serif;
 }
+
+.first h2 {
+    color: #cf80d2;
+    font-weight: bold;
+}
+
 .first h3 {
     font-weight: bold;
     color: #7daedc;
