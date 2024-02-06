@@ -1,0 +1,92 @@
+/* Styles pour centrer le formulaire */
+.formulaire_container {
+    font-family: "Montserrat Alternates", sans-serif;
+    font-weight: bold;
+    border-radius: 1rem;
+    gap: 1rem;
+    margin-right: 10rem;
+    margin-left: 10rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    color: black;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    background-color: #e3b2e1;
+    font-size: 15px;
+}
+
+/* Styles pour le formulaire à l'intérieur du conteneur */
+.formulaire_register {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1rem;
+}
+
+.formulaire_register select {
+    width: 17%;
+    border-radius: 10px;
+    font-size: 20px;
+    padding: 0.3rem;
+    margin: 1rem;
+}
+
+.formulaire_register label {
+    margin-bottom: 0.3rem;
+}
+.formulaire_register input:invalid {
+    border: 2px dashed red;
+}
+
+.formulaire_register input:valid {
+    background-color: white;
+    border: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.formulaire_register input {
+    margin-bottom: 1rem;
+    padding: 10px;
+    border-radius: 0.4rem;
+}
+
+/* .formulaire_register button {
+    display: grid;
+    background-color: #4c51af;
+    color: white;
+    border: none;
+    font-size: 20px;
+    width: 20%;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-evenly;
+    align-items: center;
+} */
+.Connexion-button-container {
+    display: flex;
+    justify-content: space-between; /* Pour espacer les éléments */
+    flex-direction: row;
+    align-items: center;
+    margin: 1rem;
+}
+.Connexion-button-container button {
+    display: grid;
+    border: none;
+    font-size: 15px;
+    background-color: #a430a0;
+    margin: 1rem;
+    padding: 0;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 0.5rem;
+    font-family: "Montserrat Alternates", sans-serif;
+    color: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+.enregistrer {
+    align-self: flex-start;
+}
+
+.formulaire_register .connexion_bouton {
+    width: 30%;
+    align-self: flex-end;
+}
