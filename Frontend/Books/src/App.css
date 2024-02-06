@@ -1,3 +1,16 @@
+/* importations de style font */
+@import url("https://fonts.googleapis.com/css2?family=Courgette&family=Dancing+Script&family=Gowun+Batang&family=Montserrat+Alternates&family=Protest+Riot&family=Satisfy&family=Vollkorn&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Courgette&family=Dancing+Script&family=Gowun+Batang&family=Montserrat+Alternates:wght@400;700&family=Protest+Riot&family=Satisfy&family=Vollkorn&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Courgette&family=Dancing+Script:wght@400;700&family=Gowun+Batang&family=Montserrat+Alternates:wght@400;700&family=Protest+Riot&family=Satisfy&family=Vollkorn&display=swap");
+/* font-family: "Protest Riot", sans-serif; pour titre
+font-family: 'Gowun Batang', serif;
+font-family: 'Dancing Script', cursive; pour titre
+font-family: 'Satisfy', cursive; pour titre si jamais mais pas texte
+font-family: 'Vollkorn', serif; 
+font-family: 'Montserrat Alternates', sans-serif;
+font-family: 'Courgette', cursive;*/
+
 footer {
     text-align: center;
+    font-family: "Montserrat Alternates", sans-serif;
 }
