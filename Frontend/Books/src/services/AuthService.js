@@ -16,6 +16,10 @@ class AuthService {
         const token = this.getToken();
         return !!token; // Convertit la présence du token en booléen (true si présent, false sinon)
     }
+
+    logout() {
+        this.removeToken();
+    }
 }
 
 export default new AuthService();
