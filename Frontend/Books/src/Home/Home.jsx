@@ -3,6 +3,7 @@
 // import './Home.scss';
 import React from "react";
 import ImageALire from "../Logos/CharlieStory.png";
+import ImageAcheter from "../Logos/achatLivreeLisa.png";
 import FondLivres from "../Logos/fond.jpg";
 import "../Css/Home.css";
 
@@ -54,56 +55,74 @@ const Home = () => {
                             <h3>Découvrez les fonctionnalités exceptionnelles</h3>
                         </li>
                     </div>
-                    <div className="Acheter">
-                        <h4>📘 Livres à Acheter :</h4>
-                        <p>
-                            Ajoutez instantanément les livres qui vous captivent à votre
-                            liste d'achats en un simple clic.
-                        </p>
-                        <p>
-                            Gardez une trace organisée de toutes les œuvres qui vous
-                            intriguent et que vous avez l'intention d'acquérir dans le
-                            futur.
-                        </p>
+                    <div className="AchatsBooks">
+                        <div className="ImageWrap">
+                            <img
+                                className="ImageAcheter"
+                                src={ImageAcheter}
+                                alt="Image A Lire"
+                            />
+                            <p className="copy">
+                                &#169; Illustratrice: Carez Gabrielle
+                            </p>
+                        </div>
+                        <div className="TexteAchat">
+                            <h4>📘 Livres à Acheter :</h4>
+                            <p>
+                                Ajoutez instantanément les livres qui vous captivent à
+                                votre liste d'achats en un simple clic.
+                            </p>
+                            <p>
+                                Gardez une trace organisée de toutes les œuvres qui vous
+                                intriguent et que vous avez l'intention d'acquérir dans le
+                                futur.
+                            </p>
+                        </div>
                     </div>
-                </div>
 
-                <div className="Lire">
-                    <div className="ImageWrapper">
-                        <img className="ImageALire" src={ImageALire} alt="Image A Lire" />
-                        <p className="copyright">&#169; Illustratrice: Carez Gabrielle</p>
+                    <div className="Lire">
+                        <div className="ImageWrapper">
+                            <img
+                                className="ImageALire"
+                                src={ImageALire}
+                                alt="Image A Lire"
+                            />
+                            <p className="copyright">
+                                &#169; Illustratrice: Carez Gabrielle
+                            </p>
+                        </div>
+                        <div className="TexteALire">
+                            <h4>📖 Livres à Lire :</h4>
+                            <p>
+                                Plongez dans vos prochaines aventures littéraires en toute
+                                planification.
+                            </p>
+                            <p>
+                                Ajoutez les livres qui vous font rêver à votre liste de
+                                lecture.
+                            </p>
+                            <p>
+                                Une fois lus, cochez-les et regardez-les glisser avec
+                                satisfaction dans votre bibliothèque personnelle.
+                            </p>
+                        </div>
                     </div>
-                    <div className="TexteALire">
-                        <h4>📖 Livres à Lire :</h4>
+
+                    <div className="Biblio">
+                        <h4>📚 Bibliothèque Personnelle :</h4>
                         <p>
-                            Plongez dans vos prochaines aventures littéraires en toute
-                            planification.
+                            Créez votre propre sanctuaire littéraire virtuel en ajoutant
+                            les livres que vous avez dévorés.
                         </p>
+
                         <p>
-                            Ajoutez les livres qui vous font rêver à votre liste de
-                            lecture.
+                            Votre bibliothèque personnelle vous attend à tout moment,
+                            offrant une escapade visuelle pour vous replonger dans vos
+                            lectures passées.
                         </p>
-                        <p>
-                            Une fois lus, cochez-les et regardez-les glisser avec
-                            satisfaction dans votre bibliothèque personnelle.
-                        </p>
+
+                        <p>Explorez, planifiez et savourez chaque page avec ReadEase !</p>
                     </div>
-                </div>
-
-                <div className="Biblio">
-                    <h4>📚 Bibliothèque Personnelle :</h4>
-                    <p>
-                        Créez votre propre sanctuaire littéraire virtuel en ajoutant les
-                        livres que vous avez dévorés.
-                    </p>
-
-                    <p>
-                        Votre bibliothèque personnelle vous attend à tout moment, offrant
-                        une escapade visuelle pour vous replonger dans vos lectures
-                        passées.
-                    </p>
-
-                    <p>Explorez, planifiez et savourez chaque page avec ReadEase !</p>
                 </div>
                 <div className="Conclusion">
                     <li>
