@@ -29,10 +29,10 @@
 //         password: "",
 //     });
 
-//      // Fonction pour mettre à jour les valeurs des champs de saisie
-//     const handleChange = (e) => {
-//         const { name, value } = e.target;
-//         setInputValue({ ...inputValue, [name]: value });
+//     // Fonction pour mettre à jour les valeurs des champs du formulaire
+//     const handleChange = (name, val) => {
+//         setInputValue((prevState) => ({ ...prevState, [name]: val }));
+//         setValidationErrors((prevState) => ({ ...prevState, [name]: "" }));
 //     };
 
 //     // Schéma de validation Yup pour la validation du formulaire

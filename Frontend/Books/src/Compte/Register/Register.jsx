@@ -14,6 +14,7 @@ const Register = ({ setIsRegistered }) => {
         genre: "",
         name: "",
         prenom: "",
+        login: "",
         codePostal: "",
         date: "",
         pays: "",
@@ -81,8 +82,8 @@ const Register = ({ setIsRegistered }) => {
         <div className="formulaire_container">
             <form className="formulaire_register" onSubmit={handleSubmit}>
                 {/* Champs de formulaire */}
-                <label htmlFor="photo">Votre photo</label>
-                <Input type="file" name="photo" />
+                {/* <label htmlFor="photo">Votre photo</label>
+                <Input type="file" name="photo" /> */}
                 <select
                     name="genre"
                     value={inputValue.genre}
@@ -100,7 +101,7 @@ const Register = ({ setIsRegistered }) => {
                     name="name"
                     value={inputValue.name}
                     size="16"
-                    onChange={(val) => handleChange("name", val)}
+                    onChange={(e) => handleChange("name", e.target.value)}
                     required
                 />
 
@@ -110,7 +111,16 @@ const Register = ({ setIsRegistered }) => {
                     name="prenom"
                     value={inputValue.prenom}
                     size="16"
-                    onChange={(val) => handleChange("prenom", val)}
+                    onChange={(e) => handleChange("prenom", e.target.value)}
+                    required
+                />
+                <label htmlFor="login">PSEUDO</label>
+                <Input
+                    type="text"
+                    name="login"
+                    value={inputValue.login}
+                    size="16"
+                    onChange={(e) => handleChange("login", e.target.value)}
                     required
                 />
 
@@ -119,7 +129,7 @@ const Register = ({ setIsRegistered }) => {
                     type="date"
                     name="date"
                     value={inputValue.date}
-                    onChange={(val) => handleChange("date", val)}
+                    onChange={(e) => handleChange("date", e.target.value)}
                     required
                 />
 
@@ -128,7 +138,7 @@ const Register = ({ setIsRegistered }) => {
                     type="text"
                     name="codePostal"
                     value={inputValue.codePostal}
-                    onChange={(val) => handleChange("codePostal", val)}
+                    onChange={(e) => handleChange("codePostal", e.target.value)}
                     required
                 />
 
@@ -137,7 +147,7 @@ const Register = ({ setIsRegistered }) => {
                     type="text"
                     name="pays"
                     value={inputValue.pays}
-                    onChange={(val) => handleChange("pays", val)}
+                    onChange={(e) => handleChange("pays", e.target.value)}
                     required
                 />
 
@@ -146,7 +156,7 @@ const Register = ({ setIsRegistered }) => {
                     type="text"
                     name="ville"
                     value={inputValue.ville}
-                    onChange={(val) => handleChange("ville", val)}
+                    onChange={(e) => handleChange("ville", e.target.value)}
                     required
                 />
 
@@ -155,7 +165,7 @@ const Register = ({ setIsRegistered }) => {
                     type="email"
                     name="email"
                     value={inputValue.email}
-                    onChange={(val) => handleChange("email", val)}
+                    onChange={(e) => handleChange("email", e.target.value)}
                     required
                     minLength="6"
                     maxLength="12"
@@ -166,7 +176,7 @@ const Register = ({ setIsRegistered }) => {
                     type="email"
                     name="confirmEmail"
                     value={inputValue.confirmEmail}
-                    onChange={(val) => handleChange("confirmEmail", val)}
+                    onChange={(e) => handleChange("confirmEmail", e.target.value)}
                     required
                     minLength="6"
                     maxLength="12"
@@ -177,7 +187,7 @@ const Register = ({ setIsRegistered }) => {
                     type="password"
                     name="password"
                     value={inputValue.password}
-                    onChange={(val) => handleChange("password", val)}
+                    onChange={(e) => handleChange("password", e.target.value)}
                     required
                 />
 
@@ -188,7 +198,7 @@ const Register = ({ setIsRegistered }) => {
                     type="password"
                     name="confirmPassword"
                     value={inputValue.confirmPassword}
-                    onChange={(val) => handleChange("confirmPassword", val)}
+                    onChange={(e) => handleChange("confirmPassword", e.target.value)}
                     required
                 />
 
