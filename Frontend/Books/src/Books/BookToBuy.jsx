@@ -158,7 +158,7 @@ const BookToBuyList = () => {
             {/* Affiche le total des livres à lire */}
             <h2>
                 Total des livres a acheter :
-                <span class="number">{calculateTotalBooksToBuy()}</span>
+                <span className="number">{calculateTotalBooksToBuy()}</span>
             </h2>
 
             {/* Bouton pour afficher ou masquer le formulaire */}
@@ -243,7 +243,7 @@ const BookToBuyList = () => {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
-                                       💸 Cliquez ici pour acheter le livre
+                                        💸 Cliquez ici pour acheter le livre
                                     </a>
                                 </p>
                             </div>

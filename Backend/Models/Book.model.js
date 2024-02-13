@@ -1,4 +1,3 @@
-
 const { DataTypes } = require("sequelize");
 
 /**
@@ -60,7 +59,7 @@ module.exports = createBook;
 //     const Book = sequelize.define('Book', {
 //         // L'id se crée automatiquement si non spécifié ici
 //         title: {
-//             type: DataTypes.STRING, 
+//             type: DataTypes.STRING,
 //             allowNull: false,
 //         },
 //         author: {
@@ -72,7 +71,7 @@ module.exports = createBook;
 //             allowNull: false,
 //         },
 //         buyLink: {
-//             type: DataTypes.STRING, 
+//             type: DataTypes.STRING,
 //             allowNull: true, // Mis en true car le lien n'est pas obligatoire
 //         },
 //         imageUrl: {
@@ -81,11 +80,11 @@ module.exports = createBook;
 //         },
 //     },{
 //         // options de création propre à Sequelize
-//         createdAt: 'created_at',  
-//         updatedAt: 'updated_at',  
+//         createdAt: 'created_at',
+//         updatedAt: 'updated_at',
 //         tableName: 'Books',
 //     });
-//     return Book; 
+//     return Book;
 // };
 
-// module.exports = createBook;  
+// module.exports = createBook;
