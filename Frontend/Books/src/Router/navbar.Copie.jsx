@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "../Css/Normalize.css";
 import "./navbar.css";
 import HomeLogo from "../Logos/home.png";
@@ -7,15 +7,34 @@ import LivreFermeLogo from "../Logos/livreFerme1.png";
 import BiblioLogo from "../Logos/biblio1.png";
 import LivreOuvertLogo from "../Logos/livreOuvert1.png";
 import AuthService from "../services/AuthService"; // Importez le service AuthService
+import { useAuth } from "../services/AuthContext";
 import ReadLog from "../Logos/readeaselogo.png";
 
 const Navbar = () => {
-    const isAuthenticated = AuthService.isAuthenticated(); // Vérifiez si l'utilisateur est connecté  const isAuthenticated = AuthService.isAuthenticated();
+    // const isAuthenticated = AuthService.isAuthenticated(); // Vérifiez si l'utilisateur est connecté  const isAuthenticated = AuthService.isAuthenticated();
+
+    const navigate = useNavigate();
+    const { isAuthenticated, setIsAuthenticated } = useAuth();
+    const [forceUpdate, setForceUpdate] = useState(0);
+
+    useEffect(() => {
+        setIsAuthenticated(AuthService.isAuthenticated());
+
+        // Ajouter un écouteur d'événements pour forcer la mise à jour lorsque le localStorage change
+        const updateAuthStatus = () => {
+            setIsAuthenticated(AuthService.isAuthenticated());
+            setForceUpdate((u) => u + 1); // Incrémente pour forcer le re-rendu
+        };
+
+        window.addEventListener("storage", updateAuthStatus);
+        return () => window.removeEventListener("storage", updateAuthStatus);
+    }, [setIsAuthenticated]);
 
     const handleLogout = () => {
         AuthService.logout();
-        // Redirigez l'utilisateur vers la page de connexion après la déconnexion
-        window.location.href = "/login";
+        setIsAuthenticated(AuthService.isAuthenticated());
+        setForceUpdate((u) => u + 1); // Incrémente également ici pour forcer le re-rendu
+        navigate("/login");
     };
 
     return (
