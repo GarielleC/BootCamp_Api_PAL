@@ -1,5 +1,5 @@
 //importation
-const {Sequelize, DataTypes, ModelStatic } = require('sequelize');
+const { Sequelize, DataTypes, ModelStatic } = require("sequelize");
 
 /**
  * Fonction pour créer un model Character (donc table de db)
@@ -10,79 +10,94 @@ const {Sequelize, DataTypes, ModelStatic } = require('sequelize');
 
 module.exports = (sequelize) => {
     // Définition de l'object sequelize (db)
-    const Auth = sequelize.define('Auth', {
-        // L'id se crée automatiquement si non spécifié ici
-        
-        genre: {
-            type: DataTypes.STRING(10),
-            allowNull: false,
-        },
+    const Auth = sequelize.define(
+        "Auth",
+        {
+            // L'id se crée automatiquement si non spécifié ici
 
-        name: {
-            type: DataTypes.STRING(100),
-            allowNull: false,
-        },
+            genre: {
+                type: DataTypes.STRING(10),
+                allowNull: false,
+            },
 
-        prenom: {
-            type: DataTypes.STRING(100),
-            allowNull: false,
-        },
+            profileImagePath: {
+                type: DataTypes.STRING,
+                allowNull: true,
+            },
 
-        codePostal: {
-            type: DataTypes.STRING(10),
-            allowNull: false,
-        },
-        dateNaissance: {
-            type: DataTypes.DATEONLY,
-            allowNull: false,
-        },
+            name: {
+                type: DataTypes.STRING(100),
+                allowNull: false,
+            },
 
-        pays: {
-            type: DataTypes.STRING(50),
-            allowNull: false,
-        },
+            prenom: {
+                type: DataTypes.STRING(100),
+                allowNull: false,
+            },
 
-        ville: {
-            type: DataTypes.STRING(100),
-            allowNull: false,
-        },
+            dateNaissance: {
+                type: DataTypes.DATEONLY,
+                allowNull: false,
+            },
 
-        email: {
-            type: DataTypes.STRING(100),
-            allowNull: false,
-            unique: true,
-            validate: {
-                isEmail: true,
+            codePostal: {
+                type: DataTypes.STRING(10),
+                allowNull: false,
+            },
+
+            rue: {
+                type: DataTypes.STRING(100),
+                allowNull: false,
+            },
+
+            ville: {
+                type: DataTypes.STRING(100),
+                allowNull: false,
+            },
+
+            pays: {
+                type: DataTypes.STRING(50),
+                allowNull: false,
+            },
+
+            email: {
+                type: DataTypes.STRING(100),
+                allowNull: false,
+                unique: true,
+                validate: {
+                    isEmail: true,
+                },
+            },
+
+            login: {
+                type: DataTypes.STRING(100),
+                allowNull: false,
+            },
+
+            hashedPassword: {
+                type: DataTypes.STRING(250),
+                allowNull: false,
+            },
+
+            jwt: {
+                type: DataTypes.STRING(500),
+                allowNull: false,
             },
         },
-        
-        login: {
-            type: DataTypes.STRING(100),
-            allowNull: false,
+        {
+            // Option de création propre à Sequelize (voir doc)
+            createdAt: true,
+            tableName: "Users",
+            indexes: [
+                {
+                    // Création de contraintes
+                    name: "UK_Auth__jwt",
+                    fields: ["login", "jwt"],
+                    unique: false,
+                },
+            ],
         },
-
-        hashedPassword: {
-            type: DataTypes.STRING(250),
-            allowNull: true,
-        },
-
-        jwt: {
-            type: DataTypes.STRING(500),
-            allowNull: true,
-        }
-    }, {
-        // Option de création propre à Sequelize (voir doc)
-        createdAt: true,
-        tableName: 'Users',
-        indexes: [
-            {
-                // Création de contraintes
-                name: 'UK_Auth__jwt',
-                fields: ['login', 'jwt'],
-                unique: false,
-            },
-        ]
-    });
+    );
 
     return Auth;
-}
+};

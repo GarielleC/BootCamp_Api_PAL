@@ -49,6 +49,10 @@ nav li a:hover {
     height: 2rem;
 }
 
+.ReadLog {
+    width: 7rem;
+    height: auto;
+}
 .LivreFermeLogo {
     width: 1.5rem;
     height: auto;

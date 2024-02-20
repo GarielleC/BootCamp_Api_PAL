@@ -7,6 +7,7 @@ import LivreFermeLogo from "../Logos/livreFerme1.png";
 import BiblioLogo from "../Logos/biblio1.png";
 import LivreOuvertLogo from "../Logos/livreOuvert1.png";
 import AuthService from "../services/AuthService"; // Importez le service AuthService
+import ReadLog from "../Logos/readeaselogo.png";
 
 const Navbar = () => {
     const isAuthenticated = AuthService.isAuthenticated(); // Vérifiez si l'utilisateur est connecté  const isAuthenticated = AuthService.isAuthenticated();
@@ -20,54 +21,79 @@ const Navbar = () => {
     return (
         <nav>
             <div>
-                <ul>
-                    <li>
-                        <Link to="/">
-                            <img className="HomeLog" src={HomeLogo} alt="Logo Accueil" />
-                            Accueil
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/BookToBuy">
-                            <img
-                                className="LivreFermeLogo"
-                                src={LivreFermeLogo}
-                                alt="Logo Livre Fermé"
-                            />
-                            Livres à acheter
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/BookToRead">
-                            <img
-                                className="LivreOuvertLogo"
-                                src={LivreOuvertLogo}
-                                alt="Logo Livre Ouvert"
-                            />
-                            Livres à lire
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/ReadLibrary">
-                            <img
-                                className="BiblioLogo"
-                                src={BiblioLogo}
-                                alt="Logo Biblio"
-                            />
-                            Bibliothèque
-                        </Link>
-                    </li>
-                    <li>
-                        {/* Utilisez une expression ternaire pour déterminer le libellé du bouton */}
-                        {isAuthenticated ? (
+                {isAuthenticated ? (
+                    // Barre de navigation pour l'utilisateur connecté
+                    <ul>
+                        <li>
+                            <img className="ReadLog" src={ReadLog} alt="ReadLog" />
+                        </li>
+                        <li>
+                            <Link to="/">
+                                <img
+                                    className="HomeLog"
+                                    src={HomeLogo}
+                                    alt="Logo Accueil"
+                                />
+                                Accueil
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/BookToBuy">
+                                <img
+                                    className="LivreFermeLogo"
+                                    src={LivreFermeLogo}
+                                    alt="Logo Livre Fermé"
+                                />
+                                Livres à acheter
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/BookToRead">
+                                <img
+                                    className="LivreOuvertLogo"
+                                    src={LivreOuvertLogo}
+                                    alt="Logo Livre Ouvert"
+                                />
+                                Livres à lire
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/ReadLibrary">
+                                <img
+                                    className="BiblioLogo"
+                                    src={BiblioLogo}
+                                    alt="Logo Biblio"
+                                />
+                                Bibliothèque
+                            </Link>
+                        </li>
+                        <li>
                             <Link to="/" onClick={handleLogout}>
                                 Se Déconnecter
                             </Link>
-                        ) : (
+                        </li>
+                    </ul>
+                ) : (
+                    // Barre de navigation pour l'utilisateur déconnecté
+                    <ul>
+                        <li>
+                            <img className="ReadLog" src={ReadLog} alt="ReadLog" />
+                        </li>
+                        <li>
+                            <Link to="/">
+                                <img
+                                    className="HomeLog"
+                                    src={HomeLogo}
+                                    alt="Logo Accueil"
+                                />
+                                Accueil
+                            </Link>
+                        </li>
+                        <li>
                             <Link to="/login">Se Connecter</Link>
-                        )}
-                    </li>
-                </ul>
+                        </li>
+                    </ul>
+                )}
             </div>
         </nav>
     );

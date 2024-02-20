@@ -6,9 +6,11 @@ import * as yup from "yup";
 // Import du composant d'entrée (Input) et du style du formulaire
 import Input from "../Inputs/inputs";
 import "../../Css/register.css";
+import { useNavigate } from "react-router-dom";
 
 // Définition du composant fonctionnel Register avec une prop setIsRegistered
 const Register = ({ setIsRegistered }) => {
+    const navigate = useNavigate();
     // États pour stocker les valeurs des champs du formulaire et les erreurs de validation
     const [inputValue, setInputValue] = useState({
         genre: "",
@@ -62,8 +64,11 @@ const Register = ({ setIsRegistered }) => {
         // si les 2 password sont identiques ainsi que pour l'adresse mail alors true si non message d'erreur.
         // if (passwordValue)
         try {
+            // Redirection vers la page de connexion après l'enregistrement
+            
             // Validation du formulaire avec Yup
             await validationSchema.validate(inputValue, { abortEarly: false });
+            navigate("/login");
             console.log("Formulaire valide :", inputValue);
         } catch (error) {
             // Gestion des erreurs de validation
@@ -82,8 +87,8 @@ const Register = ({ setIsRegistered }) => {
         <div className="formulaire_container">
             <form className="formulaire_register" onSubmit={handleSubmit}>
                 {/* Champs de formulaire */}
-                {/* <label htmlFor="photo">Votre photo</label>
-                <Input type="file" name="photo" /> */}
+                <label htmlFor="photo">Votre photo</label>
+                <Input type="file" name="photo" />
                 <select
                     name="genre"
                     value={inputValue.genre}
@@ -92,7 +97,7 @@ const Register = ({ setIsRegistered }) => {
                 >
                     <option value="mme">Madame</option>
                     <option value="mr">Monsieur</option>
-                    <option value="xs">Autre</option>
+                    <option value="x">Autre</option>
                 </select>
 
                 <label htmlFor="name">NOM</label>

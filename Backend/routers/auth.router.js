@@ -6,6 +6,7 @@ const authController = require("../controllers/auth.controller");
 const loginValidator = require("../validator/login.validator");
 const emailValidator = require("../validator/email.validator");
 const authRouter = require("express").Router(); //Permet de crée une nouvelle instance de routeur Express et la stocke dans la variable authRouter
+const upload = require("../middleware/uploadConfig");
 
 authRouter
     .route("/login")
@@ -16,7 +17,12 @@ authRouter
 
 authRouter
     .route("/register")
-    .post(loginValidator, emailValidator, authController.register)
+    .post(
+        upload.single("profileImage"),
+        loginValidator,
+        emailValidator,
+        authController.register,
+    )
     .all((req, res) => {
         res.statusCode(405).send("Unavailable");
     });
