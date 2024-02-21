@@ -15,14 +15,16 @@ const Navbar = () => {
 
     const navigate = useNavigate();
     const { isAuthenticated, setIsAuthenticated } = useAuth();
-    const [forceUpdate, setForceUpdate] = useState(0);
+    // const [profileImage, setProfileImage] = useState(null);//a revenir une fois que j'aurais regler le problème du frontend register
+    const [forceUpdate, setForceUpdate] = useState(null);
 
     useEffect(() => {
-        setIsAuthenticated(AuthService.isAuthenticated());
+        // setIsAuthenticated(AuthService.isAuthenticated());
 
         // Ajouter un écouteur d'événements pour forcer la mise à jour lorsque le localStorage change
         const updateAuthStatus = () => {
             setIsAuthenticated(AuthService.isAuthenticated());
+            // setProfileImage(AuthService.getProfileImagePath());
             setForceUpdate((u) => u + 1); // Incrémente pour forcer le re-rendu
         };
 
@@ -86,6 +88,15 @@ const Navbar = () => {
                                 Bibliothèque
                             </Link>
                         </li>
+                        {/* <li>
+                            {profileImage && (
+                                <img
+                                    className="ProfileImage"
+                                    src={profileImage}
+                                    alt="Profile"
+                                />
+                            )}
+                        </li> */}
                         <li>
                             <Link to="/" onClick={handleLogout}>
                                 Se Déconnecter
