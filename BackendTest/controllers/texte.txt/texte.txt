@@ -1,0 +1,1 @@
+// Enum pour la db plus propre pour les différents statuts
