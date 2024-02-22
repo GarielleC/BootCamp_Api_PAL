@@ -20,6 +20,9 @@ const bookToBuyController = {
             const { title, author, prix, buyLink } = req.body;
             const imageUrl = req.file ? req.file.filename : null; // Utilisation du nom du fichier uploadé
 
+             // Extraire les informations de l'utilisateur de la requête ou du jeton d'authentification
+             const userId = req.user.id; 
+
             const newBook = await Book.create({
                 title,
                 author,
@@ -27,6 +30,8 @@ const bookToBuyController = {
                 prix,
                 buyLink,
                 imageUrl,
+                userId, 
+                
             });
             console.log(newBook);
             res.status(201).json(newBook);
@@ -61,6 +66,11 @@ const bookToBuyController = {
                 return res.status(404).send("Book not found");
             }
 
+                // Vérifier si l'utilisateur est autorisé à supprimer le livre
+                if (book.userId !== req.user.id) {
+                    return res.status(403).json({ error: "Non autorisé à supprimer ce livre" });
+                }
+    
             await book.destroy();
             res.status(200).json({ message: "Book deleted" });
         } catch (error) {

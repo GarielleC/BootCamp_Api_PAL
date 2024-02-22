@@ -34,6 +34,11 @@ const createBook = (sequelize) => {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
+            userId: {
+                // Ajoutez cette colonne pour stocker l'ID de l'utilisateur associé
+                type: DataTypes.INTEGER,
+                allowNull: false,
+            },
         },
         {
             timestamps: true, // Active createdAt et updatedAt
@@ -45,46 +50,3 @@ const createBook = (sequelize) => {
 };
 
 module.exports = createBook;
-// // Importation
-// const { Sequelize, DataTypes } = require('sequelize');
-
-// /**
-//  * Fonction pour créer un model Book (donc table de la base de données)
-//  * Le JSDoc sert à l'autocomplétion
-//  * @param {Sequelize} sequelize
-//  * @returns {import('sequelize').ModelCtor<import('sequelize').Model<any, any>>}
-//  */
-// const createBook = (sequelize) => {
-//     // Définition du modèle (table)
-//     const Book = sequelize.define('Book', {
-//         // L'id se crée automatiquement si non spécifié ici
-//         title: {
-//             type: DataTypes.STRING,
-//             allowNull: false,
-//         },
-//         author: {
-//             type: DataTypes.STRING(100),
-//             allowNull: false,
-//         },
-//         prix: {
-//             type: DataTypes.INTEGER,
-//             allowNull: false,
-//         },
-//         buyLink: {
-//             type: DataTypes.STRING,
-//             allowNull: true, // Mis en true car le lien n'est pas obligatoire
-//         },
-//         imageUrl: {
-//             type: DataTypes.STRING,
-//             allowNull: false,
-//         },
-//     },{
-//         // options de création propre à Sequelize
-//         createdAt: 'created_at',
-//         updatedAt: 'updated_at',
-//         tableName: 'Books',
-//     });
-//     return Book;
-// };
-
-// module.exports = createBook;
