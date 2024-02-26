@@ -6,7 +6,6 @@ const cors = require("cors");
 const router = require("./routers/router");
 const path = require("path");
 const bodyParser = require("body-parser");
-const authMiddleware = require("./middleware/authMiddleware");
 
 // création du serveur WebAPI
 const app = express();
@@ -19,9 +18,6 @@ app.use(cors());
 
 // Middleware pour traiter le corps des requêtes au format JSON
 app.use(express.json());
-
-// Middleware d'authentification doit être placé avant express.json()
-app.use(authMiddleware);
 
 // Parsing des données de formulaire
 app.use(bodyParser.urlencoded({ extended: true }));

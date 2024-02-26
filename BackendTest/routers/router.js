@@ -14,7 +14,6 @@ router.use(function timeLog(req, res, next) {
 });
 
 //Utilisation des routes spécifiques avec des préfixes pour créer des chemins complets
-router.use("/authMiddleware", authMiddleware);
 router.use("/auth", authRouter);
 router.use("/bookToRead", bookToReadRouter);
 router.use("/bookToBuy", bookToBuyRouter);

@@ -34,8 +34,8 @@ const createBook = (sequelize) => {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
-            userId: {
-                // Ajoutez cette colonne pour stocker l'ID de l'utilisateur associé
+            UserID: {
+                // Pour savoir qui a créé le livre
                 type: DataTypes.INTEGER,
                 allowNull: false,
             },

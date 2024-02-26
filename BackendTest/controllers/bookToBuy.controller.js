@@ -4,7 +4,8 @@ const bookToBuyController = {
     // Renvoie tous les livres à acheter
     getAllBook: async (req, res, next) => {
         try {
-            const bookToBuy = await Book.findAll({ where: { statut: "a acheter" } });
+            const userId = req.userId;
+            const bookToBuy = await Book.findAll({ where: { userId: userId,statut: "a acheter" } });
             //  On renvoie les livres à acheter à la réponse JSON
             res.status(200).json(bookToBuy);
         } catch (error) {
@@ -17,20 +18,22 @@ const bookToBuyController = {
     // Création d'un nouveau livre à acheter
     createBook: async (req, res, next) => {
         try {
+            // Extraire les informations de l'utilisateur de la requête ou du jeton d'authentification
+            const userId = req.userId;
+            
             const { title, author, prix, buyLink } = req.body;
             const imageUrl = req.file ? req.file.filename : null; // Utilisation du nom du fichier uploadé
 
-             // Extraire les informations de l'utilisateur de la requête ou du jeton d'authentification
-             const userId = req.user.id; 
+             
 
             const newBook = await Book.create({
+                UserID: userId,
                 title,
                 author,
                 statut: "a acheter",
                 prix,
                 buyLink,
                 imageUrl,
-                userId, 
                 
             });
             console.log(newBook);
