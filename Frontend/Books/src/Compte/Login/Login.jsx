@@ -76,14 +76,14 @@ const Login = (props) => {
                 <>
                     <form className="log" onSubmit={handleLogin}>
                         <div className="logout">
-                            <label htmlFor="Login"></label>
+                            <label htmlFor="Email"></label>
                             <Input
-                                id="Login"
+                                id="Email"
                                 label="Login :"
                                 type="text"
-                                name="login"
+                                name="email"
                                 className="input"
-                                value={inputValue.login}
+                                value={inputValue.email}
                                 onChange={handleChange}
                             />
 

@@ -9,18 +9,22 @@ const bodyParser = require("body-parser");
 
 // création du serveur WebAPI
 const app = express();
-//Utilisation du cors
-app.use(cors());
-app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
 // Middleware pour servir les fichiers statiques
 app.use("/images", express.static(path.join(__dirname, "public/images")));
 
+//Utilisation du cors
+app.use(cors());
+
+// Middleware pour traiter le corps des requêtes au format JSON
+app.use(express.json());
+
+// Parsing des données de formulaire
+app.use(bodyParser.urlencoded({ extended: true }));
+
 // Routing
 app.use("/api", router);
 
-// console.log(app._router.stack);//permet de voir les routes enregistrées
 // Gestion des erreurs 404
 app.use((req, res) => {
     res.status(404).send("Page introuvable");
@@ -32,11 +36,12 @@ app.use((error, req, res, next) => {
     console.error("Erreur : ", error);
     res.status(500).send("Erreur interne du serveur");
 });
+
 // Utilisation .env
 const { PORT, NODE_ENV } = process.env;
 
 // Initialisation de la db
-const db = require("./Models");
+const db = require("./models");
 
 // Check la connection avec la db
 db.sequelize
@@ -49,10 +54,17 @@ async function syncDb() {
     try {
         await db.sequelize.sync({}); // ou { force: false }
         console.log("Tous les modèles ont été synchronisés avec succès.");
+
+        // Pour ajouter les modifications mis dans les Models de la db et mise à jour des celles-ci
+        // await db.sequelize.sync({ alter: true });
+        // console.log(
+        //     "Les modifications de la base de données ont été appliquées avec succès.",
+        // );
     } catch (error) {
         console.error("Erreur lors de la synchronisation des modèles:", error);
     }
 }
+
 // Synchronisation des modèles avec la base de données
 syncDb();
 

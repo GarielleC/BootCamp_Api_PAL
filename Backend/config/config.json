@@ -1,23 +1,41 @@
 {
-  "development": {
-    "username": "Books",
-    "password": "PALBook123",
-    "database": "BooksApi",
-    "host": "localhost",
-    "dialect": "mssql"
-  },
-  "test": {
-    "username": "Books",
-    "password": "PALBook123",
-    "database": "BooksApi",
-    "host": "localhost",
-    "dialect": "mssql"
-  },
-  "production": {
-    "username": "Books",
-    "password": "PALBook123",
-    "database": "BooksApi",
-    "host": "localhost",
-    "dialect": "mssql"
-  }
+    "development": {
+        "dialect": "mssql",
+        "database": "BooksApi",
+        "username": "Books",
+        "password": "PALBook123",
+        "host": "localhost",
+        "port": 1433,
+        "dialectOptions": {
+            "options": {
+                "encrypt": true
+            }
+        }
+    },
+    "test": {
+        "dialect": "mssql",
+        "database": "BooksApi",
+        "username": "Books",
+        "password": "PALBook123",
+        "host": "localhost",
+        "port": 1433,
+        "dialectOptions": {
+            "options": {
+                "encrypt": true
+            }
+        }
+    },
+    "production": {
+        "dialect": "mssql",
+        "database": "BooksApi",
+        "username": "Books",
+        "password": "PALBook123",
+        "host": "localhost",
+        "port": 1433,
+        "dialectOptions": {
+            "options": {
+                "encrypt": true
+            }
+        }
+    }
 }

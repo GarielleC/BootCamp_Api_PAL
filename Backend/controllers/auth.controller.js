@@ -1,210 +1,163 @@
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
-const authService = require("../services/auth.service");
+// const bcrypt = require("bcrypt");
+// const jwt = require("jsonwebtoken");
+// const authService = require("../services/auth.service");
 
-const authController = {
-    register: async (req, res, next) => {
-        try {
-            // Récupération des données utilisateur
-            const authData = req.body;
+// const authController = {
+//     register: async (req, res) => {
+//         try {
+//              // Récupération des données d'authentification de la requête
+//             const authData = req.body;
 
-            // Hashage du mot de passe
-            const hashedPassword = await bcrypt.hash(authData.password, 10);
+//                   // Hashage du mot de passe
+//             const hashedPassword = await bcrypt.hash(authData.password, 10);
 
-            // Création de l'objet utilisateur à insérer
-            const userData = {
-                login: authData.login,
-                name: authData.name,
-                prenom: authData.prenom,
-                email: authData.email,
-                rue: authData.rue,
-                codePostal: authData.codePostal,
-                dateNaissance: authData.dateNaissance,
-                pays: authData.pays,
-                ville: authData.ville,
-                genre: authData.genre,
-                hashedPassword: hashedPassword,
-                profileImagePath: req.file ? req.file.path : null,
-            };
+//              // Création d'un objet userData contenant les informations de l'utilisateur
+//             const userData = {
+//                 login: authData.login,
+//                 name: authData.name,
+//                 prenom: authData.prenom,
+//                 email: authData.email,
+//                 rue: authData.rue,
+//                 codePostal: authData.codePostal,
+//                 dateNaissance: authData.dateNaissance,
+//                 pays: authData.pays,
+//                 ville: authData.ville,
+//                 genre: authData.genre,
+//                 hashedPassword: hashedPassword,
+//                 profileImagePath: req.file ? req.file.path : null,
+//             };
 
-            // Génération d'un JWT pour le nouvel utilisateur
-            const preliminaryPayload = {
-                login: authData.login,
-                // Ajoutez d'autres champs si nécessaire
-            };
-            const token = jwt.sign(preliminaryPayload, process.env.JWT_SECRET, {
-                expiresIn: "2d",
-            });
+//              // Génération d'un token JWT initial avec le login de l'utilisateur
+//             const preliminaryPayload = {
+//                 login: authData.login,
+//             };
+//             const token = generateJwtToken(preliminaryPayload);
 
-            // Ajout du JWT à userData avant l'insertion
-            userData.jwt = token;
+//             // Ajout du token JWT à l'objet userData
+//             userData.jwt = token;
 
-            // Envoi des données validées et hashées à la DB
-            const userInserted = await authService.insert(userData);
+//             //  Insertion de l'utilisateur dans la db
+//             const userInserted = await authService.insert(userData);
 
-            if (userInserted) {
-                res.setHeader("Authorization", `Bearer ${token}`);
-                return res.status(201).json({ user: userInserted, token });
-            } else {
-                return res
-                    .status(500)
-                    .json({ message: "Erreur lors de l'insertion des données" });
-            }
-        } catch (validationError) {
-            console.error(validationError);
-            return res.status(400).json({
-                message: "Erreur de validation",
-                errors: validationError.errors,
-            });
-        }
-    },
-
-    login: async (req, res, next) => {
-        try {
-            const { login, password } = req.body;
-
-            // Vérification de l'existence de l'utilisateur via son login
-            const user = await authService.exist(login);
-            if (!user) {
-                // Si l'utilisateur n'existe pas, renvoi une réponse 401 (Unauthorized)
-                return res.status(401).json({ message: "Utilisateur non trouvé" });
-            }
-
-            // Vérification du password fourni par l'utilisateur avec le password hashé dans la DB
-            const passwordMatch = await bcrypt.compare(password, user.hashedPassword);
-            if (!passwordMatch) {
-                // Si les mots de passe ne correspondent pas, renvoi une réponse 401 (Unauthorized)
-                return res.status(401).json({ message: "Mot de passe incorrect" });
-            }
-
-            // Si les passwords correspondent, on va créer un token (jwt) pour l'utilisateur
-            const payload = {
-                userId: user.id,
-                login: user.login,
-            };
-            const options = {
-                expiresIn: "2d", // Définissez ici la durée de validité du token
-            };
-
-            // Vérification que le secret JWT est défini
-            const secret = process.env.JWT_SECRET;
-            if (!secret) {
-                console.error("Le secret JWT est indéfini!");
-                return res
-                    .status(500)
-                    .json({ message: "Configuration du serveur incorrecte." });
-            }
-
-            const token = jwt.sign(payload, secret, options);
-
-            // Optionnel : Stocker le token (jwt) dans la DB si votre logique d'application le nécessite
-            await authService.addJwt(token, user.id);
-
-            // Envoi du token dans le header et dans le corps de la réponse
-            res.setHeader("Authorization", `Bearer ${token}`);
-            return res.status(200).json({ token });
-        } catch (err) {
-            console.error(err);
-            res.status(500).json({ message: "Erreur interne du serveur" });
-        }
-    },
-};
-
-module.exports = authController;
-
-// register: async (req, res, next) => {
-//     try {
-//         // Récupération des données utilisateur
-//         const authData = req.body;
-
-//         // Hashage du mot de passe
-//         const hashedPassword = bcrypt.hashSync(authData.password, 10);
-
-//         // Création de l'objet utilisateur à insérer
-//         const userData = {
-//             login: authData.login,
-//             name: authData.name,
-//             prenom: authData.prenom,
-//             email: authData.email,
-//             codePostal: authData.codePostal,
-//             dateNaissance: authData.dateNaissance,
-//             pays: authData.pays,
-//             ville: authData.ville,
-//             genre: authData.genre,
-//             hashedPassword: hashedPassword,
-//         };
-
-//         // Envoi des données validées et hashées à la DB
-//         const authInserted = await authService.insert(userData);
-
-//         if (authInserted) {
-//             res
-//                 .status(201)
-//                 .location(`api/auth/login`)
-//                 .json(authInserted);
-//         } else {
-//             return res.status(500).json({ message: 'Erreur lors de l\'insertion des données' });
-//         }
-//     } catch (validationError) {
-//         console.error(validationError);
-//         return res.status(400).json({ message: 'Erreur de validation', errors: validationError.errors });
-//     }
-// },
-
-// login: async (req, res, next) => {
-//     try {
-//         const { login, password } = req.body;
-
-//         // Vérification de l'existence de l'utilisateur via son login
-//         const user = await authService.exist(login);
-//         if (!user) {
-//             // Si l'utilisateur n'existe pas, renvoi une réponse 401 (Unauthorized)
-//             return res.status(401).json({ message: "Utilisateur non trouvé" });
-//         }
-
-//         // Vérification de l'existence d'un token (jwt) pour cet utilisateur
-//         const existingToken = await authService.getJwt(user.id);
-//         if (existingToken.jwt) {
-//             // Vérification de la validité du token (jwt)
-//             const tokenValid = await authService.verifyJwt(existingToken.jwt);
-
-//             if (tokenValid) {
-//                 // Le token (jwt) est valide, envoi de l'information dans le header de la requête
-//                 res.setHeader("Authorization", `Bearer ${existingToken.jwt}`);
-//                 return res.status(200).json({ token: existingToken.jwt });
+//               // Vérification si l'insertion a réussi
+//             if (userInserted) {
+//                 // Configuration de l'en-tête de la réponse avec le token JWT
+//                 res.setHeader("Authorization", `Bearer ${token}`);
+//                 // Réponse avec l'utilisateur inséré et le token JWT
+//                 return res.status(201).json({ user: userInserted, token });
+//             } else {
+//                 // Si insertion échoué, renvoie d'une erreur
+//                 return res
+//                     .status(500)
+//                     .json({ message: "Erreur lors de l'insertion des données" });
 //             }
+//         } catch (validationError) {
+//             handleControllerError(res, validationError);
 //         }
+//     },
 
-//         // Vérification du password fourni par l'utilisateur avec le password hashé dans la DB
-//         const passwordMatch = await bcrypt.compare(password, user.hashedPassword);
-//         if (!passwordMatch) {
-//             // Si les mots de passe ne correspondent pas, renvoi une réponse 401 (Unauthorized)
-//             return res.status(401).json({ message: "Mot de passe incorrect" });
-//         }
+//     login: async (req, res) => {
+//         try {
+//             const { login, password } = req.body;
 
-//         // Si les password correspondent, on va créer un token (jwt) pour l'utilisateur
-//         const payload = {
-//             userId: user.id,
-//             login: user.login,
-//         };
-//         const options = {
-//             expiresIn: "2d",
-//         };
+//             // Recherche de l'utilisateur par login
+//             const user = await authService.exist(login);
 
-//         // Signer le token (jwt) avec le SECRET
-//         const secret = process.env.JWT_SECRET;
-//         const token = jwt.sign(payload, secret, options);
+//             // Vérification si l'utilisateur existe
+//             if (!user) {
+//                 return res.status(401).json({ message: "Utilisateur non trouvé" });
+//             }
 
-//         // Stocker le token (jwt) dans la DB
-//         const clientJwt = await authService.addJwt(token, user.id);
+//             // Vérification du mot de passe
+//             const passwordMatch = await bcrypt.compare(password, user.hashedPassword);
+//             if (!passwordMatch) {
+//                 return res.status(401).json({ message: "Mot de passe incorrect" });
+//             }
 
-//         if (clientJwt) {
-//             // Si l'insertion s'est correctement déroulée, on envoi les informations dans le header et au front en json
+//             // // Génère le token JWT avec les informations pertinentes
+//             // const token = generateJwtToken({ login: user.login });
+//             // const token = generateJwtToken({ userId: user.id, login: user.login });
+
+//             // // Ajoute le token JWT à l'utilisateur dans la base de données
+//             // await authService.addJwt(token, user.id);
+
+//             // Récupérer le token à partir des données de l'utilisateur dans la base de données
+//             const token = user.jwt;
+
+//             // Vérification si le token existe
+//             if (!token) {
+//                 return res
+//                     .status(401)
+//                     .json({ message: "Token de l'utilisateur non trouvé" });
+//             }
+
+//             // Définit le jeton JWT dans l'en-tête de la réponse
 //             res.setHeader("Authorization", `Bearer ${token}`);
 //             return res.status(200).json({ token });
+//         } catch (error) {
+//             handleControllerError(res, error);
 //         }
-//     } catch (err) {
-//         console.error(err);
-//         res.status(500).json({ message: "Erreur interne du serveur" });
+//     },
+
+//     getUserAccount: async (req, res) => {
+//         try {
+//             // Obtient l'Id de l'utilisateur à partir de la requ^te
+//             const userId = req.userId;
+
+//             // Recherche de l'utilisateur dans la db
+//             const user = await authService.findUserById(userId);
+
+//             // Verification si l'utilisateur existe
+//             if (!user) {
+//                 return res.status(404).json({ message: "Utilisateur non trouvé" });
+//             }
+
+//             // Si l'utilisateur est trouvé, sélectionne les informations de base à renvoyer
+//             const userAccount = {
+//                 id: user.id,
+//                 login: user.login,
+//                 email: user.email,
+//             };
+
+//             // Réponds avec les informations de compte de l'utilisateur et un code de statut 200
+//             res.status(200).json(userAccount);
+//         } catch (error) {
+//             // En cas d'erreur pendant le traitement, renvoie une réponse avec un code de statut 500
+//             // et un message d'erreur interne du serveur
+//             handleControllerError(res, error);
+//         }
+//     },
+// };
+
+// module.exports = authController;
+
+// // Fonction pour générer un token JWT avec un payload donné
+// function generateJwtToken(payload) {
+//     // Vérifie si un payload est fourni
+//     if (!payload) {
+//         // Lance une erreur si aucun payload n'est fourni
+//         throw new Error("Le payload pour le JWT est manquant!");
 //     }
-// },
+
+//     // Récupère le secret JWT depuis les variables d'environnement
+//     const secret = process.env.JWT_SECRET;
+//     // Vérifie si le secret JWT est défini
+//     if (!secret) {
+//         // Lance une erreur si le secret JWT n'est pas défini
+//         throw new Error("Le secret JWT est indéfini!");
+//     }
+
+//     // Options pour la création du token JWT
+//     const options = {
+//         // Durée de validité du token : 30 jours
+//         expiresIn: "30d",
+//     };
+
+//     // Génère le token JWT avec le payload, le secret et les options spécifiées
+//     return jwt.sign(payload, secret, options);
+// }
+
+// function handleControllerError(res, error) {
+//     console.error(error);
+//     res.status(500).json({ message: "Erreur interne du serveur" });
+// }
