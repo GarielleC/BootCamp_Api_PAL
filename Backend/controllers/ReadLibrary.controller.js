@@ -1,10 +1,20 @@
-const { Book } = require("../Models");
+const { Book } = require("../models");
 
 const readLibraryController = {
     // Récupérer tous les livres de la bibliothèque de lecture
     getAllBook: async (req, res, next) => {
         try {
-            const ReadLibrary = await Book.findAll({ where:{statut:'lu'}});
+            const userId = req.userId; // Accès à l'ID de l'utilisateur
+            console.log("UserId in getAllBook:", userId);
+
+            if (!userId) {
+                return res.status(401).json({
+                    error: "L'ID de l'utilisateur est manquant dans la requête",
+                });
+            }
+
+            const ReadLibrary = await Book.findAll({ where:{ userId: userId,statut:'lu' }});
+
             res.status(200).json(ReadLibrary);
         } catch (error) {
             console.error(error);
@@ -15,11 +25,27 @@ const readLibraryController = {
     // Ajouter un nouveau livre à la bibliothèque de lecture
     addBook:  async (req, res, next) => {
         try {
+              // Extraire les informations de l'utilisateur de la requête ou du jeton d'authentification
+              const userId = req.userId;
+              if (!userId) {
+                  return res.status(401).json({
+                      error: "L'ID de l'utilisateur est manquant dans la requête",
+                  });
+              }
+
             const { title, author, prix, buyLink } = req.body;
             
             const imageUrl = req.file ? req.file.filename : null; // Utilisation du nom du fichier uploadé
 
-            const newBook = await Book.create({ title, author, statut:"lu", prix, buyLink, imageUrl });
+            const newBook = await Book.create({ 
+                userId: userId,
+                title, 
+                author, 
+                statut:"lu", 
+                prix, buyLink,
+                 imageUrl
+                 });
+
             console.log(newBook);
             res.status(201).json(newBook);
         } catch (error) {
@@ -30,9 +56,21 @@ const readLibraryController = {
 
     // Récupérer un livre spécifique de la bibliothèque de lecture
     getBook:async (req, res, next) => {
-        const id = Number(req.params.bookID);
+        const bookID = Number(req.params.bookID);
         try {
-            const selectedBook = await Book.findByPk(id);
+            const userId = req.userId;
+            console.log("UserId in getBook:", userId);
+
+            if (!userId) {
+                return res.status(401).json({
+                    error: "L'ID de l'utilisateur est manquant dans la requête",
+                });
+            }
+
+            // Recherche du livre spécifié par son ID et qui est marqué comme "lu"
+            const selectedBook = await Book.findOne({
+                where: { id: bookID, userId: userId, statut: "lu" },
+            });
 
             if (!selectedBook) {
                 return res.status(404).send("Book not found");
@@ -53,8 +91,15 @@ const readLibraryController = {
                 return res.status(404).send("Book not found");
             }
 
+  // Vérifier si l'utilisateur est autorisé à supprimer le livre
+  if (book.userId !== req.userId) {
+    return res
+        .status(403)
+        .json({ error: "Non autorisé à supprimer ce livre" });
+}
+
             await book.destroy();
-            res.status(200).json({ message: "Book deleted" });
+            res.status(200).json({ message: "Le livre a été supprimé avec succès !" });
         } catch (error) {
             res.status(500).json({ error: error.message });
         }
@@ -76,7 +121,7 @@ const readLibraryController = {
             res.status(200).json(updatedBook);
         } catch (error) {
             console.error(error);
-            res.status(500).json({ error: "Failed to update book status" });
+            res.status(500).json({ error: "Mise à jour du livre échoué" });
         }
     }, 
 };
