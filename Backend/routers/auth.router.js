@@ -5,6 +5,7 @@ const upload = require("../middleware/uploadConfig");
 const loginValidator = require("../validator/login.validator");
 const emailValidator = require("../validator/email.validator");
 const userCtrl = require("../controllers/userController");
+const authMiddleware = require('../middleware/authMiddleware'); 
 
 // Post pour l'inscription'
 authRouter
@@ -19,6 +20,14 @@ authRouter
 authRouter
     .route("/login")
     .post(userCtrl.login)
+    .all((req, res) => {
+        res.status(405).send("Method Not Allowed");
+    });
+
+    // Route protégée pour récupérer le profil utilisateur
+authRouter
+    .route("/profile")
+    .get(authMiddleware.isAuthenticated, userCtrl.getUserProfile)
     .all((req, res) => {
         res.status(405).send("Method Not Allowed");
     });

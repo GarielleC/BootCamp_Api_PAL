@@ -1,8 +1,10 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Input from '../Inputs/inputs';
 import Register from '../Register/Register';
 import { useAuth } from '../../services/AuthContext';
+import AuthService from '../../services/AuthService'; 
 
 const Login = () => {
     const [inputValue, setInputValue] = useState({ email: '', password: '' });
@@ -10,68 +12,36 @@ const Login = () => {
     const navigate = useNavigate();
     const { isAuthenticated, setIsAuthenticated } = useAuth();
 
-    // Fonction pour récupérer le profil utilisateur
-    const fetchUserProfile = async () => {
-        try {
-            const token = localStorage.getItem("token");
-            console.log("Token récupéré pour l'appel API :", token);
-
-            if (!token) throw new Error("Token non trouvé");
-
-            const userResponse = await fetch("http://localhost:8080/api/user/profile", {
-                method: "GET", // Assurez-vous que la méthode est correcte
-                headers: {
-                    "Authorization": `Bearer ${token}`,
-                    "Content-Type": "application/json"
-                }
-            });
-
-            if (!userResponse.ok) {
-                const errorData = await userResponse.json();
-                throw new Error(errorData.message || "Erreur lors de la récupération du profil utilisateur");
-            }
-
-            const userData = await userResponse.json();
-            console.log("Profil utilisateur récupéré :", userData);
-            // Vous pouvez également mettre à jour l'état ou faire autre chose avec les données utilisateur ici
-
-        } catch (error) {
-            console.error("Erreur lors de la récupération du profil utilisateur :", error.message);
-            // Optionnel : vous pouvez également gérer l'état d'authentification ici
-        }
-    };
-
     const handleLogin = async (e) => {
         e.preventDefault();
+
         try {
-            const response = await fetch("http://localhost:8080/api/auth/login", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    email: inputValue.email,
-                    password: inputValue.password,
-                }),
+            const response = await axios.post("http://localhost:8080/api/auth/login", {
+                email: inputValue.email,
+                password: inputValue.password
             });
+    
+            if (response.status === 200) {
+                const { token, userId } = response.data;
+                AuthService.saveToken(token);
+                localStorage.setItem("userId", userId);
+                setIsAuthenticated(true);
 
-            if (!response.ok) {
-                const errorData = await response.json();
-                setErrorMessage(errorData.message || "Authentification échouée");
-                return;
+                // Récupération du profil utilisateur après la connexion
+                try {
+                    const userProfile = await AuthService.fetchUserProfile();
+                    console.log("Profil utilisateur récupéré après connexion :", userProfile);
+                    navigate("/");
+                } catch (fetchError) {
+                    console.error("Erreur lors de la récupération du profil utilisateur après connexion :", fetchError);
+                    setErrorMessage("Erreur lors de la récupération du profil utilisateur.");
+                }
+            } else {
+                throw new Error("Authentification échouée");
             }
-
-            const { token, userId } = await response.json();
-            localStorage.setItem("token", token);
-            localStorage.setItem("userId", userId);
-            setIsAuthenticated(true);  // Mise à jour de l'état d'authentification
-            setErrorMessage('');
-            navigate("/");
-
-            // Appel pour récupérer le profil utilisateur après la connexion
-            await fetchUserProfile();
         } catch (error) {
             console.error("Erreur lors de la connexion :", error);
+            setErrorMessage(error.response?.data?.message || "Erreur de connexion");
         }
     };
 
@@ -87,7 +57,7 @@ const Login = () => {
             ) : (
                 <form className="log" onSubmit={handleLogin}>
                     <div className="logout">
-                        <label htmlFor="email">Email :</label>
+                        <label htmlFor="email"></label>
                         <Input
                             id="email"
                             label="Email :"
@@ -97,7 +67,7 @@ const Login = () => {
                             value={inputValue.email}
                             onChange={handleChange}
                         />
-                        <label htmlFor="password">Mot de passe :</label>
+                        <label htmlFor="password"></label>
                         <Input
                             id="password"
                             label="Mot de passe :"
@@ -128,6 +98,8 @@ const Login = () => {
 };
 
 export default Login;
+
+
 
 
 
