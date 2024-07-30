@@ -222,7 +222,7 @@ button:active {
 
 /* Css pour le formulaire */
 .visibility {
-    isplay: grid;
+    display: grid;
     border: 2px solid #8f528d;
     background-color: #a430a0;
     margin: 2rem;

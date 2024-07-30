@@ -72,13 +72,13 @@ router
 //     });
 
 
-// // Mise à jour de tous les livres ou l'ont note les ids dans un tableau
-// router
-// .route("/updateUser")
-// .put( bookToBuyController.updateUserId)
-// .all((req, res) => {
-//     res.status(405).send("Unavailable");
-// });
+// Mise à jour de tous les livres ou l'ont note les ids dans un tableau
+router
+.route("/updateUser")
+.put( bookToBuyController.updateUserId)
+.all((req, res) => {
+    res.status(405).send("Unavailable");
+});
 
 
 module.exports = router;

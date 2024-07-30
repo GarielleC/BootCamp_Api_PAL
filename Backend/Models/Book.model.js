@@ -33,11 +33,11 @@ const createBook = (sequelize) => {
             userId: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
-                // defaultValue: 13,
-                // references: {
-                //     model: "Users",
-                //     key: "id",
-                // },
+                defaultValue: 13,
+                references: {
+                    model: "Users",
+                    key: "id",
+                },
             },
 
             imageUrl: {

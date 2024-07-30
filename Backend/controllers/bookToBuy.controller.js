@@ -77,7 +77,9 @@ const bookToBuyController = {
             });
 
             if (!selectedBook) {
-                return res.status(404).send("Le livre spécifié est soit acheter soit inexistant");
+                return res
+                    .status(404)
+                    .send("Le livre spécifié est soit acheter soit inexistant");
             }
             res.json(selectedBook);
         } catch (error) {
@@ -109,40 +111,40 @@ const bookToBuyController = {
         }
     },
 
-    // // Mise à jour de tous les livres ou l'ont note les ids dans un tableau
-    // updateUserId: async (req, res, next) => {
-    //     try {
-    //         const { bookIDs } = req.body; // Récupérer les IDs des livres depuis le corps de la requête
-    //         const newUserId = 13; // Nouvel userId auquel vous voulez mettre à jour
+    // Mise à jour de tous les livres ou l'ont note les ids dans un tableau
+    updateUserId: async (req, res, next) => {
+        try {
+            const { bookIDs } = req.body; // Récupérer les IDs des livres depuis le corps de la requête
+            const newUserId = 13; // Nouvel userId auquel vous voulez mettre à jour
 
-    //         // Vérifier si les IDs des livres sont présents dans la requête
-    //         if (!bookIDs || !Array.isArray(bookIDs)) {
-    //             return res.status(400).json({
-    //                 error: "Les IDs des livres doivent être fournis dans un tableau",
-    //             });
-    //         }
+            // Vérifier si les IDs des livres sont présents dans la requête
+            if (!bookIDs || !Array.isArray(bookIDs)) {
+                return res.status(400).json({
+                    error: "Les IDs des livres doivent être fournis dans un tableau",
+                });
+            }
 
-    //         // Boucle sur chaque ID de livre et met à jour l'userID
-    //         for (const bookID of bookIDs) {
-    //             const book = await Book.findByPk(bookID); // Trouver le livre par son ID
+            // Boucle sur chaque ID de livre et met à jour l'userID
+            for (const bookID of bookIDs) {
+                const book = await Book.findByPk(bookID); // Trouver le livre par son ID
 
-    //             if (!book) {
-    //                 console.error("Livre non trouvé pour l'ID :", bookID);
-    //                 continue; // Passer au prochain livre si le livre n'est pas trouvé
-    //             }
+                if (!book) {
+                    console.error("Livre non trouvé pour l'ID :", bookID);
+                    continue; // Passer au prochain livre si le livre n'est pas trouvé
+                }
 
-    //             // Mettre à jour l'userID du livre
-    //             await book.update({ userId: newUserId });
-    //         }
+                // Mettre à jour l'userID du livre
+                await book.update({ userId: newUserId });
+            }
 
-    //         res.status(200).json({
-    //             message: "Les livres ont été mis à jour avec succès",
-    //         });
-    //     } catch (error) {
-    //         console.error(error);
-    //         res.status(500).json({ error: "Failed to update book userId" });
-    //     }
-    // },
+            res.status(200).json({
+                message: "Les livres ont été mis à jour avec succès",
+            });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ error: "Failed to update book userId" });
+        }
+    },
 
     // Mise a jour d'un livre (statut)
     updateBook: async (req, res, next) => {

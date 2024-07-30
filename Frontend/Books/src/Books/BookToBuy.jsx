@@ -49,7 +49,7 @@ const BookToBuyList = () => {
                 setBookToBuyList(res);
             }
 
-            // Trier les livres par ordre alphabétique ici
+            // Trie les livres par ordre alphabétique
             const sortedBooks = [...res];
             sortedBooks.sort((a, b) => a.title.localeCompare(b.title));
             setBookToBuyList(sortedBooks);
