@@ -51,7 +51,7 @@ exports.isAuthenticated = async (req, res, next) => {
                 console.log("Le token JWT n'a pas expiré.");
 
                 // Poursuivre le flux de contrôle
-                return next("route");
+                return next();
             } else {
                 console.log(
                     "Le token JWT a expiré. Tentative de renouvellement du jeton...",

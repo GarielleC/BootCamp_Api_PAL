@@ -1,0 +1,113 @@
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
+import Input from '../Inputs/inputs';
+import Register from '../Register/Register';
+import { useAuth } from '../../services/AuthContext';
+
+const Login = () => {
+    const [inputValue, setInputValue] = useState({ email: '', password: '' });
+    const [loggedIn, setLoggedIn] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
+    const navigate = useNavigate();
+    const { isAuthenticated, setIsAuthenticated } = useAuth();
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setInputValue((prevState) => ({ ...prevState, [name]: value }));
+    };
+
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await fetch("http://localhost:8080/api/auth/login", {
+                method: "POST",
+                headers: {
+                    "Authorization": `Bearer ${localStorage.getItem("token")}`,
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    email: inputValue.email,
+                    password: inputValue.password,
+                }),
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                setErrorMessage(errorData.message || "Authentification échouée");
+                return;
+            }
+
+            const { token, userId } = await response.json();
+            localStorage.setItem("token", token);
+            localStorage.setItem("userId", userId);
+            setIsAuthenticated(true);
+            setErrorMessage('');
+            navigate("/");
+
+            const userResponse = await fetch("http://localhost:8080/api/user/profile", {
+                headers: {
+                    "Authorization": `Bearer ${token}`,
+                    "Content-Type": "application/json"
+                }
+            });
+
+            if (!userResponse.ok) {
+                throw new Error("Erreur lors de la récupération du profil utilisateur");
+            }
+
+            const userData = await userResponse.json();
+            console.log("Profil utilisateur récupéré :", userData);
+        } catch (error) {
+            console.error("Erreur lors de la connexion : ", error);
+        }
+    };
+
+    return (
+        <>
+            {isAuthenticated ? (
+                <Register />
+            ) : (
+                <form className="log" onSubmit={handleLogin}>
+                    <div className="logout">
+                        <label htmlFor="email">Email :</label>
+                        <Input
+                            id="email"
+                            label="Email :"
+                            type="email"
+                            name="email"
+                            className="input"
+                            value={inputValue.email}
+                            onChange={handleChange}
+                        />
+                        <label htmlFor="password">Mot de passe :</label>
+                        <Input
+                            id="password"
+                            label="Mot de passe :"
+                            type="password"
+                            name="password"
+                            className="input"
+                            value={inputValue.password}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    {errorMessage && <div className="error-message">{errorMessage}</div>}
+                    <div className="log_register">
+                        <button className="connexion" type="submit">
+                            Connexion
+                        </button>
+                        <button
+                            className="register"
+                            type="button"
+                            onClick={() => setIsAuthenticated(false)}
+                        >
+                            Pas encore membre ? Inscrivez-vous ici !
+                        </button>
+                    </div>
+                </form>
+            )}
+        </>
+    );
+};
+
+export default Login;
