@@ -4,6 +4,7 @@ const authDTO = require("../dto/auth.dto");
 const db = require("../models");
 const jwt = require("jsonwebtoken");
 
+
 // Service d'authentification
 const authService = {
     // Fonction pour vérifier si un utilisateur existe avec le login spécifié

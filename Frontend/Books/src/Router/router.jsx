@@ -6,6 +6,7 @@ import BookToBuy from "../Books/BookToBuy.jsx";
 import BookToRead from "../Books/BookToRead.jsx";
 import ReadLibrary from "../Books/ReadLibrary.jsx";
 import Login from "../Compte/Login/Login.jsx";
+import UserProfile from "../Compte/Login/UserProfile.jsx";
 import Register from "../Compte/Register/Register.jsx";
 import LoadingPage from "../LoadingPage/Loading.jsx";
 import ProtectedRoute from "./ProtectedRoute.jsx";
@@ -45,6 +46,7 @@ const router = createBrowserRouter([
                 path: "login",
                 element: <Login />,
             },
+            { path: "/userProfile", element: <UserProfile /> },
             {
                 path: "register",
                 element: <Register />,

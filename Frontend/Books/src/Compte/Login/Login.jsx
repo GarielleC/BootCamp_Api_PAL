@@ -4,40 +4,33 @@ import { useNavigate } from 'react-router-dom';
 import Input from '../Inputs/inputs';
 import Register from '../Register/Register';
 import { useAuth } from '../../services/AuthContext';
-import AuthService from '../../services/AuthService'; 
+import AuthService from '../../services/AuthService';
 
 const Login = () => {
     const [inputValue, setInputValue] = useState({ email: '', password: '' });
     const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
-    const { isAuthenticated, setIsAuthenticated } = useAuth();
+    const { setIsAuthenticated } = useAuth();
 
     const handleLogin = async (e) => {
         e.preventDefault();
-
         try {
-            const response = await axios.post("http://localhost:8080/api/auth/login", {
-                email: inputValue.email,
-                password: inputValue.password
-            });
-    
+            const { email, password } = inputValue;
+            const response = await AuthService.login(email, password);
+            
             if (response.status === 200) {
-                const { token, userId } = response.data;
-                AuthService.saveToken(token);
-                localStorage.setItem("userId", userId);
+                // Connexion réussie
                 setIsAuthenticated(true);
 
-                // Récupération du profil utilisateur après la connexion
+                // Récupération du profil utilisateur
                 try {
                     const userProfile = await AuthService.fetchUserProfile();
                     console.log("Profil utilisateur récupéré après connexion :", userProfile);
-                    navigate("/");
+                    navigate("/userProfile"); // Redirection vers le profil utilisateur
                 } catch (fetchError) {
                     console.error("Erreur lors de la récupération du profil utilisateur après connexion :", fetchError);
                     setErrorMessage("Erreur lors de la récupération du profil utilisateur.");
                 }
-            } else {
-                throw new Error("Authentification échouée");
             }
         } catch (error) {
             console.error("Erreur lors de la connexion :", error);
@@ -51,53 +44,151 @@ const Login = () => {
     };
 
     return (
-        <>
-            {isAuthenticated ? (
-                <Register />
-            ) : (
-                <form className="log" onSubmit={handleLogin}>
-                    <div className="logout">
-                        <label htmlFor="email"></label>
-                        <Input
-                            id="email"
-                            label="Email :"
-                            type="email"
-                            name="email"
-                            className="input"
-                            value={inputValue.email}
-                            onChange={handleChange}
-                        />
-                        <label htmlFor="password"></label>
-                        <Input
-                            id="password"
-                            label="Mot de passe :"
-                            type="password"
-                            name="password"
-                            className="input"
-                            value={inputValue.password}
-                            onChange={handleChange}
-                        />
-                    </div>
-                    {errorMessage && <div className="error-message">{errorMessage}</div>}
-                    <div className="log_register">
-                        <button className="connexion" type="submit">
-                            Connexion
-                        </button>
-                        <button
-                            className="register"
-                            type="button"
-                            onClick={() => setIsAuthenticated(false)}
-                        >
-                            Pas encore membre ? Inscrivez-vous ici !
-                        </button>
-                    </div>
-                </form>
-            )}
-        </>
+        <form className="log" onSubmit={handleLogin}>
+            <div className="logout">
+                <label htmlFor="email"></label>
+                <Input
+                    id="email"
+                    label="Email :"
+                    type="email"
+                    name="email"
+                    className="input"
+                    value={inputValue.email}
+                    onChange={handleChange}
+                />
+                <label htmlFor="password"></label>
+                <Input
+                    id="password"
+                    label="Mot de passe :"
+                    type="password"
+                    name="password"
+                    className="input"
+                    value={inputValue.password}
+                    onChange={handleChange}
+                />
+            </div>
+            {errorMessage && <div className="error-message">{errorMessage}</div>}
+            <div className="log_register">
+                <button className="connexion" type="submit">Connexion</button>
+                <button
+                    className="register"
+                    type="button"
+                    onClick={() => navigate("/register")}
+                >
+                    Pas encore membre ? Inscrivez-vous ici !
+                </button>
+            </div>
+        </form>
     );
 };
 
 export default Login;
+
+
+
+
+// import axios from 'axios';
+// import React, { useState } from 'react';
+// import { useNavigate } from 'react-router-dom';
+// import Input from '../Inputs/inputs';
+// import Register from '../Register/Register';
+// import { useAuth } from '../../services/AuthContext';
+// import AuthService from '../../services/AuthService'; 
+
+// const Login = () => {
+//     const [inputValue, setInputValue] = useState({ email: '', password: '' });
+//     const [errorMessage, setErrorMessage] = useState('');
+//     const navigate = useNavigate();
+//     const { isAuthenticated, setIsAuthenticated } = useAuth();
+
+//     const handleLogin = async (e) => {
+//         e.preventDefault();
+        
+
+//         try {
+//             const { email, password } = inputValue;
+//             const response = await axios.post("http://localhost:8080/api/auth/login", {
+//                 email,
+//                 password
+//             });
+    
+//             if (response.status === 200) {
+//                 const { token, userId } = response.data;
+//                 AuthService.saveToken(token);
+//                 localStorage.setItem("userId", userId);
+//                 setIsAuthenticated(true);
+
+//                 // Récupération du profil utilisateur après la connexion
+//                 try {
+//                     const userProfile = await AuthService.fetchUserProfile();
+//                     console.log("Profil utilisateur récupéré après connexion :", userProfile);
+//                     navigate("/");
+//                 } catch (fetchError) {
+//                     console.error("Erreur lors de la récupération du profil utilisateur après connexion :", fetchError);
+//                     setErrorMessage("Erreur lors de la récupération du profil utilisateur.");
+//                 }
+//             } else {
+//                 throw new Error("Authentification échouée");
+//             }
+//         } catch (error) {
+//             console.error("Erreur lors de la connexion :", error);
+//             setErrorMessage(error.response?.data?.message || "Erreur de connexion");
+//         }
+//     };
+
+//     const handleChange = (e) => {
+//         const { name, value } = e.target;
+//         setInputValue((prevState) => ({ ...prevState, [name]: value }));
+//     };
+
+//     return (
+//         <>
+//             {isAuthenticated ? (
+//                 <Register />
+//             ) : (
+//                 <form className="log" onSubmit={handleLogin}>
+//                     <div className="logout">
+//                         <label htmlFor="email"></label>
+//                         <Input
+//                             id="email"
+//                             label="Email :"
+//                             type="email"
+//                             name="email"
+//                             className="input"
+//                             value={inputValue.email}
+//                             onChange={handleChange}
+//                         />
+//                         <label htmlFor="password"></label>
+//                         <Input
+//                             id="password"
+//                             label="Mot de passe :"
+//                             type="password"
+//                             name="password"
+//                             className="input"
+//                             value={inputValue.password}
+//                             onChange={handleChange}
+//                         />
+//                     </div>
+//                     {errorMessage && <div className="error-message">{errorMessage}</div>}
+//                     <div className="log_register">
+//                         <button className="connexion" type="submit">
+//                             Connexion
+//                         </button>
+//                         <button
+//                             className="register"
+//                             type="button"
+//                             onClick={() => setIsAuthenticated(false)}
+//                         >
+//                             Pas encore membre ? Inscrivez-vous ici !
+//                         </button>
+//                     </div>
+//                 </form>
+//             )}
+//         </>
+//     );
+// };
+
+// export default Login;
 
 
 
