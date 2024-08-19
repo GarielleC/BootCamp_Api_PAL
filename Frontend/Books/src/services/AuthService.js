@@ -49,18 +49,21 @@ class AuthService {
 
     async fetchUserProfile() {
         const token = this.getToken();
+        console.log("Token envoyé pour récupérer le profil utilisateur :", token); // Ajout de log
         try {
             const response = await axios.get("http://localhost:8080/api/user/profile", {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
             });
+            console.log("Données de profil utilisateur reçues :", response.data); // Ajout de log
             return response.data;
         } catch (error) {
             console.error("Erreur lors de la récupération du profil utilisateur :", error);
             throw error;
         }
     }
+    
 
     logout() {
         this.removeToken();

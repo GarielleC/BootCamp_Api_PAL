@@ -25,17 +25,21 @@ const authService = {
     addJwt: async (token, userId) => {
         try {
             // Vérification de l'existence de l'utilisateur avec l'ID spécifié
-            const userFound = await db.Auth.findOne({ where: { userId: id } });
+            console.log("Recherche de l'utilisateur avec l'ID :", userId);
+            const userFound = await db.Auth.findOne({ where: { id: userId } });
 
             if (!userFound) {
                 throw new Error("Utilisateur non trouvé");
             }
+            console.log("Utilisateur trouvé. Mise à jour du JWT.");
 
             // Si l'utilisateur existe, mise à jour de son enregistrement avec le JWT fourni
             await userFound.update({ jwt: token });
+            // Vérifiez si le JWT est bien mis à jour
+            const updatedUser = await db.Auth.findOne({ where: { id: userId } });
+            console.log("JWT après mise à jour dans la base de données :", updatedUser.jwt);
 
-            // Retour de l'enregistrement utilisateur mis à jour
-            return userFound;
+            return updatedUser;
         } catch (error) {
             console.error("Erreur lors de l'ajout du JWT à l'utilisateur:", error);
             throw new Error("Erreur lors de l'ajout du JWT à l'utilisateur");
@@ -104,6 +108,7 @@ const authService = {
     generateNewToken: (userId) => {
         console.log("Valeur de userId dans generateNewToken :", userId);
         const payload = { userId: userId };
+        const secret = process.env.JWT_SECRET;
 
         console.log("Payload avant la génération du token :", payload);
 

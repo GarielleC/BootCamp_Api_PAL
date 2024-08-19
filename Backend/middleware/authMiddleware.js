@@ -9,6 +9,12 @@ exports.isAuthenticated = async (req, res, next) => {
         const token = req.headers["x-access-token"] || req.headers["authorization"];
         console.log("Token extrait de l'en-tête de la requête :", token);
 
+          // Comme le token est préfixé par 'Bearer ', extraction du token proprement
+          if (token && token.startsWith('Bearer ')) {
+            token = token.slice(7, token.length); // Retire le préfixe 'Bearer '
+        }
+
+
         // Si aucun token n'est fourni, renvoie une réponse d'erreur avec le statut 403.
         if (!token) {
             console.log("Aucun token fourni. Accès refusé.");
@@ -59,9 +65,14 @@ exports.isAuthenticated = async (req, res, next) => {
 
                 // Générer un nouveau jeton JWT
                 const newToken = authService.generateNewToken(userId);
+                console.log("Nouveau token JWT généré :", newToken); 
+
+                // Mettre à jour le token dans la base de données
+                await authService.addJwt(newToken, userId);
 
                 // Stocker le nouveau jeton dans req.token pour une utilisation ultérieure
                 req.token = newToken;
+                console.log("Token mis à jour dans la base de données :", newToken);
 
                 // Poursuivre le flux de contrôle
                 return next();
